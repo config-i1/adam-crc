@@ -1,5 +1,5 @@
-book_filename: bookdown
-clean: [packages.bib, bookdown.bbl]
+book_filename: "Svetunkov (2023) - Forecasting and Analytics with ADAM"
+clean: [library.bib, packages.bib, websites.bib, bookdown.bbl]
 delete_merged_file: true
 language:
   label:

@@ -1,24 +1,22 @@
---- 
+---
 title: "Forecasting and Analytics with ADAM"
 author: "Ivan Svetunkov"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: bookdown::gitbook
-documentclass: book
+documentclass: krantz
 bibliography: [library.bib, packages.bib, websites.bib]
-csl: elsevier-harvard.csl
-biblio-style: elsarticle-harv
-link-citations: true
-github-repo: config-i1/adam
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+site: bookdown::bookdown_site
 description: "This monograph explains how to do time series analysis and forecasting using Augmented Dynamic Adaptive Model, implemented in smooth package for R."
+github-repo: config-i1/adam-crc
+graphics: yes
+cover-image: images/Adam-Title-web.jpg
 ---
 
 # Preface {-}
-
-```{r ADAMFSM, echo=FALSE, out.width='60%', fig.align='center'}
-knitr::include_graphics("images/Adam-Title-web.jpg")
-```
-
 ### Who is this book for? {-}
 
 This monograph assumes that the reader has a good understanding of statistics and a good knowledge of regression analysis. Some Chapters rely on more advanced topics, including likelihood and information criteria. These are explained, for example, in @SvetunkovSBA. Some parts of the book also use linear algebra to show how various properties of state space models are derived. However, these can be skipped by a reader who is not comfortable with higher maths without losing in the understanding of the main idea of models. Furthermore, while the monograph is self-sufficient to a large extent, it does not contain a detailed discussion of special cases of state space models (e.g. local level model is only discussed in passing in Section \@ref(SESandETS), while the local trend is covered in Section \@ref(ETSExamples)). The reader interested in knowing more about some special cases is referred to the @Hyndman2008b monograph. Finally, while the monograph starts with the basics of forecasting and explains some of the simple forecasting techniques, it does not cover these in detail. A good book covering the fundamentals of forecasting is @Ord2017.

@@ -1,3 +1,5 @@
+\mainmatter
+
 # Introduction {#intro}
 I started writing this monograph in 2020 during the COVID-19 pandemic, having figured out that I am bored to death in the isolation and need to do something useful. By that time, I have done substantial amount of work in the area of dynamic models and tried to publish several papers on statistical models developed in the Single Source of Error (SSOE) framework. I have even developed several R functions based on my own ideas, which were all available in the `smooth` package and attracted substantial interest in the forecasting and data science communities, but have not been published anywhere. Furthermore, a friend of mine, Nikos Kourentzes, has been telling me that when he used my functions, he could not reference them properly because of the lack of publications from my side. So, it became apparent that I need to either publish lots of papers, covering different small aspects of what I have done, or write a monograph that would summarise everything in one place. Feeling lonely and depressed because of the lockdown, I have chosen the second option.
 
