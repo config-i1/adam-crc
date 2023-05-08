@@ -1,0 +1,298 @@
+# Scale model for ADAM {#ADAMscaleModel}
+Up until this chapter, we have focused our discussion on modelling the location of a distribution (e.g. conditional mean, point forecasts), neglecting the fact that in some situations, the variance of a model might exhibit some time-varying patterns. In statistics, the effect of a non-constant variance is called "heteroscedasticity" (see discussion in Section \@ref(diagnosticsResidualsIIDHetero)). It implies that the variance of the residuals of a model changes either over time or under influence of some variables. In some cases, in order to capture this effect, we might use the multiplicative model -- it takes care of heteroscedasticity caused by changing the level of data if the variance is proportional to its value. But there might be some situations where variance changes due to some external factors, not necessarily available to the analyst. In this situation, it should be captured separately using a different model. Hereafter the original ADAM producing conditional mean will be called the **location model**, while the model for the variance will be called the **scale model**.
+
+In this chapter, we discuss the scale model for ADAM ETS/ARIMA/Regression, the model that allows capturing time-varying variance and using it for forecasting. We discuss how this model is formulated, how it can be estimated and then move to the discussion of its relation to such models as ARCH and GARCH. This chapter is inspired by the GAMLSS, which models the scale of distribution using functions of explanatory variables. We build upon that by introducing the dynamic element.
+
+
+## Model formulation {#ADAMscaleModelFormulation}
+In order to understand better how the more general ADAM scale model works, we start the discussion with an example of a pure additive ETS model with Normal distribution for location and an ETS model for the scale.
+
+### An example with local level model with Normal distribution
+Consider ETS(A,N,N) model (which was discussed in Section \@ref(SESandETS)), which has the following measurement equation:
+\begin{equation}
+    y_t = l_{t-1} + \epsilon_t,
+    (\#eq:ETSANNScaleModel01)
+\end{equation}
+where the most commonly used assumption for the error term is:
+\begin{equation*}
+    \epsilon_t \sim \mathcal{N}(0, \sigma^2) .
+\end{equation*}
+The same error term can be represented as a multiplication of the Standard Normal variable by the standard deviation:
+\begin{equation}
+    \epsilon_t = \sigma \eta_t,
+    (\#eq:ETSANNScaleModel02)
+\end{equation}
+where $\eta_t \sim \mathcal{N}(0, 1)$. Now consider the situation when instead of the constant variance $\sigma^2$ we have one that changes over time either because of its own dynamics or because of the influence of explanatory variables. In that case we will add the subscript $t$ to the standard deviation in \@ref(eq:ETSANNScaleModel02) to have:
+\begin{equation}
+    \epsilon_t = \sigma_t \eta_t.
+    (\#eq:ETSANNScaleModel03)
+\end{equation}
+The thing to keep in mind is that in the case of Normal distribution, the scale is equal to variance rather than to the standard deviation, so in the modelling, we should consider $\sigma_t^2$ rather than $\sigma_t$. The variance, in this case, can be modelled explicitly using any ADAM. However, the pure multiplicative ones make more sense because they guarantee that the variance will not become zero or even negative. For demonstration purposes, we use ETS(M,N,N) to model the variance:
+\begin{equation}
+  \begin{aligned}
+    &\epsilon_t^2 = \sigma_t^2 \eta_t^2 \\
+    &\sigma_t^2 = l_{\sigma,t-1} \\
+    &l_{\sigma,t} = l_{\sigma,t-1} \left(1 + \alpha_\sigma (\eta_t^2-1)\right)
+  \end{aligned},
+  (\#eq:ETSANNScaleModel04)
+\end{equation}
+Note that although the part $\left(1 + \alpha_\sigma (\eta_t^2-1)\right)$ looks slightly different than the respective part $\left(1 + \alpha \epsilon_t \right)$  in the conventional ETS(M,N,N), they are equivalent: if we substitute $\xi_t = \eta_t^2-1$ in \@ref(eq:ETSANNScaleModel04), we will arrive to the conventional ETS(M,N,N) model. Furthermore, because $\eta_t$ follows standard Normal distribution, its square will follow Chi-squared distribution: $\eta_t^2 \sim \chi^2(1)$. This can be used for model diagnostics. Finally, we can use all the properties of the pure multiplicative models discussed in Chapter \@ref(ADAMETSPureMultiplicativeChapter) to get the fitted values and forecasts from the model \@ref(eq:ETSANNScaleModel04):
+\begin{equation}
+  \begin{aligned}
+    &\sigma_{t|t-1}^2 = l_{\sigma,t-1} \\
+    &\sigma_{t+h|t}^2 = l_{\sigma,t} 
+  \end{aligned}.
+  (\#eq:ETSANNScaleModel05)
+\end{equation}
+In order to construct this model, we need to collect the residuals $e_t$ of the location model \@ref(eq:ETSANNScaleModel01), square them and use in the following system of equations:
+\begin{equation}
+  \begin{aligned}
+    &\hat{\sigma}^2_{t} = \hat{l}_{\sigma,t-1} \\
+    &\hat{\eta}_t^2 = \frac{e_t^2}{\hat{\sigma}^2_{t}} \\
+    &\hat{l}_{\sigma,t} = \hat{l}_{\sigma,t-1} (1 + \hat{\alpha}_\sigma (\hat{\eta}_t^2-1))
+  \end{aligned}.
+  (\#eq:ETSANNScaleModel06)
+\end{equation}
+In order for this to work, we need to estimate $\hat{l}_{\sigma,0}$ and $\hat{\alpha}_\sigma$, which can be done in the conventional way by maximising the log-likelihood function of the Normal distribution (see Section \@ref(ADAMETSEstimationLikelihood)) -- the only thing that will change in comparison with the conventional estimation of the location model is the fitted values of $\hat{\sigma}^2_{t}$ for the variance, which will need to be generated from \@ref(eq:ETSANNScaleModel06):
+\begin{equation}
+    \ell(\boldsymbol{\theta}, {\sigma}_t^2 | \mathbf{y}) = -\frac{T}{2} \log(2 \pi \sigma_t^2) -\frac{1}{2} \sum_{t=1}^T \frac{\epsilon_t^2}{\sigma_t^2} .
+  (\#eq:ETSANNScaleModelLogLik)
+\end{equation}
+The thing to keep in mind is that the final ETS(A,N,N) model \@ref(eq:ETSANNScaleModel01) with the scale model \@ref(eq:ETSANNScaleModel04) will have four parameters instead of three (as it would in case of a simpler model): 2 for the location part of the model (the initial level $l_{0}$ and the smoothing parameter $\alpha$) and 2 for the scale part of the model (the initial level $l_{\sigma,0}$ and the smoothing parameter $\alpha_\sigma$).
+
+::: remark
+The estimation of the scale model can be done after the estimation of the location one: given that the scale and location of distribution are assumed to be independent, the likelihood can be maximised first by estimating the parameters of the model \@ref(eq:ETSANNScaleModel01) and then \@ref(eq:ETSANNScaleModel04). This also means that identifying whether the scale model is needed at all and if yes, what components and variables it should have, can be done automatically via information criteria.
+:::
+
+As can be seen from this example, constructing and estimating the scale model for ADAM is not a difficult task. Following similar principles, we can use any other pure multiplicative model for scale, including ETS(Y,Y,Y) (Chapter \@ref(ADAMETSPureMultiplicativeChapter)), log ARIMA (Section \@ref(ADAMARIMAPureMultiplicative)) or a multiplicative regression. Furthermore, the location model ETS(A,N,N) can be substituted by any other ETS/ARIMA/Regression model -- the same principles as discussed in this Subsection can be applied equally effectively to them. The only restriction in all of this is that both parts of the model should be estimated via maximisation of likelihood -- other methods typically do not explicitly estimate the scale of distribution.
+
+
+### General case with Normal distribution
+More generally speaking, scale model can be created for any ETS/ARIMA/Regression location model. Following from the discussion in Section \@ref(ADAMETSGeneral), the general location model can be written as:
+\begin{equation*}
+  \begin{aligned}
+    {y}_{t} = & w(\mathbf{v}_{t-\boldsymbol{l}}) + r(\mathbf{v}_{t-\boldsymbol{l}}) \epsilon_t \\
+    \mathbf{v}_{t} = & f(\mathbf{v}_{t-\boldsymbol{l}}) + g(\mathbf{v}_{t-\boldsymbol{l}}) \epsilon_t
+  \end{aligned}
+\end{equation*}
+If we assume that $\epsilon_t \sim \mathcal{N}(0,\sigma^2_t)$, then the general scale model with ETS+ARIMA+Regression elements can be formulated as (Section \@ref(ADAMETSPureMultiplicative), Subsection \@ref(ADAMARIMAPureMultiplicative) and Section \@ref(ADAMXDynamic)):
+\begin{equation}
+  \begin{aligned}
+		& \epsilon_t^2 = \sigma_t^2 \eta_{t}^2 \\
+		& \sigma_t^2 = \exp \left(\mathbf{w}_E^\prime \log(\mathbf{v}_{E,\sigma,t-\boldsymbol{l}_E}) + \mathbf{w}_A^\prime \log(\mathbf{v}_{A,\sigma,t-\boldsymbol{l}_A}) + \mathbf{a}_t \mathbf{x}_t \right)\\
+		& \log \mathbf{v}_{E,\sigma,t} = \mathbf{F}_{E,\sigma} \log \mathbf{v}_{E,\sigma,t-\boldsymbol{l}_E} + \log(\mathbf{1}_k + \mathbf{g}_{E\sigma} (\eta_t^2-1))\\
+    & \log \mathbf{v}_{A,\sigma,t} = \mathbf{F}_{A,\sigma} \log \mathbf{v}_{A,\sigma,t-\boldsymbol{l}_A} + \mathbf{g}_{A,\sigma} \log(\eta_t^2) \\
+    & \mathbf{a}_{t} = \mathbf{a}_{t-1} + \mathbf{z}_t \mathbf{g}_{R,\sigma} \log(\eta_t^2)
+  \end{aligned},
+  (\#eq:ADAMSMGeneral)
+\end{equation}
+where subscripts $E$, $A$ and $R$ denote components of ETS, ARIMA and Regression respectively. The main thing that unites all the parts of the model is that they should be pure multiplicative in order to avoid potential issues with negative numbers. The construction and estimation of the scale model in this case becomes similar to the one discussed for the ETS(A,N,N) example above. When it comes to forecasting of the conditional h-steps-ahead scale, given the limitations of the pure multiplicative model discussed in Section \@ref(pureMultiplicativeExpectationAndVariance), it needs to be obtained via simulations -- this way the forecast from the ADAM will coincide with the expectation, which in case of \@ref(eq:ADAMSMGeneral) will give the conditional h-steps-ahead scale. All the principles discussed in Sections \@ref(ADAMETSPureMultiplicative), \@ref(ADAMARIMAPureMultiplicative) and \@ref(ADAMXDynamic) can be used directly for the scale model without any limitations, and the estimation of the model can be done via maximisation of likelihood as shown in the example above (equation \@ref(eq:ETSANNScaleModelLogLik)).
+
+Finally, ADAM can be expanded even further by introducing the occurrence part of the model (i.e. dealing with the time-varying scale of distribution in case of intermittent demand, discussed in Chapter \@ref(ADAMIntermittent)). This part will need to be introduced in the location model, while the scale model \@ref(eq:ADAMSMGeneral) can be used as-is in this case, applying it to the non-zero observations.
+
+
+### Other distributions {#SMDistributions}
+The examples above focused on the Normal distribution, but ADAM supports other distributions as well. Depending on the error term, these are:
+
+1. Additive error term (Section \@ref(ADAMETSAdditiveDistributions)):
+a. Normal: $\epsilon_t \sim \mathcal{N}(0, \sigma_t^2)$;
+b. Laplace: $\epsilon_t \sim \mathcal{Laplace}(0, s_t)$;
+c. S: $\epsilon_t \sim \mathcal{S}(0, s_t)$;
+d. Generalised Normal: $\epsilon_t \sim \mathcal{GN}(0, s_t, \beta)$;
+e. Log Normal: $\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right) \sim \text{log}\mathcal{N}\left(-\frac{\sigma_t^2}{2}, \sigma_t^2\right)$;
+f. Inverse Gaussian: $\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right) \sim \mathcal{IG}(1, \sigma_t^2)$;
+g. Gamma: $\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right) \sim \mathcal{\Gamma}(\sigma_t^{-2}, \sigma_t^2)$;
+2. Multiplicative error term (Sections \@ref(ADAMETSMultiplicativeDistributions)):
+a. Normal: $\epsilon_t \sim \mathcal{N}(0, \sigma_t^2)$;
+b. Laplace: $\epsilon_t \sim \mathcal{Laplace}(0, s_t)$;
+c. S: $\epsilon_t \sim \mathcal{S}(0, s_t)$;
+d. Generalised Normal: $\epsilon_t \sim \mathcal{GN}(0, s_t, \beta)$;
+g. Log Normal: $\left(1+\epsilon_t \right) \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma_t^2}{2}, \sigma_t^2\right)$;
+e. Inverse Gaussian: $\left(1+\epsilon_t \right) \sim \mathcal{IG}(1, \sigma_t^2)$;
+f. Gamma: $\left(1+\epsilon_t \right) \sim \Gamma (\sigma^{-2}, \sigma_t^2)$.
+
+The error terms in these cases can also be presented in a form similar to \@ref(eq:ETSANNScaleModel03) to get the first equation in \@ref(eq:ADAMSMGeneral) for the respective distributions:
+
+1. Additive error term:
+a. Normal: $\epsilon_t^2 = \sigma_t^2 \eta_t^2$, where $\eta_t \sim \mathcal{N}(0, 1)$ or accidentally $\eta_t^2 \sim \chi^2(1)$;
+b. Laplace: $|\epsilon_t| = s_t |\eta_t|$, where $\eta_t \sim \mathcal{Laplace}(0, 1)$;
+c. S: $0.5 |\epsilon_t|^{0.5} = s_t |\eta_t|^{0.5}$, where $\eta_t \sim \mathcal{S}(0, 1)$;
+d. Generalised Normal: $\beta |\epsilon_t|^{\beta} = s_t |\eta_t|^{\beta}$, where $\eta_t \sim \mathcal{GN}(0, 1, \beta)$;
+e. Log Normal: $\log\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right) = \sigma_t \eta_t-\frac{\sigma_t^2}{2}$, where $\eta_t \sim \mathcal{N}(0, 1)$;
+f. Inverse Gaussian: $\frac{\left(\frac{\epsilon_t}{\mu_{y,t}} \right)^2}{\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right)}=\sigma^2_t \eta_t^2$, where $\eta_t^2 \sim \chi^2(1)$;
+g. Gamma: $\left(1+\frac{\epsilon_t}{\mu_{y,t}} \right) = \sigma_t^2 \eta_t$, so that $\eta_t \sim \mathcal{\Gamma}(\sigma_t^{-2}, 1)$;
+2. Multiplicative error term (Sections \@ref(ADAMETSMultiplicativeDistributions)):
+a. Normal: $\epsilon_t^2 = \sigma_t^2 \eta_t^2$, where $\eta_t \sim \mathcal{N}(0, 1)$;
+b. Laplace: $|\epsilon_t| = s_t |\eta_t|$, where $\eta_t \sim \mathcal{Laplace}(0, 1)$;
+c. S: $0.5 |\epsilon_t|^{0.5} = s_t |\eta_t|^{0.5}$, where $\eta_t \sim \mathcal{S}(0, 1)$;
+d. Generalised Normal: $\beta |\epsilon_t|^{\beta} = s_t |\eta_t|^{\beta}$, where $\eta_t \sim \mathcal{GN}(0, 1, \beta)$;
+g. Log Normal: $\log\left(1+\epsilon_t \right) = \sigma_t \eta_t -\frac{\sigma_t^2}{2}$, where $\eta_t \sim \mathcal{N}(0, 1)$;
+e. Inverse Gaussian: $\frac{\epsilon_t ^2}{\left(1+\epsilon_t \right)}=\sigma^2_t \eta_t^2$, where $\eta_t^2 \sim \chi^2(1)$;
+f. Gamma: $\left(1+\epsilon_t \right) = \sigma_t^2 \eta_t$, so that $\eta_t \sim \mathcal{\Gamma}(\sigma_t^{-2}, 1)$.
+
+::: remark
+
+- The relations between $\epsilon_t$ and $\eta_t$ in $\mathcal{S}$ and $\mathcal{GN}$ introduce constants $0.5$ and $\beta$, arising because of how the scales in those distributions are estimated (see Section \@ref(ADAMETSEstimationLikelihood)).
+- The relation between $\epsilon_t$ and $\eta_t$ in Log-Normal distribution is complicated because for the latter to be Standard Normal, the former needs to be transformed according to the formulae above.
+- In case of Inverse Gaussian, transformations shown above are required to make the $\eta_t$ independent of the scale parameter.
+- Finally, in case of Gamma distribution, $\eta_t$ cannot be made independent of the scale parameter, which makes it restrictive and less useful than other distributions.
+:::
+
+The equations above can be used instead of the first equation in \@ref(eq:ADAMSMGeneral) to create and estimate Scale Model for the chosen distribution: the other four equations in \@ref(eq:ADAMSMGeneral) will be exactly the same, substituting $\eta_t^2$ with the respective $\eta_t$, $|\eta_t|^{0.5}$ and $\eta_t^{\beta}$ -- depending on the distribution. The estimation of the respective models can be done via the maximisation of the respective likelihood functions (as discussed in Section \@ref(ADAMETSEstimationLikelihood)).
+
+The diagnostics of scale model can be done in the same way as discussed in Chapter \@ref(diagnostics), keeping in mind the distributional assumptions about the $\eta_t$ variable rather than $\epsilon_t$.
+
+Finally, the model selection for the scale part can be done using the same principles as discussed in Chapter \@ref(ADAMSelection). For example, one can select the most suitable ETS model similar to how it was discussed in Section \@ref(ETSSelection), or the most suitable ARIMA, as in Section \@ref(ARIMASelection), or a set of explanatory variables, based on the approach in Section \@ref(ETSXSelection). All of this is available out of the box if the scale model is estimated via likelihood maximisation.
+
+
+## Connection with ARCH and GARCH {#ADAMscaleModelGARCH}
+The scale model is not a new invention. The literature knows models that focus on modelling the dynamics of the scale of distribution or, more specifically, the second moment (variance). @Engle1982 proposed an Autoregressive Conditional Heteroscedasticity (ARCH) model to capture the time-varying variance using lagged values of the squared error term. @Bollerlev1986 expanded the idea by also including lagged values of variance, introducing a Generalised ARCH (GARCH), which can be formulated as:
+\begin{equation}
+    \sigma_t^2 = a_0 + a_1 \sigma_{t-1}^2 + \dots + a_q \sigma_{t-q}^2 + b_1 \epsilon_{t-1}^2 + \dots + b_p \epsilon_{t-p}^2 ,
+    (\#eq:GARCH)
+\end{equation}
+where $\epsilon_t\sim \mathcal{N}(0,\sigma_t^2)$ and $a_j$ and $b_j$ are the parameters of the model. @Bollerlev1986 argues that GARCH, being equivalent to ARMA, will be a stationary process if its parameters are restricted so that $\sum_{j=1}^p a_j + \sum_{j=1}^q b_j < 0$ and $a_j, b_j \in [0,1)$ for all $j$. The restriction on parameters guarantees that the resulting values of $\sigma_t^2$ are positive, but as @Pantula1986 noted such parameter space might be too restrictive. To make sure that the predicted variance is always positive, @Geweke1986 and @Pantula1986 suggested to build GARCH in logarithms, leading to the log-GARCH model:
+\begin{equation}
+    \log \sigma_t^2 = a_0 + a_1 \log \sigma_{t-1}^2 + \dots + a_q \log \sigma_{t-q}^2 + b_1 \log \epsilon_{t-1}^2 + \dots + b_p \log \epsilon_{t-p}^2 .
+    (\#eq:logGARCH)
+\end{equation}
+@Pantula1986 pointed out that the model \@ref(eq:logGARCH) is equivalent to ARMA(p,q) applied to logarithms of squared error $\epsilon_t^2$. In our notations it can be written as:
+\begin{equation}
+    \log \epsilon_t^2 = a_0 + b_1^\prime \log \epsilon_{t-1}^2 + \dots + b_p^\prime \log \epsilon_{t-p}^2 + a_1^\prime \log \eta_{t-1}^2 + \dots + a_q^\prime \log \eta_{t-q}^2 + \log \eta_t^2,
+    (\#eq:logGARCHARMA)
+\end{equation}
+which can be obtained by substituting $\log \sigma_{t-j}^2 = \log \epsilon_{t-j}^2 -\log \eta_{t-j}^2$ for all $j$. In this case $b_j^\prime = b_j + a_j$ and $a_j^\prime=-a_j$ for all $j$. Given the connection of log-ARMA with log-GARCH and the discussion in Subsection \@ref(ADAMARIMAPureMultiplicative), the model \@ref(eq:logGARCHARMA) is just a special case of the scale model for ADAM, being a special case of \@ref(eq:ADAMSMGeneral). ADAM Scale Model not only supports the ARMA elements, but it also allows for explicit time series components modelling in the variance and the usage of explanatory variables.
+
+::: remark
+GARCH and log-GARCH typically assume that the error term follows Normal distribution: $\epsilon_t \sim \mathcal{N}(0, \sigma_t^2)$ -- and model the variance. At the same time, ADAM Scale Model works with several other distributions, discussed in Subsection \@ref(SMDistributions) and is focused on modelling scale (variance is just a special case of it).
+:::
+
+Furthermore, it can be shown that ETS(M,N,N) applied to the $\epsilon_t^2$ can be considered as a special case of GARCH(1,1) with the restriction on parameter $a_1=1-b_1$, $b_1= \alpha$ and $a_0=0$, because the latter becomes equivalent to SES [@Geweke1986]:
+\begin{equation}
+    \sigma_t^2 = (1-\alpha) \sigma_{t-1}^2 + \alpha \epsilon_{t-1}^2 .
+    (\#eq:GARCHSES)
+\end{equation}
+The connection of SES and ETS(M,N,N) has been discussed in Subsection \@ref(ETSMNNSES).
+
+
+## Example in R
+### Example 1
+To demonstrate how the scale model works, we will use the model that we constructed in Section \@ref(ETSXRExample) (we use Normal distribution for simplicity):
+
+```{r}
+adamLocationSeat <- adam(SeatbeltsData, "MNM", h=12, holdout=TRUE,
+                         formula=drivers~log(kms)+log(PetrolPrice)+law,
+                         distribution="dnorm")
+```
+To see if the scale model is needed in this case, we will produce several diagnostics plots (Figure \@ref(fig:adamModelETSXMNMDiagnostics48)).
+
+```{r adamModelETSXMNMDiagnostics48, fig.cap="Diagnostic plots for the ETSX(M,N,M) model."}
+par(mfcol=c(2,1))
+plot(adamLocationSeat, which=c(4,8))
+```
+
+Figure \@ref(fig:adamModelETSXMNMDiagnostics48) shows how the residuals change with: (1) change of fitted values, (2) change of time. The first plot shows that there might be a slight change in the variability of residuals, but it is not apparent. The second plot does not demonstrate any significant changes in variance over time. To check the latter point more formally, we can also produce ACF and PACF of the squared residuals, thus trying to see if GARCH model is required:
+
+```{r adamModelETSXMNMDiagnostics1516, fig.cap="Diagnostic plots for the ETSX(M,N,M) model, continued."}
+par(mfcol=c(2,1))
+plot(adamLocationSeat, which=c(15,16))
+```
+
+In the plot of Figure \@ref(fig:adamModelETSXMNMDiagnostics1516), lag 8 is significant on both ACF and PACF and lag 13 is significant on PACF. We could introduce the dynamic elements in the scale model to remove this autocorrelation, however the lags 8 and 13 do not have any meaning from the problem point of view: it is difficult to motivate how a variance 8 months ago might impact the variance this month. Furthermore, the bounds in the plot have the 95% confidence level, which means that these coefficients could have become significant by chance. So, based on this simple analysis, we can conclude that there might be some factors impacting the variance of residuals, but it does not exhibit any obvious and meaningful GARCH-style dynamics. To investigate this further, we can plot explanatory variables vs the squared residuals (Figure \@ref(fig:adamModelETSXMNMDiagnosticsXreg)).
+
+```{r adamModelETSXMNMDiagnosticsXreg, fig.cap="Spread plot for the ETSX(M,N,M) model."}
+spread(cbind(residSq=as.vector(resid(adamLocationSeat)^2),
+             as.data.frame(SeatbeltsData)[1:180,-1]),
+       lowess=TRUE)
+```
+
+One of the potentially alarming feature in the plot in Figure \@ref(fig:adamModelETSXMNMDiagnosticsXreg) is the slight change in variance for the variable `law`. The second one is a slight increase in the LOWESS line for squared residuals vs `PetrolPrice`. The `kms` variable does not demonstrate an apparent impact on the squared residuals. Based on this, we will investigate the potential effect of the law and petrol price on the scale of the model. We do that in an automated way, using the principles discussed in Section \@ref(ETSXSelection) via `regressors="select"` command:
+
+```{r}
+adamScaleSeat <- sm(adamLocationSeat, model="NNN",
+                    formula=drivers~law+PetrolPrice,
+                    regressors="select")
+```
+
+In the code above, we fit a scale model to the already estimated location model ETSX(M,N,M). We switch off the ETS element in the scale model and introduce the explanatory variables `law` and `PetrolPrice`, asking the function to select the most appropriate one based on AICc. The function provides a warning that it will create a model in logarithms, which is what we want anyway. But looking at the output of the scale model, we notice that none of the variables have been selected by the function:
+
+```{r}
+summary(adamScaleSeat)
+```
+
+This means that the explanatory variables do not add value to the fit and should not be included in the scale model. As we can see, selection of variables in the scale model for ADAM can be done automatically without any additional external steps.
+
+
+### Example 2
+The example in the previous Subsection shows how the analysis can be done for the scale model when explanatory variables are considered. To see how the scale model can be used in forecasting, we will consider another example, now with dynamic elements. For this example, I will use `AirPassengers` data and an automatically selected ETS model with Inverse Gaussian distribution (for demonstration purposes):
+
+```{r}
+adamLocationAir <- adam(AirPassengers, h=10, holdout=TRUE,
+                        distribution="dinvgauss")
+```
+
+The diagnostics of the model indicate that a time-varying scale might be required in this situation (see Figure \@ref(fig:adamModelAirLocationDiagnostics)) because the variance of the residuals seems to decrease in the period from 1954 -- 1958.
+
+```{r adamModelAirLocationDiagnostics, fig.cap="Diagnostics of the location model"}
+plot(adamLocationAir, which=8)
+```
+
+To capture this change, we will ask the function to select the best ETS model for the scale and will not use any other elements:
+
+```{r}
+adamScaleAir <- sm(adamLocationAir, model="YYY")
+```
+
+The `sm` function accepts roughly the same set of parameters as `adam()` when applied to the `adam` class objects. So, you can experiment with other types of ETS/ARIMA models if you want. Here is what the function has selected automatically for the scale model:
+
+```{r}
+summary(adamScaleAir)
+```
+
+::: remark
+Information criteria in the summary of the scale model do not include the number of estimated parameters in the location part of the model, so they are not directly comparable with the ones from the initial model. So, to understand whether there is an improvement in comparison with the model with a fixed scale, we can implant the scale model in the location one and compare the new model with the initial one:
+
+```{r}
+adamMerged <- implant(adamLocationAir, adamScaleAir)
+c(AICc(adamLocationAir), AICc(adamMerged)) |>
+         setNames(c("Location", "Merged"))
+```
+
+The output above shows that introducing the ETS(M,N,N) model for the scale has improved the ADAM, reducing the AICc. 
+:::
+
+Judging by the output, we see that the most suitable model for the location is ETS(M,N,N) with $\alpha=0.0704$, which, as we discussed in Subsection \@ref(ADAMscaleModelGARCH), is equivalent to GARCH(1,1) with restricted parameters:
+\begin{equation*}
+    \sigma_t^2 = 0.9296 \sigma_{t-1}^2 + 0.0704 \epsilon_{t-1}^2 .
+\end{equation*}
+
+After implanting the scale in the model, we can access it via `adamMerged$scale` and extract the predicted scale via `extractScale(adamMerged)` command in R. The model fits the data in the following way (see Figure \@ref(fig:adamModelAirScaleLinear)):
+
+```{r adamModelAirScaleLinear, fig.cap="The fit of the scale model."}
+plot(adamMerged$scale, which=7)
+```
+
+As can be seen from Figure \@ref(fig:adamModelAirScaleLinear), the scale changes over time, indeed decreasing in the middle of series and going slightly up at the end. The actual values in the holdout part can in general be ignored because they show the forecast errors several steps ahead for the whole holdout and are not directly comparable with the in-sample ones.
+
+We can also do diagnostics of the merged model using the same principles as discussed in Chapter \@ref(diagnostics) -- the function will automatically use the fitted values of scale where needed (see Figure \@ref(fig:adamModelAirMergedDiagnostics)).
+
+```{r adamModelAirMergedDiagnostics, fig.cap="Diagnostics of the merged ADAM"}
+par(mfcol=c(2,2))
+plot(adamMerged, which=c(2,6,8,7))
+```
+
+::: remark
+In the case of a merged model, the plots that produce residuals will be done for the scale model rather than for the location (the plot function will produce a message on that), so plotting $\eta_t$ instead of $\epsilon_t$ (see discussion in Subsection \@ref(SMDistributions) for the assumptions about the residual in this case).
+:::
+
+Figure \@ref(fig:adamModelAirMergedDiagnostics) demonstrates the diagnostics for the constructed model. Given that we used the Inverse Gaussian distribution, the $\eta_t^2 \sim \chi^2(1)$, which is why the QQ-plot mentions the Chi-Squared distribution. We can see that the distribution has a shorter tail than expected, which means that the model might be missing some elements. However, the log(standardised Residuals) vs Fitted and vs Time do not demonstrate any obvious problems except for several potential outliers, which do not lie far away from the bounds and do not exheed 5% of the sample size in quantity. Those specific observations could be investigated to determine whether the model can be improved further. I leave this exercise to the reader.
+
+Finally, if we want to produce forecasts from the scale model, we can use the same methods previously used for the location one (Figure \@ref(fig:adamModelAirScaleForecast)).
+
+```{r adamModelAirScaleForecast, fig.cap="Forecast for the Scale model"}
+forecast(adamMerged$scale,
+         h=10, interval="prediction") |>
+    plot()
+```
+
+The point forecast of the scale for the subsequent `h` observations can also be used to produce more appropriate prediction intervals for the merged model. This will be discussed in Chapter \@ref(ADAMForecasting).
