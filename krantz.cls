@@ -1345,7 +1345,7 @@
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
     }
-\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+\newcommand*\l@figure{\@dottedtocline{1}{1.5em}{2.8em}}
 \newcommand\listoftables{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
