@@ -516,7 +516,8 @@ x <- rnorm(100, 100, 10)
 xreg <- cbind(y=100+1.5*x+rnorm(100, 0, 10), x=x)
 # Predict values from the model.
 # counti and counto determine sizes for the in-sample and the holdout
-ourCall <- "predict(alm(y~x, data=xreg[counti,,drop=FALSE]), newdata=xreg[counto,,drop=FALSE])"
+ourCall <- "predict(alm(y~x, data=xreg[counti,,drop=FALSE]),
+                        newdata=xreg[counto,,drop=FALSE])"
 # Extract the mean only
 ourValue <- "mean"
 # Run rolling origin

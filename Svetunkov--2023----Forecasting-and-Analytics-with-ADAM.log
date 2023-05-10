@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.12.3)  10 MAY 2023 10:02
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.12.3)  10 MAY 2023 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2175,17 +2175,17 @@ Underfull \hbox (badness 10000) detected at line 732
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 745
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 745
-[][][]
- []
-
 [16]
+Underfull \hbox (badness 10000) detected at line 745
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 745
+[][][]
+ []
+
+
 Underfull \hbox (badness 10000) detected at line 747
  [][]
  []
@@ -2212,20 +2212,20 @@ Underfull \hbox (badness 10000) detected at line 751
 
 
 Underfull \hbox (badness 10000) detected at line 751
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 774
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 774
 [][][]
  []
 
 [17]
+Underfull \hbox (badness 10000) detected at line 774
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 774
+[][][]
+ []
+
+
 Underfull \hbox (badness 10000) detected at line 780
  [][]
  []
@@ -2250,11 +2250,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /errorMeasuresrRMSEDist-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 errorMeasuresrRMSEDist-1.pdf>
+[19]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /errorMeasuresrRMSEDistLog-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 errorMeasuresrRMSEDistLog-1.pdf>
-[19] [20]
+[20]
 Underfull \hbox (badness 10000) detected at line 897
  [][]
  []
@@ -2555,7 +2556,7 @@ Underfull \hbox (badness 10000) detected at line 1576
 [][][]
  []
 
-
+[46]
 Underfull \hbox (badness 10000) detected at line 1593
  [][]
  []
@@ -2565,7 +2566,7 @@ Underfull \hbox (badness 10000) detected at line 1593
 [][][]
  []
 
-[46]
+
 Underfull \hbox (badness 10000) detected at line 1595
  [][]
  []
@@ -2579,11 +2580,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /decomposeAirPassengers-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 decomposeAirPassengers-1.pdf>
+[47]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /decomposeRandomNoise-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 decomposeRandomNoise-1.pdf>
-[47] [48]
+
 Underfull \hbox (badness 10000) detected at line 1662
  [][]
  []
@@ -2593,7 +2595,7 @@ Underfull \hbox (badness 10000) detected at line 1662
 [][][]
  []
 
-
+[48]
 Underfull \hbox (badness 10000) detected at line 1673
  [][]
  []
@@ -2623,11 +2625,12 @@ Underfull \hbox (badness 10000) detected at line 1695
 [][][]
  []
 
+[49]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /decomposeTaylor-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 decomposeTaylor-1.pdf>
-[49]
+
 Underfull \hbox (badness 10000) detected at line 1725
  [][]
  []
@@ -2667,27 +2670,26 @@ Underfull \hbox (badness 10000) detected at line 1760
 [][][]
  []
 
-
-Underfull \hbox (badness 10000) detected at line 1762
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 1762
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 1764
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 1764
-[][][]
- []
-
 [51]
+Underfull \hbox (badness 10000) detected at line 1762
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1762
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1764
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 1764
+[][][]
+ []
+
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /naiveExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -2702,22 +2704,22 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SMAExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SMAExample-1.pdf>
-[55]
+[55] [56]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /RWDriftExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 RWDriftExample-1.pdf>
-[56]
+[57]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /GlobalTrendExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 GlobalTrendExample-1.pdf>
-[57]
+[58]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /NaiveSeasonalExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 NaiveSeasonalExample-1.pdf>
-[58] [59]
+[59]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SESExample1-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -2726,7 +2728,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SESExample2-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SESExample2-1.pdf>
-[60]
+[60] [61]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SESExamples-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -2739,12 +2741,51 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SESExample3-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SESExample3-1.pdf>
-[61] [62]
+[62] [63]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BrownExponentialExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BrownExponentialExample-1.pdf>
-[63] [64]
+[64] [65]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[66
+
+]
 Underfull \vbox (badness 10000) detected at line 2111
  []
 
@@ -2816,8 +2857,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[65
-
+[67
 
 ]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
@@ -2873,7 +2913,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSTaxonomyMultiplicative-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSTaxonomyMultiplicative-1.pdf>
-[66] [67] [68]
+[68] [69] [70]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 12.00128pt on input line 2250.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
@@ -2881,12 +2921,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 LaTeX Warning: Float too large for page by 140.89037pt on input line 2251.
 
-[69] [70] [71
+[71] [72] [73
 
 
 
 
-] [72] [73
+] [74] [75
 
 
 ]
@@ -2894,7 +2934,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /DGPetsANNExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 DGPetsANNExample-1.pdf>
-[74] [75]
+[76] [77]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSANNExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -2903,7 +2943,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSANNExamplealpha01-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSANNExamplealpha01-1.pdf>
-[76] [77]
+[78] [79]
 Underfull \hbox (badness 10000) detected at line 2601
  [][]
  []
@@ -2927,17 +2967,16 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSMNNExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSMNNExample-1.pdf>
-[78] [79]
+[80] [81]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAANExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSAANExample-1.pdf>
-[80]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAANExampleForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSAANExampleForecast-1.pdf>
-[81] [82]
+[82] [83] [84]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAAdNExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -2948,191 +2987,191 @@ Underfull \hbox (badness 3386) in paragraph at lines 2788--2789
  from
  []
 
+[85]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAAdNExampleForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSAAdNExampleForecast-1.pdf>
-[83]
+[86]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAAMExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSAAMExample-1.pdf>
-[84]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSAAMExampleForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSAAMExampleForecast-1.pdf>
-[85]
-Underfull \hbox (badness 10000) detected at line 2865
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2865
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2867
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2867
-[][][]
- []
-
-[86]
-Underfull \hbox (badness 10000) detected at line 2876
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2876
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2878
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2878
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2880
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2880
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2882
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2882
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2884
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2884
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2886
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2886
-[][][]
- []
-
 [87]
-Underfull \hbox (badness 10000) detected at line 2901
+Underfull \hbox (badness 10000) detected at line 2865
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2901
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2903
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2903
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2929
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 2929
+Underfull \hbox (badness 10000) detected at line 2865
 [][][]
  []
 
 [88]
-Underfull \hbox (badness 10000) detected at line 2931
+Underfull \hbox (badness 10000) detected at line 2867
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2931
+Underfull \hbox (badness 10000) detected at line 2867
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2933
+Underfull \hbox (badness 10000) detected at line 2876
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2933
+Underfull \hbox (badness 10000) detected at line 2876
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2943
+Underfull \hbox (badness 10000) detected at line 2878
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 2943
+Underfull \hbox (badness 10000) detected at line 2878
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2880
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2880
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2882
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2882
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2884
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2884
 [][][]
  []
 
 [89]
-Underfull \hbox (badness 10000) detected at line 3004
+Underfull \hbox (badness 10000) detected at line 2886
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3004
+Underfull \hbox (badness 10000) detected at line 2886
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2901
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2901
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2903
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2903
 [][][]
  []
 
 [90]
-Underfull \hbox (badness 10000) detected at line 3006
+Underfull \hbox (badness 10000) detected at line 2929
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3006
+Underfull \hbox (badness 10000) detected at line 2929
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3017
+Underfull \hbox (badness 10000) detected at line 2931
  [][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 3017
+Underfull \hbox (badness 10000) detected at line 2931
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2933
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2933
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2943
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 2943
 [][][]
  []
 
 [91] [92]
+Underfull \hbox (badness 10000) detected at line 3004
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3004
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3006
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3006
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3017
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 3017
+[][][]
+ []
+
+[93] [94]
 Underfull \vbox (badness 10000) detected at line 3033
  []
 
@@ -3174,7 +3213,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[93
+[95
 
 
 ]
@@ -3190,7 +3229,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 (Font)              scaled to size 6.99925pt on input line 3088.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
 (Font)              scaled to size 4.99947pt on input line 3088.
-[94] [95] [96] [97] [98] [99]
+[96] [97] [98] [99] [100] [101]
 Underfull \hbox (badness 10000) detected at line 3279
  [][]
  []
@@ -3240,7 +3279,7 @@ Underfull \hbox (badness 10000) detected at line 3296
 [][][]
  []
 
-
+[102]
 Underfull \hbox (badness 10000) detected at line 3298
  [][]
  []
@@ -3295,7 +3334,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3316--3318
 []\TU/lmr/m/n/10 Inverse Gaussian: $[] [] [][][][][] [][][]$ with $[][] []
  []
 
-[100]
+
 Underfull \hbox (badness 10000) detected at line 3318
  [][]
  []
@@ -3305,31 +3344,32 @@ Underfull \hbox (badness 10000) detected at line 3318
 [][][]
  []
 
+[103]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJsalesDataPlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJsalesDataPlot-1.pdf>
-[101] [102]
+[104]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJsalesAANForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJsalesAANForecast-1.pdf>
-[103]
+[105] [106]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJsalesAANForecastAdmissible-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJsalesAANForecastAdmissible-1.pdf>
-[104]
+[107]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJsalesAANForecastGN-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJsalesAANForecastGN-1.pdf>
-[105]
+[108]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersPlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AirPassengersPlot-1.pdf>
-[106] [107]
+[109]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersAAAForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -3338,46 +3378,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersAAADecomposition-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AirPassengersAAADecomposition-1.pdf>
-[108] [109]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[110
-
-]
+[110] [111] [112]
 Underfull \vbox (badness 10000) detected at line 3608
  []
 
@@ -3419,24 +3420,25 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[111
+[113
 
-]
+
+] [114]
 Overfull \hbox (6.12314pt too wide) detected at line 3683
 [][][][][][]
  []
 
-[112]
+
 Overfull \hbox (12.65662pt too wide) detected at line 3688
 [][][][][] [] [] [] []
  []
 
-[113]
+[115]
 Overfull \hbox (23.4667pt too wide) detected at line 3717
 [][][][][]
  []
 
-[114] [115] [116]
+[116] [117] [118]
 Underfull \hbox (badness 10000) detected at line 3768
  [][]
  []
@@ -3466,7 +3468,7 @@ Underfull \hbox (badness 10000) detected at line 3772
 [][][]
  []
 
-
+[119]
 Underfull \hbox (badness 10000) detected at line 3798
  [][]
  []
@@ -3492,7 +3494,7 @@ Underfull \hbox (badness 1259) in paragraph at lines 3800--3802
 [] [] [][][] []
  []
 
-[117]
+
 Underfull \hbox (badness 10000) detected at line 3802
  [][]
  []
@@ -3512,17 +3514,17 @@ Underfull \hbox (badness 10000) detected at line 3804
 [][][]
  []
 
-[118]
+[120] [121]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJSalesadamETSMMN-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJSalesadamETSMMN-1.pdf>
-[119]
+[122]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJSalesadamETSMMNForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJSalesadamETSMMNForecast-1.pdf>
-[120] [121] [122]
+[123] [124]
 Overfull \hbox (255.50226pt too wide) in paragraph at lines 4025--4025
 []\TU/SourceCodePro(0)/m/n/10 ## Warning: Your model has a potentially explosiv
 e multiplicative trend. I cannot do anything about it, so please just be carefu
@@ -3533,7 +3535,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersMMMForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AirPassengersMMMForecast-1.pdf>
-
+[125]
 Overfull \hbox (124.30176pt too wide) in paragraph at lines 4052--4052
 []\TU/SourceCodePro(0)/m/n/10 ##            ME           MAE           MSE     
       MPE          MAPE           sCE          sMAE          sMSE          MASE
@@ -3551,7 +3553,7 @@ Overfull \hbox (29.9014pt too wide) in paragraph at lines 4052--4052
 08   0.007046815   0.645495322[] 
  []
 
-[123]
+
 Overfull \hbox (124.30176pt too wide) in paragraph at lines 4067--4067
 []\TU/SourceCodePro(0)/m/n/10 ##            ME           MAE           MSE     
       MPE          MAPE           sCE          sMAE          sMSE          MASE
@@ -3565,55 +3567,16 @@ Overfull \hbox (228.30215pt too wide) in paragraph at lines 4067--4067
 [] 
  []
 
+[126]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersMMMDecomposition-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AirPassengersMMMDecomposition-1.pdf>
-[124]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AirPassengersMMMACFPACF-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AirPassengersMMMACFPACF-1.pdf>
-[125]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[126
-
-]
+[127] [128]
 Underfull \vbox (badness 10000) detected at line 4103
  []
 
@@ -3655,7 +3618,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[127
+[129
+
 
 ]
 Underfull \hbox (badness 10000) detected at line 4151
@@ -3707,67 +3671,67 @@ Underfull \hbox (badness 10000) detected at line 4159
 [][][]
  []
 
-[128]
-Underfull \hbox (badness 10000) detected at line 4182
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4182
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4184
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4184
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4186
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4186
-[][][]
- []
-
-[129]
-Underfull \hbox (badness 10000) detected at line 4188
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4188
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4204
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4204
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4206
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4206
-[][][]
- []
-
 [130]
+Underfull \hbox (badness 10000) detected at line 4182
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4182
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4184
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4184
+[][][]
+ []
+
+[131]
+Underfull \hbox (badness 10000) detected at line 4186
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4186
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4188
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4188
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4204
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4204
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4206
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4206
+[][][]
+ []
+
+[132]
 Underfull \hbox (badness 10000) detected at line 4227
  [][]
  []
@@ -3784,34 +3748,35 @@ Underfull \hbox (badness 10000) detected at line 4229
 
 
 Underfull \hbox (badness 10000) detected at line 4229
-[][][]
- []
-
-File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
-/plotsOfExponent-1.pdf Graphic file (type pdf)
-<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
-plotsOfExponent-1.pdf>
-[131] [132]
-Underfull \hbox (badness 10000) detected at line 4264
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4264
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4266
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 4266
 [][][]
  []
 
 [133]
+File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
+/plotsOfExponent-1.pdf Graphic file (type pdf)
+<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
+plotsOfExponent-1.pdf>
+[134]
+Underfull \hbox (badness 10000) detected at line 4264
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4264
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4266
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 4266
+[][][]
+ []
+
+[135]
 Underfull \hbox (badness 10000) detected at line 4308
  [][]
  []
@@ -3837,7 +3802,7 @@ Underfull \hbox (badness 3189) in paragraph at lines 4322--4323
  []
  []
 
-[134] [135]
+[136] [137]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -3874,7 +3839,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[136
+[138
 
 ]
 Underfull \vbox (badness 10000) detected at line 4342
@@ -3918,7 +3883,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[137
+[139
 
 ]
 Underfull \hbox (badness 10000) detected at line 4363
@@ -3950,12 +3915,12 @@ Underfull \hbox (badness 10000) detected at line 4367
 [][][]
  []
 
-[138] [139]
+[140] [141]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AR1Trajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 AR1Trajectory-1.pdf>
-[140]
+[142]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /AR3Trajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -3964,17 +3929,17 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ARExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ARExample-1.pdf>
-[141] [142]
+[143] [144]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /MAExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 MAExample-1.pdf>
-[143]
+[145]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ARMAExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ARMAExample-1.pdf>
-[144]
+[146] [147]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ARMAConstantTrajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -3983,17 +3948,17 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ARMAConstExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ARMAConstExample-1.pdf>
-[145] [146]
+[148] [149]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /naiveExample2-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 naiveExample2-1.pdf>
-[147]
+[150]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /RWDriftExample2-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 RWDriftExample2-1.pdf>
-[148]
+[151]
 Underfull \hbox (badness 1715) in paragraph at lines 4722--4723
 \TU/lmr/m/n/10 ARIMA(1,1,2) and how the forecasts would look if the same model
  []
@@ -4002,7 +3967,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ARIMA112Example-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ARIMA112Example-1.pdf>
-
+[152]
 Underfull \hbox (badness 10000) detected at line 4739
  [][]
  []
@@ -4022,22 +3987,22 @@ Underfull \hbox (badness 10000) detected at line 4741
 [][][]
  []
 
-[149] [150] [151] [152]
+[153] [154] [155] [156]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SARIMATrajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SARIMATrajectory-1.pdf>
-[153]
+[157]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SARIMAConstantTrajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SARIMAConstantTrajectory-1.pdf>
-[154]
+[158]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SARIMADiffConstantTrajectory-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SARIMADiffConstantTrajectory-1.pdf>
-[155] [156] [157]
+[159] [160] [161]
 Underfull \hbox (badness 10000) detected at line 5011
  [][]
  []
@@ -4057,7 +4022,7 @@ Underfull \hbox (badness 10000) detected at line 5027
 [][][]
  []
 
-[158] [159]
+[162]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ACFExampleAR1-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -4068,7 +4033,7 @@ Overfull \hbox (12.69957pt too wide) detected at line 5077
  [][][][][][][] [][][] [] [][][][][]
  []
 
-[160] [161]
+[163] [164]
 Underfull \hbox (badness 10000) detected at line 5123
  [][]
  []
@@ -4078,7 +4043,7 @@ Underfull \hbox (badness 10000) detected at line 5123
 [][][]
  []
 
-
+[165]
 Underfull \hbox (badness 10000) detected at line 5125
  [][]
  []
@@ -4110,16 +4075,16 @@ Underfull \hbox (badness 10000) detected at line 5129
 
 File: ./images/09-Sarah.jpeg Graphic file (type bmp)
 <./images/09-Sarah.jpeg>
-[162]
+[166]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /acfpacfExampleAR1-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 acfpacfExampleAR1-1.pdf>
+[167]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /acfpacfExampleAR2-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 acfpacfExampleAR2-1.pdf>
-[163] [164]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /acfpacfExampleMA2-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -4134,22 +4099,22 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /acfpacfExampleARMA22-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 acfpacfExampleARMA22-1.pdf>
-[165] [166] [167]
+[168] [169] [170] [171]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /ETSARIMAConnection-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 ETSARIMAConnection-1.pdf>
-[168] [169] [170]
+[172] [173] [174]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /BJSalesPlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 BJSalesPlot-1.pdf>
-[171] [172]
+[175] [176]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMAPlotBJSales-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamARIMAPlotBJSales-1.pdf>
-[173]
+[177]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMAPlotBJSalesACFPACF-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -4166,7 +4131,7 @@ Underfull \hbox (badness 2351) in paragraph at lines 5460--5461
 []$ and
  []
 
-[174]
+[178]
 Overfull \hbox (28.30139pt too wide) in paragraph at lines 5497--5497
 []\TU/SourceCodePro(0)/m/n/10 ## SARIMA(0,2,2)(0,1,1)[12] SARIMA(0,2,2)(1,1,1)[
 12] SARIMA(0,2,2)(1,1,0)[12][] 
@@ -4176,12 +4141,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSARIMAPlotAir-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSARIMAPlotAir-1.pdf>
-[175]
+[179]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSPlotAirACFPACF-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamETSPlotAirACFPACF-1.pdf>
-[176] [177]
+[180] [181]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -4218,7 +4183,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[178
+[182
 
 ]
 Underfull \vbox (badness 10000) detected at line 5560
@@ -4262,15 +4227,15 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[179
+[183
 
-] [180] [181] [182] [183] [184] [185]
+] [184] [185] [186] [187] [188] [189]
 Overfull \hbox (1.74069pt too wide) detected at line 5872
 [][][][] [][] [] [] [][][][] [] [][] [] [][] [] [][][][] [][][] [] [][][] [] []
 [][] [] [][][][]
  []
 
-
+[190]
 Overfull \hbox (17.48532pt too wide) detected at line 5904
 [][][][][] [] [][][] [][][][][] [] [] [] [] [][] [] [] [][]
  []
@@ -4280,127 +4245,127 @@ Overfull \hbox (18.21773pt too wide) detected at line 5909
 [][][][][] [] [][][] [][][][][] [] [] [][][]
  []
 
-[186]
-Underfull \hbox (badness 10000) detected at line 5926
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5926
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5928
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5928
-[][][]
- []
-
-[187]
-Underfull \hbox (badness 10000) detected at line 5958
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5958
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5960
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5960
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5962
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5962
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5964
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5964
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5973
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5973
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5975
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5975
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5977
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 5977
-[][][]
- []
-
-[188] [189] [190]
-Underfull \hbox (badness 10000) detected at line 6059
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6059
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6075
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6075
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6091
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6091
-[][][]
- []
-
 [191]
+Underfull \hbox (badness 10000) detected at line 5926
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5926
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5928
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5928
+[][][]
+ []
+
+[192]
+Underfull \hbox (badness 10000) detected at line 5958
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5958
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5960
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5960
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5962
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5962
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5964
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5964
+[][][]
+ []
+
+[193]
+Underfull \hbox (badness 10000) detected at line 5973
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5973
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5975
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5975
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5977
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 5977
+[][][]
+ []
+
+[194] [195]
+Underfull \hbox (badness 10000) detected at line 6059
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6059
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6075
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6075
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6091
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6091
+[][][]
+ []
+
+[196]
 Underfull \hbox (badness 1107) in paragraph at lines 6115--6117
 \TU/lmr/m/n/10 - ETS, “A” - ARIMA. The formulation [] demonstrates that the
  []
@@ -4441,12 +4406,12 @@ Underfull \hbox (badness 5667) in paragraph at lines 6138--6139
 ve
  []
 
-[192]
+[197]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /unnamed-chunk-54-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 unnamed-chunk-54-1.pdf>
-[193]
+[198]
 Overfull \hbox (71.50156pt too wide) in paragraph at lines 6192--6192
 []\TU/SourceCodePro(0)/m/n/10 ## logSARIMA(0,1,1)(0,1,1)[12] logSARIMA(0,2,2)(0
 ,1,1)[12] logSARIMA(1,1,2)(0,1,1)[12][] 
@@ -4460,46 +4425,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /logSARIMAForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 logSARIMAForecast-1.pdf>
-[194] [195] [196] [197]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[198
-
-]
+[199] [200] [201] [202]
 Underfull \vbox (badness 10000) detected at line 6289
  []
 
@@ -4541,7 +4467,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[199
+[203
+
 
 ]
 Underfull \hbox (badness 10000) detected at line 6311
@@ -4563,22 +4490,22 @@ Underfull \hbox (badness 10000) detected at line 6313
 [][][]
  []
 
-[200] [201] [202]
+[204] [205] [206]
 Overfull \hbox (10.15996pt too wide) detected at line 6429
 [][][][][][]
  []
 
-[203]
+[207]
 Overfull \hbox (7.93216pt too wide) detected at line 6456
 [][][][][][]
  []
 
-[204] [205] [206] [207] [208] [209]
+[208] [209] [210] [211] [212] [213]
 Overfull \hbox (60.21396pt too wide) detected at line 6650
 [][][][][][]
  []
 
-[210] [211]
+[214] [215]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /Seatbelts-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -4587,12 +4514,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SeatbeltsForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 SeatbeltsForecast-1.pdf>
-[212] [213]
+[216] [217]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /driversSpread-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 driversSpread-1.pdf>
-[214]
+[218]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /SeatbeltsForecastX-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -4603,12 +4530,51 @@ Underfull \hbox (badness 2343) in paragraph at lines 6792--6792
 nd a forecast from
  []
 
-[215] [216]
+[219] [220] [221]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSXMNMDSeatStates-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamETSXMNMDSeatStates-1.pdf>
-[217] [218]
+[222] [223]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[224
+
+]
 Underfull \vbox (badness 10000) detected at line 6932
  []
 
@@ -4676,24 +4642,23 @@ Underfull \hbox (badness 10000) detected at line 6965
  []
 
 
-Underfull \hbox (badness 10000) detected at line 6967
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 6967
-[][][]
- []
-
-
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[219
-
+[225
 
 ]
+Underfull \hbox (badness 10000) detected at line 6967
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 6967
+[][][]
+ []
+
+
 Underfull \hbox (badness 10000) detected at line 6969
  [][]
  []
@@ -4723,14 +4688,14 @@ Underfull \hbox (badness 10000) detected at line 6973
 [][][]
  []
 
-[220] [221] [222
+[226] [227] [228
 
 
-] [223]
+] [229]
 
 LaTeX Warning: Float too large for page by 90.90071pt on input line 7095.
 
-[224]
+[230]
 Underfull \hbox (badness 10000) detected at line 7105
  [][]
  []
@@ -4912,10 +4877,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 7138--7139
 ape=1/scale,
  []
 
-[225
+[231
 
 
-] [226] [227] [228]
+] [232] [233] [234]
 Underfull \hbox (badness 10000) detected at line 7267
  [][]
  []
@@ -4975,16 +4940,12 @@ Underfull \hbox (badness 10000) detected at line 7277
 [][][]
  []
 
-[229]
-Overfull \vbox (0.6224pt too high) detected at line 7327
- []
-
-[230] [231]
+[235] [236] [237]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelsForecasts-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelsForecasts-1.pdf>
-[232] [233]
+[238] [239]
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 7420.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 11.00117pt on input line 7420.
@@ -5002,12 +4963,12 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Warning: Font shape `U/bbm/m/n' in size <5.5> not available
 (Font)              size <5> substituted on input line 7420.
 
-[234] [235]
+[240] [241] [242]
 Missing character: There is no 𝛴 (U+1D6F4) in font [lmroman10-bold]:mapping=tex
 -text;!
 Missing character: There is no 𝛴 (U+1D6F4) in font [lmroman10-bold]:mapping=tex
 -text;!
-[236]
+[243]
 Underfull \hbox (badness 10000) detected at line 7520
  [][]
  []
@@ -5037,7 +4998,7 @@ Underfull \hbox (badness 10000) detected at line 7524
 [][][]
  []
 
-[237]
+
 Underfull \hbox (badness 10000) detected at line 7526
  [][]
  []
@@ -5067,7 +5028,7 @@ Underfull \hbox (badness 10000) detected at line 7530
 [][][]
  []
 
-[238]
+[244]
 Underfull \hbox (badness 10000) detected at line 7591
  [][]
  []
@@ -5097,7 +5058,7 @@ Underfull \hbox (badness 10000) detected at line 7595
 [][][]
  []
 
-[239]
+[245]
 Underfull \hbox (badness 10000) detected at line 7635
  [][]
  []
@@ -5197,7 +5158,7 @@ Underfull \hbox (badness 10000) detected at line 7660
 [][][]
  []
 
-[240] [241]
+[246] [247]
 Underfull \hbox (badness 10000) detected at line 7702
  [][]
  []
@@ -5267,7 +5228,7 @@ Underfull \hbox (badness 4647) in paragraph at lines 7710--7712
 \TU/lmr/m/n/10 ETS(M,N,A), ETS(M,N,M), ETS(A,N,M), ETS(A,M,N) and
  []
 
-
+[248]
 Underfull \hbox (badness 10000) detected at line 7712
  [][]
  []
@@ -5277,7 +5238,7 @@ Underfull \hbox (badness 10000) detected at line 7712
 [][][]
  []
 
-[242] [243] [244] [245]
+[249] [250] [251] [252]
 Overfull \hbox (68.30154pt too wide) in paragraph at lines 7833--7833
 []\TU/SourceCodePro(0)/m/n/10 ##       alpha        beta     phi1[1]     phi2[1
 ]       level       trend ARIMAState1 ARIMAState2[] 
@@ -5289,7 +5250,7 @@ Overfull \hbox (100.30167pt too wide) in paragraph at lines 7833--7833
 0 194.9945583   0.1622094  13.1291317   9.8841468[] 
  []
 
-[246] [247] [248]
+[253] [254]
 Underfull \vbox (badness 10000) detected at line 7917
  []
 
@@ -5331,7 +5292,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[249
+[255
 
 
 ]
@@ -5374,7 +5335,7 @@ Underfull \hbox (badness 10000) detected at line 7982
 [][][]
  []
 
-[250] [251] [252]
+[256] [257] [258]
 Underfull \hbox (badness 10000) detected at line 8021
  [][]
  []
@@ -5404,7 +5365,7 @@ Underfull \hbox (badness 10000) detected at line 8025
 [][][]
  []
 
-[253] [254]
+[259] [260]
 Underfull \hbox (badness 10000) detected at line 8071
  [][]
  []
@@ -5424,22 +5385,25 @@ Underfull \hbox (badness 10000) detected at line 8073
 [][][]
  []
 
-[255]
+[261]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /taylorSeries-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 taylorSeries-1.pdf>
-[256] [257]
+[262] [263]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSMNM12-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSMNM12-1.pdf>
-[258]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSMNM-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSMNM-1.pdf>
-[259]
+
+Overfull \vbox (0.8802pt too high) detected at line 8185
+ []
+
+[264] [265]
 Overfull \hbox (7.50131pt too wide) in paragraph at lines 8213--8213
 []\TU/SourceCodePro(0)/m/n/10 ## Information criteria are unavailable for the c
 hosen loss & distribution.[] 
@@ -5449,29 +5413,29 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSMNMGTMSE12-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSMNMGTMSE12-1.pdf>
-[260] [261] [262]
+[266] [267] [268]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSXMNN121-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamETSXMNN121-1.pdf>
-[263]
+[269]
 Overfull \hbox (7.50131pt too wide) in paragraph at lines 8375--8375
 []\TU/SourceCodePro(0)/m/n/10 ## Information criteria are unavailable for the c
 hosen loss & distribution.[] 
  []
 
-[264]
+[270]
 Overfull \hbox (7.50131pt too wide) in paragraph at lines 8407--8407
 []\TU/SourceCodePro(0)/m/n/10 ## Information criteria are unavailable for the c
 hosen loss & distribution.[] 
  []
 
-[265]
+[271]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMA-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamARIMA-1.pdf>
-[266] [267]
+[272] [273]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -5508,7 +5472,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[268
+[274
 
 ]
 Underfull \vbox (badness 10000) detected at line 8465
@@ -5552,39 +5516,39 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[269
+[275
 
-] [270]
+] [276]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /intermittentExamplePlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 intermittentExamplePlot-1.pdf>
-[271] [272]
+[277] [278]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /oETSFModel-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 oETSFModel-1.pdf>
-[273] [274]
+[279] [280]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /oETSOModel-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 oETSOModel-1.pdf>
-[275] [276]
+[281] [282]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /oETSIModel-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 oETSIModel-1.pdf>
-[277] [278]
+[283] [284]
 Overfull \hbox (31.9467pt too wide) detected at line 8770
 [][][][][] [] [][][][][][] [][][] [] []
  []
 
-[279]
+[285] [286]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /oETSGModel-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 oETSGModel-1.pdf>
-[280]
+[287]
 Underfull \hbox (badness 10000) detected at line 8864
  [][]
  []
@@ -5634,7 +5598,7 @@ Underfull \hbox (badness 10000) detected at line 8872
 [][][]
  []
 
-[281] [282]
+[288] [289]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /oETSDModel-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -5659,7 +5623,7 @@ Underfull \hbox (badness 10000) detected at line 8976
 [][][]
  []
 
-[283]
+[290]
 Underfull \hbox (badness 10000) detected at line 8985
  [][]
  []
@@ -5719,7 +5683,7 @@ Underfull \hbox (badness 10000) detected at line 9002
 [][][]
  []
 
-[284] [285] [286] [287]
+[291] [292] [293] [294]
 Underfull \hbox (badness 10000) detected at line 9099
  [][]
  []
@@ -5749,12 +5713,12 @@ Underfull \hbox (badness 10000) detected at line 9103
 [][][]
  []
 
-[288]
+[295]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /fixedDemandSizes-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 fixedDemandSizes-1.pdf>
-[289] [290]
+[296]
 Underfull \hbox (badness 10000) detected at line 9150
  [][]
  []
@@ -5784,7 +5748,7 @@ Underfull \hbox (badness 10000) detected at line 9154
 [][][]
  []
 
-
+[297]
 Underfull \hbox (badness 10000) detected at line 9183
  [][]
  []
@@ -5814,12 +5778,12 @@ Underfull \hbox (badness 10000) detected at line 9187
 [][][]
  []
 
-[291]
+[298]
 Overfull \hbox (4.58324pt too wide) detected at line 9236
 [][][][][][]
  []
 
-[292] [293]
+[299] [300]
 Underfull \hbox (badness 10000) detected at line 9285
  [][]
  []
@@ -5839,18 +5803,18 @@ Underfull \hbox (badness 10000) detected at line 9294
 [][][]
  []
 
-[294]
+[301]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelsiETSBest-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelsiETSBest-1.pdf>
-[295] [296]
+[302] [303]
 Overfull \hbox (12.30133pt too wide) in paragraph at lines 9418--9418
 []\TU/SourceCodePro(0)/m/n/10 ## Asymmetry: -70.393%; sMSE: 46.286%; rRMSE: 1.0
 71; sPIS: 3196.961%; sCE: -
  []
 
-[297]
+[304]
 Overfull \hbox (12.30133pt too wide) in paragraph at lines 9449--9449
 []\TU/SourceCodePro(0)/m/n/10 ## Asymmetry: -88.492%; sMSE: 53.022%; rRMSE: 1.1
 46; sPIS: 3703.305%; sCE: -
@@ -5866,46 +5830,7 @@ Underfull \hbox (badness 6141) in paragraph at lines 9474--9474
 interval from the
  []
 
-[298] [299] [300] [301]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[302
-
-]
+[305] [306] [307] [308]
 Underfull \vbox (badness 10000) detected at line 9503
  []
 
@@ -6087,19 +6012,20 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[303
+[309
+
 
 ]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat01-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat01-1.pdf>
-[304]
+[310]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /carSeatsSpread-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 carSeatsSpread-1.pdf>
-[305] [306]
+[311] [312]
 Overfull \hbox (4.3013pt too wide) in paragraph at lines 9661--9661
 []\TU/SourceCodePro(0)/m/n/10 ## residuals     "none"    "pearson"     "pearson
 " "pearson" "pearson" "mcor"[] 
@@ -6121,27 +6047,27 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat02-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat02-1.pdf>
-[307]
+[313]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat02Resid-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat02Resid-1.pdf>
-[308]
+[314]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03-1.pdf>
-[309]
+[315]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat04-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat04-1.pdf>
-[310] [311]
+[316] [317]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03ActualsFitted-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03ActualsFitted-1.pdf>
-[312]
+[318]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03LinearPlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -6216,7 +6142,7 @@ Underfull \hbox (badness 10000) detected at line 9845
 [][][]
  []
 
-[313]
+[319]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03Resid-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -6225,12 +6151,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03ResidTime-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03ResidTime-1.pdf>
-[314]
+[320]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat05Resid-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat05Resid-1.pdf>
-[315]
+[321]
 Underfull \hbox (badness 10000) detected at line 9925
  [][]
  []
@@ -6257,50 +6183,50 @@ Underfull \hbox (badness 10000) detected at line 9929
 
 
 Underfull \hbox (badness 10000) detected at line 9929
-[][][]
- []
-
-[316]
-File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
-/adamSeat05ResidFitted-1.pdf Graphic file (type pdf)
-<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
-adamSeat05ResidFitted-1.pdf>
-[317]
-File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
-/adamSeat05ResidTime-1.pdf Graphic file (type pdf)
-<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
-adamSeat05ResidTime-1.pdf>
-[318]
-File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
-/adamSeat05Student-1.pdf Graphic file (type pdf)
-<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
-adamSeat05Student-1.pdf>
-[319]
-File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
-/adamSeat05Outliers-1.pdf Graphic file (type pdf)
-<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
-adamSeat05Outliers-1.pdf>
-[320] [321]
-Underfull \hbox (badness 10000) detected at line 10113
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 10113
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 10115
- [][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 10115
 [][][]
  []
 
 [322]
+File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
+/adamSeat05ResidFitted-1.pdf Graphic file (type pdf)
+<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
+adamSeat05ResidFitted-1.pdf>
+[323]
+File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
+/adamSeat05ResidTime-1.pdf Graphic file (type pdf)
+<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
+adamSeat05ResidTime-1.pdf>
+[324]
+File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
+/adamSeat05Student-1.pdf Graphic file (type pdf)
+<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
+adamSeat05Student-1.pdf>
+[325]
+File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
+/adamSeat05Outliers-1.pdf Graphic file (type pdf)
+<use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
+adamSeat05Outliers-1.pdf>
+[326] [327]
+Underfull \hbox (badness 10000) detected at line 10113
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 10113
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 10115
+ [][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 10115
+[][][]
+ []
+
+[328]
 Underfull \hbox (badness 10000) detected at line 10117
  [][]
  []
@@ -6336,7 +6262,7 @@ Overfull \hbox (157.90189pt too wide) in paragraph at lines 10150--10150
  outlier3      outlier6 outlier4Lead1 outlier3Lead1 outlier5Lead1[] 
  []
 
-[323]
+[329]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat09ResidvsTime-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -6347,33 +6273,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 10202--10202
 )): p-
  []
 
-[324]
+[330]
 Underfull \hbox (badness 10000) in paragraph at lines 10220--10220
 []\TU/SourceCodePro(0)/m/n/10 ## Warning in tseries::adf.test(resid(adamSeat09)
 ): p-
  []
 
-[325]
+[331]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat10ResidvsTime-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat10ResidvsTime-1.pdf>
-[326]
+[332]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat10ACFPACF-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat10ACFPACF-1.pdf>
-[327]
+[333]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat13ACFPACF-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat13ACFPACF-1.pdf>
-[328] [329]
+[334] [335]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat16Resid-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat16Resid-1.pdf>
-[330]
+[336]
 Underfull \hbox (badness 1297) in paragraph at lines 10424--10424
 []\TU/SourceCodePro(0)/m/n/10 ## 1   1.000 0.306 0.271 0.163 0.091 0.205 0.139 
 0.113 -
@@ -6427,7 +6353,7 @@ Overfull \hbox (18.70135pt too wide) in paragraph at lines 10424--10424
 0.417  1.000 0.402 0.328 0.219[] 
  []
 
-[331]
+[337]
 Overfull \hbox (18.70135pt too wide) in paragraph at lines 10424--10424
 []\TU/SourceCodePro(0)/m/n/10 ## 10  0.084 0.043 0.163 0.194 0.255 0.192 0.245 
 0.354  0.402 1.000 0.395 0.349[] 
@@ -6449,17 +6375,17 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03Hetero-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03Hetero-1.pdf>
-[332]
+[338]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03HeteroStd-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03HeteroStd-1.pdf>
-[333]
+[339]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03Spread-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03Spread-1.pdf>
-[334]
+[340]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat05HeteroPlot-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -6468,36 +6394,36 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat05Spread-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat05Spread-1.pdf>
-[335] [336] [337] [338]
+[341] [342] [343] [344]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat05Multistep-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat05Multistep-1.pdf>
-[339]
+[345]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat03QQ-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat03QQ-1.pdf>
-[340]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat16QQ-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat16QQ-1.pdf>
-[341]
+[346] [347]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat17QQ-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat17QQ-1.pdf>
-[342]
+[348]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat3Density-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat3Density-1.pdf>
+[349]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSeat17Density-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSeat17Density-1.pdf>
-[343] [344]
+[350]
 Overfull \hbox (100.30167pt too wide) in paragraph at lines 10726--10726
 []\TU/SourceCodePro(0)/m/n/10 ##        s1        s2        s3        s4       
  s5        s6        s7        s8        s9       s10       s11       s12[] 
@@ -6509,46 +6435,7 @@ Overfull \hbox (229.90216pt too wide) in paragraph at lines 10726--10726
 992 0.9999992 0.9999992 0.9999991 0.9999991 0.9999991 0.9999992 0.9999992[] 
  []
 
-[345]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (336.25pt too wide) has occurred while \output is active
-[]
- []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][] 
- []
-
-[346
-
-]
+[351] [352]
 Underfull \vbox (badness 10000) detected at line 10733
  []
 
@@ -6670,9 +6557,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[347
+[353
 
-] [348]
+
+] [354]
 Underfull \hbox (badness 10000) detected at line 10827
  [][]
  []
@@ -6762,7 +6650,7 @@ Underfull \hbox (badness 10000) detected at line 10850
 [][][]
  []
 
-[349]
+[355]
 Underfull \hbox (badness 10000) detected at line 10861
  [][]
  []
@@ -6802,12 +6690,12 @@ Underfull \hbox (badness 10000) detected at line 10867
 [][][]
  []
 
-[350]
+[356]
 Underfull \hbox (badness 1314) in paragraph at lines 10876--10877
 \TU/lmr/m/n/10 ETS(A,Md,N), ETS(A,N,A), ETS(A,M,A), ETS(A,Md,A), ETS(A,N,M),
  []
 
-[351]
+[357]
 Underfull \hbox (badness 10000) detected at line 10923
  [][]
  []
@@ -6857,7 +6745,7 @@ Underfull \hbox (badness 10000) detected at line 10936
 [][][]
  []
 
-[352]
+[358]
 Underfull \hbox (badness 10000) detected at line 10938
  [][]
  []
@@ -6921,13 +6809,13 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMAModelFitExample-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamARIMAModelFitExample-1.pdf>
-[353]
+[359]
 Overfull \hbox (52.30148pt too wide) in paragraph at lines 11023--11023
 []\TU/SourceCodePro(0)/m/n/10 ## Model estimated using auto.adam() function: ET
 S(MMM)+SARIMA(3,0,0)[1](1,0,0)[12][] 
  []
 
-[354] [355]
+[360] [361]
 Underfull \hbox (badness 10000) detected at line 11038
  [][]
  []
@@ -6985,7 +6873,7 @@ Overfull \hbox (58.7015pt too wide) in paragraph at lines 11087--11087
 r using bootstrap via bootstrap=TRUE.[] 
  []
 
-[356]
+[362]
 Underfull \hbox (badness 1173) in paragraph at lines 11139--11139
 []\TU/SourceCodePro(0)/m/n/10 ## Warning: Observed Fisher Information is not po
 sitive semi-
@@ -7003,7 +6891,7 @@ Overfull \hbox (58.7015pt too wide) in paragraph at lines 11139--11139
 r using bootstrap via bootstrap=TRUE.[] 
  []
 
-[357] [358]
+[363] [364]
 Underfull \hbox (badness 10000) detected at line 11189
  [][]
  []
@@ -7043,13 +6931,13 @@ Underfull \hbox (badness 10000) detected at line 11195
 [][][]
  []
 
-[359]
+[365]
 Underfull \hbox (badness 1721) in paragraph at lines 11202--11203
 []\TU/lmr/m/n/10 In R, \TU/SourceCodePro(0)/m/n/10 adam() \TU/lmr/m/n/10 functi
 on supports the combination of ETS models via
  []
 
-[360]
+[366]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSCCN-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -7058,12 +6946,12 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSCCNAAdN-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamETSCCNAAdN-1.pdf>
-[361] [362] [363]
+[367] [368] [369]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamCombinedfinalForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamCombinedfinalForecast-1.pdf>
-[364] [365]
+[370] [371]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -7100,7 +6988,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[366
+[372
 
 ]
 Underfull \vbox (badness 10000) detected at line 11382
@@ -7144,7 +7032,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[367
+[373
 
 ]
 Underfull \hbox (badness 10000) detected at line 11397
@@ -7200,7 +7088,7 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamSimulated-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamSimulated-1.pdf>
-[368] [369] [370] [371] [372]
+[374] [375] [376] [377] [378]
 Underfull \hbox (badness 10000) detected at line 11561
  [][]
  []
@@ -7240,12 +7128,12 @@ Underfull \hbox (badness 10000) detected at line 11567
 [][][]
  []
 
-[373] [374]
+[379] [380]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelBJAAdN-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelBJAAdN-1.pdf>
-[375]
+[381]
 Underfull \hbox (badness 10000) detected at line 11702
  [][]
  []
@@ -7265,21 +7153,22 @@ Underfull \hbox (badness 10000) detected at line 11704
 [][][]
  []
 
-[376] [377] [378] [379] [380]
+[382] [383] [384] [385] [386] [387]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamETSRefitted-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamETSRefitted-1.pdf>
-[381] [382]
+[388]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMARefitted-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamARIMARefitted-1.pdf>
+[389]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamARIMARefitted200-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamARIMARefitted200-1.pdf>
-[383] [384]
+[390]
 Underfull \vbox (badness 10000) detected at line 11957
  []
 
@@ -7326,10 +7215,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[385
+[391
 
 
-] [386]
+] [392]
 Underfull \hbox (badness 10000) in paragraph at lines 12032--12033
 \TU/lmr/m/n/10 More generally speaking, scale model can be created for any
  []
@@ -7340,7 +7229,7 @@ Underfull \hbox (badness 1107) in paragraph at lines 12032--12033
 on
  []
 
-[387]
+[393]
 Underfull \hbox (badness 10000) detected at line 12063
  [][]
  []
@@ -7400,7 +7289,7 @@ Underfull \hbox (badness 10000) detected at line 12078
 [][][]
  []
 
-
+[394]
 Underfull \hbox (badness 10000) detected at line 12080
  [][]
  []
@@ -7440,7 +7329,7 @@ Underfull \hbox (badness 10000) detected at line 12097
 [][][]
  []
 
-[388]
+
 Underfull \hbox (badness 10000) detected at line 12099
  [][]
  []
@@ -7660,33 +7549,32 @@ Underfull \hbox (badness 10000) detected at line 12164
 [][][]
  []
 
-[389] [390]
+[395] [396] [397]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSXMNMDiagnostics48-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSXMNMDiagnostics48-1.pdf>
-[391]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSXMNMDiagnostics1516-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSXMNMDiagnostics1516-1.pdf>
-[392]
+[398]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelETSXMNMDiagnosticsXreg-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelETSXMNMDiagnosticsXreg-1.pdf>
-
+[399]
 Overfull \hbox (92.30164pt too wide) in paragraph at lines 12295--12295
 []\TU/SourceCodePro(0)/m/n/10 ## Warning: This type of model can only be applie
 d to the data in logarithms. Amending the data[] 
  []
 
-[393] [394]
+[400]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelAirLocationDiagnostics-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelAirLocationDiagnostics-1.pdf>
-[395]
+[401]
 Underfull \hbox (badness 1173) in paragraph at lines 12371--12371
 []\TU/SourceCodePro(0)/m/n/10 ## Warning: Observed Fisher Information is not po
 sitive semi-
@@ -7704,22 +7592,21 @@ Overfull \hbox (58.7015pt too wide) in paragraph at lines 12371--12371
 r using bootstrap via bootstrap=TRUE.[] 
  []
 
-[396]
+[402]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelAirScaleLinear-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelAirScaleLinear-1.pdf>
-[397]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelAirMergedDiagnostics-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelAirMergedDiagnostics-1.pdf>
-[398]
+[403] [404]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelAirScaleForecast-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelAirScaleForecast-1.pdf>
-[399]
+[405]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -7756,7 +7643,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[400
+[406
 
 ]
 Underfull \vbox (badness 10000) detected at line 12477
@@ -7800,7 +7687,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[401
+[407
 
 ]
 Underfull \hbox (badness 10000) detected at line 12497
@@ -7856,12 +7743,16 @@ File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamScenarios-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamScenarios-1.pdf>
-[402] [403]
+[408]
+Underfull \vbox (badness 10000) detected at line 12546
+ []
+
+[409]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamForecastSimulated-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamForecastSimulated-1.pdf>
-[404] [405]
+[410] [411]
 Underfull \hbox (badness 10000) detected at line 12603
  [][]
  []
@@ -7919,13 +7810,13 @@ Overfull \hbox (1.10129pt too wide) in paragraph at lines 12632--12632
 6023 28.101014 31.253706[] 
  []
 
-
+[412]
 Overfull \hbox (1.10129pt too wide) in paragraph at lines 12632--12632
 []\TU/SourceCodePro(0)/m/n/10 ## h7 3.992746 8.685960 14.011573 19.712728 25.54
 1662 31.253706 36.691528[] 
  []
 
-[406] [407]
+[413]
 Underfull \hbox (badness 10000) detected at line 12679
  [][]
  []
@@ -7971,26 +7862,26 @@ Underfull \hbox (badness 10000) detected at line 12685
 [][][]
  []
 
-[408] [409] [410] [411]
+[414] [415] [416] [417]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelDiagnostics-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelDiagnostics-1.pdf>
+[418]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelPIComplete-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelPIComplete-1.pdf>
-[412] [413]
+[419] [420]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelPIRefitted-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelPIRefitted-1.pdf>
-[414] [415]
+[421]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelXPI6Plots-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelXPI6Plots-1.pdf>
-[416]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelXForecastErrors-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
@@ -8005,7 +7896,7 @@ Underfull \hbox (badness 10000) detected at line 12931
 [][][]
  []
 
-
+[422] [423]
 Underfull \hbox (badness 10000) detected at line 12938
  [][]
  []
@@ -8035,7 +7926,7 @@ Underfull \hbox (badness 10000) detected at line 12942
 [][][]
  []
 
-[417]
+
 Underfull \hbox (badness 10000) detected at line 12944
  [][]
  []
@@ -8065,22 +7956,61 @@ Underfull \hbox (badness 10000) detected at line 12954
 [][][]
  []
 
-[418] [419] [420]
+[424] [425] [426]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /unnamed-chunk-170-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 unnamed-chunk-170-1.pdf>
-[421]
+[427]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModeliETSCumulative-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModeliETSCumulative-1.pdf>
-[422]
+[428] [429]
 File: Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex
 /adamModelConfidence-1.pdf Graphic file (type pdf)
 <use Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/
 adamModelConfidence-1.pdf>
-[423] [424]
+[430] [431]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (336.25pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][] 
+ []
+
+[432
+
+]
 Underfull \vbox (badness 10000) detected at line 13124
  []
 
@@ -8122,8 +8052,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[425
-
+[433
 
 ]
 Underfull \hbox (badness 10000) detected at line 13158
@@ -8205,7 +8134,7 @@ Underfull \hbox (badness 10000) detected at line 13172
 [][][]
  []
 
-[426]
+[434]
 Underfull \hbox (badness 10000) detected at line 13215
  [][]
  []
@@ -8275,7 +8204,7 @@ Underfull \hbox (badness 10000) detected at line 13227
 [][][]
  []
 
-[427]
+[435]
 Underfull \hbox (badness 10000) detected at line 13246
  [][]
  []
@@ -8355,7 +8284,7 @@ Underfull \hbox (badness 10000) detected at line 13260
 [][][]
  []
 
-[428] [429] [430] [431] [432] [433] [434]
+[436] [437] [438] [439] [440] [441] [442]
 Underfull \vbox (badness 10000) detected at line 13568
  []
 
@@ -8397,10 +8326,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[435
+[443
 
 
-] (./Svetunkov--2023----Forecasting-and-Analytics-with-ADAM.bbl [436]
+] (./Svetunkov--2023----Forecasting-and-Analytics-with-ADAM.bbl [444]
 Underfull \vbox (badness 10000) detected at line 1
  []
 
@@ -8446,16 +8375,16 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][] 
  []
 
-[437
+[445
 
 
-] [438] [439] [440] [441]
+] [446] [447] [448] [449]
 Underfull \hbox (badness 1173) in paragraph at lines 415--420
 []\TU/lmr/m/n/10 Makridakis, S., Andersen, A. P., Carbone, R., Fildes, R., Hibo
 n, M.,
  []
 
-[442] [443] [444] [445]) [446] (./Svetunkov--2023----Forecasting-and-Analytics-
+[450] [451] [452] [453]) [454] (./Svetunkov--2023----Forecasting-and-Analytics-
 with-ADAM.ind) (./Svetunkov--2023----Forecasting-and-Analytics-with-ADAM.aux)
 
 LaTeX Font Warning: Size substitutions with differences
@@ -8465,11 +8394,11 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  25801 strings out of 477416
  580716 string characters out of 5844818
- 1032121 words of memory out of 5000000
+ 1032131 words of memory out of 5000000
  45812 multiletter control sequences out of 15000+600000
  481281 words of font info for 152 fonts, out of 8000000 for 9000
  682 hyphenation exceptions out of 8191
  86i,20n,115p,1943b,717s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Svetunkov--2023----Forecasting-and-Analytics-with-ADAM.pdf (4
-70 pages).
+78 pages).
