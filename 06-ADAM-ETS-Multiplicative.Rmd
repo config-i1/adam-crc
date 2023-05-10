@@ -276,11 +276,15 @@ plot(adamForecast, main="")
 
 If we want to calculate the error measures based on the conditional expectation, we can use the `measures()` function from `greybox` package in the following way:
 ```{r}
-measures(adamETSAir$holdout,adamForecast$mean,actuals(adamETSAir))
+measures(adamETSAir$holdout,
+         adamForecast$mean,
+         actuals(adamETSAir))
 ```
 These can be compared with the measures from the ETS(A,A,A) model:
 ```{r}
-measures(adamETSAir$holdout,adamETSAirAdditive$forecast,actuals(adamETSAir))
+measures(adamETSAir$holdout,
+         adamETSAirAdditive$forecast,
+         actuals(adamETSAir))
 ```
 
 Comparing, for example, MSE from the two models, we can conclude that the pure multiplicative model is more accurate than the pure additive one.

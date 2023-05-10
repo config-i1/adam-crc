@@ -1,7 +1,7 @@
 \usepackage{booktabs}
 \usepackage{amsthm, graphicx, mathtools, amssymb, amsmath}
 \usepackage{bbm}
-\usepackage{lscape}
+\usepackage{lscape, rotating}
 \usepackage{longtable}
 \usepackage[bf,singlelinecheck=off]{caption}
 \captionsetup[table]{labelsep=space}
@@ -20,6 +20,11 @@
 \usepackage{hyperref}
 \let\oldhref\href
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+\usepackage{listings}
+\let\verbatim\undefined
+\let\verbatimend\undefined
+\lstnewenvironment{verbatim}{\lstset{breaklines,basicstyle=\ttfamily}}{}
 
 \makeatletter
 \newenvironment{kframe}{%

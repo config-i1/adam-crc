@@ -103,9 +103,6 @@ I hope that it becomes more apparent to the reader how the ETS framework is buil
 As discussed in Section \@ref(ETSTaxonomy), given different types of components and their interactions, we end up with 30 models in the taxonomy. Tables \@ref(tab:ETSAdditiveError) and \@ref(tab:ETSMultiplicativeError) summarise mathematically all 30 ETS models shown graphically on Figures \@ref(fig:ETSTaxonomyAdditive) and \@ref(fig:ETSTaxonomyMultiplicative), presenting formulae for measurement and transition equations.
 
 ```{r ETSAdditiveError, echo=FALSE}
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\begin{landscape}')
-}
 # T="N"
 etsAdditiveTable <- c("$\\begin{aligned} &y_{t} = l_{t-1} + \\epsilon_t \\\\
       &l_t = l_{t-1} + \\alpha \\epsilon_t
@@ -185,17 +182,11 @@ etsAdditiveTable <- matrix(etsAdditiveTable, 5, 3, byrow=TRUE,
                                          c("Nonseasonal","Additive","Multiplicative")))
 kableTable <- kableExtra::kable(etsAdditiveTable, escape=FALSE, caption="Additive error ETS models",
                                 col.names=c("Nonseasonal","Additive","Multiplicative"))
-kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down")
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\end{landscape}')
-}
+kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down", table.envir="sidewaystable")
 ```
 
 
 ```{r ETSMultiplicativeError, echo=FALSE}
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\begin{landscape}')
-}
 # T="N"
 etsMultiplicativeTable <- c("$\\begin{aligned} &y_{t} = l_{t-1}(1 + \\epsilon_t) \\\\
       &l_t = l_{t-1}(1 + \\alpha \\epsilon_t)
@@ -274,10 +265,7 @@ etsMultiplicativeTable <- matrix(etsMultiplicativeTable, 5, 3, byrow=TRUE,
                                          c("Nonseasonal","Additive","Multiplicative")))
 kableTable <- kableExtra::kable(etsMultiplicativeTable, escape=FALSE, caption="Multiplicative error ETS models",
                                 col.names=c("Nonseasonal","Additive","Multiplicative"))
-kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down")
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\end{landscape}')
-}
+kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down", table.envir="sidewaystable")
 ```
 
 From a statistical point of view, formulae in Tables \@ref(tab:ETSAdditiveError) and \@ref(tab:ETSMultiplicativeError) correspond to the "true models" (see Section \@ref(modelsMethods)), they explain the models underlying potential data, but when it comes to their construction and estimation, the $\epsilon_t$ is substituted by the estimated $e_t$ (which is calculated differently depending on the error type), and time series components and smoothing parameters are also replaced by their estimates (e.g. $\hat{\alpha}$ instead of $\alpha$). However, if the values of these models' parameters were known, it would be possible to produce point forecasts and conditional h steps ahead expectations from these models, which are summarised in Table \@ref(tab:ETSModelsForecasts) with the following elements:
@@ -293,9 +281,6 @@ In the case of the additive error models, the point forecasts correspond to the 
 :::
 
 ```{r ETSModelsForecasts, echo=FALSE}
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\begin{landscape}')
-}
 # T="N"
 etsAdditiveTable <- c("$\\begin{aligned}
       &\\mu_{y,t} = l_{t-1} \\\\
@@ -382,10 +367,7 @@ etsAdditiveTable <- matrix(etsAdditiveTable, 5, 3, byrow=TRUE,
                                          c("Nonseasonal","Additive","Multiplicative")))
 kableTable <- kableExtra::kable(etsAdditiveTable, escape=FALSE, caption="Point forecasts and expectations of ETS models. n.c.f. stands for \"No Closed Form\".",
                                 col.names=c("Nonseasonal","Additive","Multiplicative"))
-kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down")
-if (knitr:::is_latex_output()) {
-    knitr::asis_output('\\end{landscape}')
-}
+kable_styling(kableTable, font_size=12, protect_latex=TRUE, latex_options="scale_down", table.envir="sidewaystable")
 ```
 
 The multiplicative error models have the same one step ahead expectations and point forecasts as the additive error ones. However, due to the multiplication by the error term, the multiple steps ahead conditional expectations between the two types of models might differ, specifically for the multiplicative trend and multiplicative seasonal models. These values do not have closed forms and can only be obtained via simulations.
