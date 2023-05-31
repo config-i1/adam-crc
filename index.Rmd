@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 documentclass: krantz
 bibliography: [library.bib, packages.bib, websites.bib]
 biblio-style: apalike
+always_allow_html: true
 link-citations: yes
 colorlinks: yes
 lot: yes

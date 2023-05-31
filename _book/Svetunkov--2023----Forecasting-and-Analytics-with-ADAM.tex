@@ -187,7 +187,7 @@
 
 \title{Forecasting and Analytics with ADAM}
 \author{Ivan Svetunkov}
-\date{2023-05-10}
+\date{2023-05-31}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2180,156 +2180,101 @@ I hope that it becomes more apparent to the reader how the ETS framework is buil
 
 As discussed in Section \ref{ETSTaxonomy}, given different types of components and their interactions, we end up with 30 models in the taxonomy. Tables \ref{tab:ETSAdditiveError} and \ref{tab:ETSMultiplicativeError} summarise mathematically all 30 ETS models shown graphically on Figures \ref{fig:ETSTaxonomyAdditive} and \ref{fig:ETSTaxonomyMultiplicative}, presenting formulae for measurement and transition equations.
 
-\begin{table}
+\label{tab:ETSAdditiveError}Additive error ETS models
 
-\caption{\label{tab:ETSAdditiveError}Additive error ETS models}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & Nonseasonal & Additive & Multiplicative\\
-\hline
-No trend & $\begin{aligned} &y_{t} = l_{t-1} + \epsilon_t \\
-      &l_t = l_{t-1} + \alpha \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} + s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + \alpha \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\
-      &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1}}
-    \end{aligned}$\\
-\hline
-Additive & $\begin{aligned} &y_{t} = l_{t-1} + b_{t-1} + \epsilon_t \\
-      &l_t = l_{t-1} + b_{t-1} + \alpha \epsilon_t \\
-      &b_t = b_{t-1} + \beta \epsilon_t
-    \end{aligned}$ & $\begin{aligned}
-      &y_{t} = l_{t-1} + b_{t-1} + s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + b_{t-1} + \alpha \epsilon_t \\
-      &b_t = b_{t-1} + \beta \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1}) s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\
-      &b_t = b_{t-1} + \beta \frac{\epsilon_t}{s_{t-m}} \\
-      &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} + b_{t-1}}
-    \end{aligned}$\\
-\hline
-Additive damped & $\begin{aligned} &y_{t} = l_{t-1} + \phi b_{t-1} + \epsilon_t \\
-      &l_t = l_{t-1} + \phi b_{t-1} + \alpha \epsilon_t \\
-      &b_t = \phi b_{t-1} + \beta \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} + \phi b_{t-1} + s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + \phi b_{t-1} + \alpha \epsilon_t \\
-      &b_t = \phi b_{t-1} + \beta \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1}) s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} + \phi b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\
-      &b_t = \phi b_{t-1} + \beta \frac{\epsilon_t}{s_{t-m}} \\
-      &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} + \phi b_{t-1}}
-    \end{aligned}$\\
-\hline
-Multiplicative & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1} + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1} + \alpha \epsilon_t \\
-      &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}}
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1} + s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1} + \alpha \epsilon_t \\
-      &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}} \\
-      &s_t = s_{t-m} + \gamma \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1} s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\
-      &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}s_{t-m}} \\
-      &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} b_{t-1}}
-    \end{aligned}$\\
-\hline
-Multiplicative damped & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1}^\phi + \alpha \epsilon_t \\
-      &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}}
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi + s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1}^\phi + \alpha \epsilon_t \\
-      &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}} \\
-      &s_t = s_{t-m} + \gamma \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi s_{t-m} + \epsilon_t \\
-      &l_t = l_{t-1} b_{t-1}^\phi + \alpha \frac{\epsilon_t}{s_{t-m}} \\
-      &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}s_{t-m}} \\
-      &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} b_{t-1}}
-    \end{aligned}$\\
-\hline
-\end{tabular}}
-\end{table}
+Nonseasonal
 
-\begin{table}
+Additive
 
-\caption{\label{tab:ETSMultiplicativeError}Multiplicative error ETS models}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & Nonseasonal & Additive & Multiplicative\\
-\hline
-No trend & $\begin{aligned} &y_{t} = l_{t-1}(1 + \epsilon_t) \\
-      &l_t = l_{t-1}(1 + \alpha \epsilon_t)
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + s_{t-m})(1 + \epsilon_t) \\
-      &l_t = l_{t-1} + \alpha \mu_{y,t} \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} s_{t-m}(1 + \epsilon_t) \\
-      &l_t = l_{t-1}(1 + \alpha \epsilon_t) \\
-      &s_t = s_{t-m}(1 + \gamma \epsilon_t)
-    \end{aligned}$\\
-\hline
-Additive & $\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1})(1 + \epsilon_t) \\
-      &l_t = (l_{t-1} + b_{t-1})(1 + \alpha \epsilon_t) \\
-      &b_t = b_{t-1} + \beta \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1} + s_{t-m})(1 + \epsilon_t) \\
-      &l_t = l_{t-1} + b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\
-      &b_t = b_{t-1} + \beta \mu_{y,t} \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1}) s_{t-m}(1 + \epsilon_t) \\
-      &l_t = (l_{t-1} + b_{t-1})(1 + \alpha \epsilon_t) \\
-      &b_t = b_{t-1} + \beta (l_{t-1} + b_{t-1}) \epsilon_t \\
-      &s_t = s_{t-m} (1 + \gamma \epsilon_t)
-    \end{aligned}$\\
-\hline
-Additive damped & $\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1})(1 + \epsilon_t) \\
-      &l_t = (l_{t-1} + \phi b_{t-1})(1 + \alpha \epsilon_t) \\
-      &b_t = \phi b_{t-1} + \beta \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1} + s_{t-m})(1 + \epsilon_t) \\
-      &l_t = l_{t-1} + \phi b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\
-      &b_t = \phi b_{t-1} + \beta \mu_{y,t} \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1}) s_{t-m}(1 + \epsilon_t) \\
-      &l_t = l_{t-1} + \phi b_{t-1} (1 + \alpha \epsilon_t) \\
-      &b_t = \phi b_{t-1} + \beta (l_{t-1} + \phi b_{t-1}) \epsilon_t \\
-      &s_t = s_{t-m}(1 + \gamma \epsilon_t)
-    \end{aligned}$\\
-\hline
-Multiplicative & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1} (1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1} (1 + \alpha \epsilon_t) \\
-      &b_t = b_{t-1} (1 + \beta \epsilon_t)
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} b_{t-1} + s_{t-m})(1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\
-      &b_t = b_{t-1} + \beta \frac{\mu_{y,t}}{l_{t-1}} \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1} s_{t-m} (1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1} (1 + \alpha \epsilon_t) \\
-      &b_t = b_{t-1} (1 + \beta \epsilon_t) \\
-      &s_t = s_{t-m} (1 + \gamma \epsilon_t)
-    \end{aligned}$\\
-\hline
-Multiplicative damped & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi (1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1}^\phi (1 + \alpha \epsilon_t) \\
-      &b_t = b_{t-1}^\phi (1 + \beta \epsilon_t)
-    \end{aligned}$ & $\begin{aligned} &y_{t} = (l_{t-1} b_{t-1}^\phi + s_{t-m})(1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1}^\phi + \alpha \mu_{y,t} \epsilon_t \\
-      &b_t = b_{t-1}^\phi + \beta \frac{\mu_{y,t}}{l_{t-1}} \epsilon_t \\
-      &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t
-    \end{aligned}$ & $\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi s_{t-m} (1 + \epsilon_t) \\
-      &l_t = l_{t-1} b_{t-1}^\phi \left(1 + \alpha \epsilon_t\right) \\
-      &b_t = b_{t-1}^\phi \left(1 + \beta \epsilon_t\right) \\
-      &s_t = s_{t-m} \left(1 + \gamma \epsilon_t\right)
-    \end{aligned}$\\
-\hline
-\end{tabular}}
-\end{table}
+Multiplicative
+
+No trend
+
+\(\begin{aligned} &y_{t} = l_{t-1} + \epsilon_t \\  &l_t = l_{t-1} + \alpha \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} + s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + \alpha \epsilon_t \\  &s_t = s_{t-m} + \gamma \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\  &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1}}  \end{aligned}\)
+
+Additive
+
+\(\begin{aligned} &y_{t} = l_{t-1} + b_{t-1} + \epsilon_t \\  &l_t = l_{t-1} + b_{t-1} + \alpha \epsilon_t \\  &b_t = b_{t-1} + \beta \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned}  &y_{t} = l_{t-1} + b_{t-1} + s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + b_{t-1} + \alpha \epsilon_t \\  &b_t = b_{t-1} + \beta \epsilon_t \\  &s_t = s_{t-m} + \gamma \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1}) s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\  &b_t = b_{t-1} + \beta \frac{\epsilon_t}{s_{t-m}} \\  &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} + b_{t-1}}  \end{aligned}\)
+
+Additive damped
+
+\(\begin{aligned} &y_{t} = l_{t-1} + \phi b_{t-1} + \epsilon_t \\  &l_t = l_{t-1} + \phi b_{t-1} + \alpha \epsilon_t \\  &b_t = \phi b_{t-1} + \beta \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} + \phi b_{t-1} + s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + \phi b_{t-1} + \alpha \epsilon_t \\  &b_t = \phi b_{t-1} + \beta \epsilon_t \\  &s_t = s_{t-m} + \gamma \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1}) s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} + \phi b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\  &b_t = \phi b_{t-1} + \beta \frac{\epsilon_t}{s_{t-m}} \\  &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} + \phi b_{t-1}}  \end{aligned}\)
+
+Multiplicative
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1} + \epsilon_t \\  &l_t = l_{t-1} b_{t-1} + \alpha \epsilon_t \\  &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}}  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1} + s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} b_{t-1} + \alpha \epsilon_t \\  &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}} \\  &s_t = s_{t-m} + \gamma \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1} s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} b_{t-1} + \alpha \frac{\epsilon_t}{s_{t-m}} \\  &b_t = b_{t-1} + \beta \frac{\epsilon_t}{l_{t-1}s_{t-m}} \\  &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} b_{t-1}}  \end{aligned}\)
+
+Multiplicative damped
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi + \epsilon_t \\  &l_t = l_{t-1} b_{t-1}^\phi + \alpha \epsilon_t \\  &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}}  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi + s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} b_{t-1}^\phi + \alpha \epsilon_t \\  &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}} \\  &s_t = s_{t-m} + \gamma \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi s_{t-m} + \epsilon_t \\  &l_t = l_{t-1} b_{t-1}^\phi + \alpha \frac{\epsilon_t}{s_{t-m}} \\  &b_t = b_{t-1}^\phi + \beta \frac{\epsilon_t}{l_{t-1}s_{t-m}} \\  &s_t = s_{t-m} + \gamma \frac{\epsilon_t}{l_{t-1} b_{t-1}}  \end{aligned}\)
+
+\label{tab:ETSMultiplicativeError}Multiplicative error ETS models
+
+Nonseasonal
+
+Additive
+
+Multiplicative
+
+No trend
+
+\(\begin{aligned} &y_{t} = l_{t-1}(1 + \epsilon_t) \\  &l_t = l_{t-1}(1 + \alpha \epsilon_t)  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + s_{t-m})(1 + \epsilon_t) \\  &l_t = l_{t-1} + \alpha \mu_{y,t} \epsilon_t \\  &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} s_{t-m}(1 + \epsilon_t) \\  &l_t = l_{t-1}(1 + \alpha \epsilon_t) \\  &s_t = s_{t-m}(1 + \gamma \epsilon_t)  \end{aligned}\)
+
+Additive
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1})(1 + \epsilon_t) \\  &l_t = (l_{t-1} + b_{t-1})(1 + \alpha \epsilon_t) \\  &b_t = b_{t-1} + \beta \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1} + s_{t-m})(1 + \epsilon_t) \\  &l_t = l_{t-1} + b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\  &b_t = b_{t-1} + \beta \mu_{y,t} \epsilon_t \\  &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + b_{t-1}) s_{t-m}(1 + \epsilon_t) \\  &l_t = (l_{t-1} + b_{t-1})(1 + \alpha \epsilon_t) \\  &b_t = b_{t-1} + \beta (l_{t-1} + b_{t-1}) \epsilon_t \\  &s_t = s_{t-m} (1 + \gamma \epsilon_t)  \end{aligned}\)
+
+Additive damped
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1})(1 + \epsilon_t) \\  &l_t = (l_{t-1} + \phi b_{t-1})(1 + \alpha \epsilon_t) \\  &b_t = \phi b_{t-1} + \beta \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1} + s_{t-m})(1 + \epsilon_t) \\  &l_t = l_{t-1} + \phi b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\  &b_t = \phi b_{t-1} + \beta \mu_{y,t} \epsilon_t \\  &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} + \phi b_{t-1}) s_{t-m}(1 + \epsilon_t) \\  &l_t = l_{t-1} + \phi b_{t-1} (1 + \alpha \epsilon_t) \\  &b_t = \phi b_{t-1} + \beta (l_{t-1} + \phi b_{t-1}) \epsilon_t \\  &s_t = s_{t-m}(1 + \gamma \epsilon_t)  \end{aligned}\)
+
+Multiplicative
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1} (1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1} (1 + \alpha \epsilon_t) \\  &b_t = b_{t-1} (1 + \beta \epsilon_t)  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} b_{t-1} + s_{t-m})(1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1} + \alpha \mu_{y,t} \epsilon_t \\  &b_t = b_{t-1} + \beta \frac{\mu_{y,t}}{l_{t-1}} \epsilon_t \\  &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1} s_{t-m} (1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1} (1 + \alpha \epsilon_t) \\  &b_t = b_{t-1} (1 + \beta \epsilon_t) \\  &s_t = s_{t-m} (1 + \gamma \epsilon_t)  \end{aligned}\)
+
+Multiplicative damped
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi (1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1}^\phi (1 + \alpha \epsilon_t) \\  &b_t = b_{t-1}^\phi (1 + \beta \epsilon_t)  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = (l_{t-1} b_{t-1}^\phi + s_{t-m})(1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1}^\phi + \alpha \mu_{y,t} \epsilon_t \\  &b_t = b_{t-1}^\phi + \beta \frac{\mu_{y,t}}{l_{t-1}} \epsilon_t \\  &s_t = s_{t-m} + \gamma \mu_{y,t} \epsilon_t  \end{aligned}\)
+
+\(\begin{aligned} &y_{t} = l_{t-1} b_{t-1}^\phi s_{t-m} (1 + \epsilon_t) \\  &l_t = l_{t-1} b_{t-1}^\phi \left(1 + \alpha \epsilon_t\right) \\  &b_t = b_{t-1}^\phi \left(1 + \beta \epsilon_t\right) \\  &s_t = s_{t-m} \left(1 + \gamma \epsilon_t\right)  \end{aligned}\)
 
 From a statistical point of view, formulae in Tables \ref{tab:ETSAdditiveError} and \ref{tab:ETSMultiplicativeError} correspond to the ``true models'' (see Section \ref{modelsMethods}), they explain the models underlying potential data, but when it comes to their construction and estimation, the \(\epsilon_t\) is substituted by the estimated \(e_t\) (which is calculated differently depending on the error type), and time series components and smoothing parameters are also replaced by their estimates (e.g.~\(\hat{\alpha}\) instead of \(\alpha\)). However, if the values of these models' parameters were known, it would be possible to produce point forecasts and conditional h steps ahead expectations from these models, which are summarised in Table \ref{tab:ETSModelsForecasts} with the following elements:
 
@@ -2349,88 +2294,53 @@ In the case of the additive error models, the point forecasts correspond to the 
 \textbf{Not all point forecasts of ETS models correspond to conditional expectations}. This issue applies to the models with multiplicative trend and/or multiplicative seasonality. This is because the ETS model assumes that different states are correlated (they have the same source of error), and as a result, multiple steps ahead values (when h\textgreater1) of states introduce products of error terms. So, the conditional expectations in these cases might not have analytical forms (``n.c.f.'' in Table \ref{tab:ETSModelsForecasts} stands for ``No Closed Form''), and when working with these models, simulations might be required. This does not apply to the one-step-ahead forecasts, for which all the classical formulae work. This issue is discussed in Section \ref{pureMultiplicativeExpectationAndVariance}.
 \end{remark}
 
-\begin{table}
+\label{tab:ETSModelsForecasts}Point forecasts and expectations of ETS models. n.c.f. stands for ``No Closed Form''.
 
-\caption{\label{tab:ETSModelsForecasts}Point forecasts and expectations of ETS models. n.c.f. stands for "No Closed Form".}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & Nonseasonal & Additive & Multiplicative\\
-\hline
-No trend & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} \\
-      &\hat{y}_{t+h} = l_{t} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} + s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m
-    \end{aligned}$\\
-\hline
-Additive & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} + b_{t-1} \\
-      &\hat{y}_{t+h} = l_{t} + h b_t \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} + b_{t-1} + s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} + h b_{t-1} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = (l_{t-1} + b_{t-1}) s_{t-m} \\
-      &\hat{y}_{t+h} = \left(l_{t} + h b_{t-1}\right) s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m
-    \end{aligned}$\\
-\hline
-Additive damped & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} + \phi b_{t-1} \\
-      &\hat{y}_{t+h} = l_{t} + \sum_{j=1}^h \phi^j b_t \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} + \phi b_{t-1} + s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} + \sum_{j=1}^h \phi^j b_{t-1} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h}
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = (l_{t-1} + \phi b_{t-1}) s_{t-m} \\
-      &\hat{y}_{t+h} = \left(l_{t} + \sum_{j=1}^h \phi^j b_t \right) s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m
-    \end{aligned}$\\
-\hline
-Multiplicative & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1} \\
-      &\hat{y}_{t+h} = l_{t} b_t^h \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1} + s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} b_{t-1}^h + s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1} s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} b_{t-1}^h s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$\\
-\hline
-Multiplicative damped & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1}^\phi \\
-      &\hat{y}_{t+h} = l_{t} b_t^{\sum_{j=1}^h \phi^j} \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1}^\phi + s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} b_{t-1}^{\sum_{j=1}^h \phi^j} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$ & $\begin{aligned}
-      &\mu_{y,t} = l_{t-1} b_{t-1}^\phi s_{t-m} \\
-      &\hat{y}_{t+h} = l_{t} b_{t-1}^{\sum_{j=1}^h \phi^j} s_{t+h-m\lceil\frac{h}{m}\rceil} \\
-      &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1
-    \end{aligned}$\\
-\hline
-\end{tabular}}
-\end{table}
+Nonseasonal
+
+Additive
+
+Multiplicative
+
+No trend
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} \\  &\hat{y}_{t+h} = l_{t} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} + s_{t-m} \\  &\hat{y}_{t+h} = l_{t} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} s_{t-m} \\  &\hat{y}_{t+h} = l_{t} s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m  \end{aligned}\)
+
+Additive
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} + b_{t-1} \\  &\hat{y}_{t+h} = l_{t} + h b_t \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} + b_{t-1} + s_{t-m} \\  &\hat{y}_{t+h} = l_{t} + h b_{t-1} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = (l_{t-1} + b_{t-1}) s_{t-m} \\  &\hat{y}_{t+h} = \left(l_{t} + h b_{t-1}\right) s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m  \end{aligned}\)
+
+Additive damped
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} + \phi b_{t-1} \\  &\hat{y}_{t+h} = l_{t} + \sum_{j=1}^h \phi^j b_t \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} + \phi b_{t-1} + s_{t-m} \\  &\hat{y}_{t+h} = l_{t} + \sum_{j=1}^h \phi^j b_{t-1} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h}  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = (l_{t-1} + \phi b_{t-1}) s_{t-m} \\  &\hat{y}_{t+h} = \left(l_{t} + \sum_{j=1}^h \phi^j b_t \right) s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} = \hat{y}_{t+h} \text{ only for } h \leq m  \end{aligned}\)
+
+Multiplicative
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1} \\  &\hat{y}_{t+h} = l_{t} b_t^h \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1} + s_{t-m} \\  &\hat{y}_{t+h} = l_{t} b_{t-1}^h + s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1} s_{t-m} \\  &\hat{y}_{t+h} = l_{t} b_{t-1}^h s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
+
+Multiplicative damped
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1}^\phi \\  &\hat{y}_{t+h} = l_{t} b_t^{\sum_{j=1}^h \phi^j} \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1}^\phi + s_{t-m} \\  &\hat{y}_{t+h} = l_{t} b_{t-1}^{\sum_{j=1}^h \phi^j} + s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
+
+\(\begin{aligned}  &\mu_{y,t} = l_{t-1} b_{t-1}^\phi s_{t-m} \\  &\hat{y}_{t+h} = l_{t} b_{t-1}^{\sum_{j=1}^h \phi^j} s_{t+h-m\lceil\frac{h}{m}\rceil} \\  &\mu_{y,t+h|t} \text{ -- n.c.f. for } h>1  \end{aligned}\)
 
 The multiplicative error models have the same one step ahead expectations and point forecasts as the additive error ones. However, due to the multiplication by the error term, the multiple steps ahead conditional expectations between the two types of models might differ, specifically for the multiplicative trend and multiplicative seasonal models. These values do not have closed forms and can only be obtained via simulations.
 
@@ -2664,9 +2574,9 @@ Here is an example of the data that corresponds to the ETS(A,A,N) model:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAN"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}
-       \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
-    \FunctionTok{plot}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAN"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}
+            \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2702,7 +2612,7 @@ If you want to experiment with the model and see how its parameters influence th
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{es}\NormalTok{(y}\SpecialCharTok{$}\NormalTok{data, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.2}\NormalTok{,}\FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
+\FunctionTok{es}\NormalTok{(y}\SpecialCharTok{$}\NormalTok{data, }\StringTok{"AAN"}\NormalTok{, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.2}\NormalTok{,}\FloatTok{0.1}\NormalTok{)) }\SpecialCharTok{|\textgreater{}}
     \FunctionTok{plot}\NormalTok{(}\AttributeTok{which=}\DecValTok{7}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2773,9 +2683,9 @@ where \(\phi\) is the dampening parameter, typically lying between 0 and 1. If i
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAdN"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}
-       \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{phi=}\FloatTok{0.95}\NormalTok{, }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
-    \FunctionTok{plot}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAdN"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}
+            \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{phi=}\FloatTok{0.95}\NormalTok{, }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2819,10 +2729,10 @@ where \(s_t\) is the seasonal component and \(\gamma\) is its smoothing paramete
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAM"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.2}\NormalTok{),}
-       \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{initialSeason=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{1.1}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\FloatTok{1.2}\NormalTok{),}
-            \AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
-    \FunctionTok{plot}\NormalTok{()}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{sim.es}\NormalTok{(}\StringTok{"AAM"}\NormalTok{, }\DecValTok{120}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\AttributeTok{persistence=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.3}\NormalTok{,}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.2}\NormalTok{),}
+            \AttributeTok{initial=}\FunctionTok{c}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{20}\NormalTok{), }\AttributeTok{initialSeason=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.9}\NormalTok{,}\FloatTok{1.1}\NormalTok{,}\FloatTok{0.8}\NormalTok{,}\FloatTok{1.2}\NormalTok{),}
+            \AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{20}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(y)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -3358,7 +3268,7 @@ The series in Figure \ref{fig:BJsalesDataPlot} seem to exhibit trend, so we will
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.03 seconds
+## Time elapsed: 0.02 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 258.8098
@@ -3383,7 +3293,7 @@ The model's output summarises which specific model was constructed, what distrib
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.29 seconds
+## Time elapsed: 0.01 seconds
 ## Model estimated using adam() function: ETS(ANN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 273.2898
@@ -3425,7 +3335,7 @@ Notice that the bounds in Figure \ref{fig:BJsalesAANForecast} are expanding fast
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.06 seconds
+## Time elapsed: 0.3 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 258.5358
@@ -3487,7 +3397,7 @@ If we want to test ADAM ETS with another distribution, it can be done using the 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.03 seconds
+## Time elapsed: 0.29 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Generalised Normal with shape=1.741
 ## Loss function type: likelihood; Loss function value: 258.456
@@ -3557,7 +3467,7 @@ In some cases, the optimiser might converge to the local minimum, so if you find
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.16 seconds
+## Time elapsed: 0.34 seconds
 ## Model estimated using adam() function: ETS(AAA)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 513.0026
@@ -3838,7 +3748,7 @@ We continue our examples with the same Box-Jenkins sales data by fitting the ETS
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.04 seconds
+## Time elapsed: 0.29 seconds
 ## Model estimated using adam() function: ETS(MMN)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 245.3759
@@ -3934,7 +3844,7 @@ We can also compare the performance of ETS(M,M,N) with Gamma distribution with t
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.05 seconds
+## Time elapsed: 0.3 seconds
 ## Model estimated using adam() function: ETS(MMN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 245.3872
@@ -3977,7 +3887,7 @@ After running the command above we might get warning, saying that the model has 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.38 seconds
+## Time elapsed: 0.35 seconds
 ## Model estimated using adam() function: ETS(MMM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.5176
@@ -5420,7 +5330,7 @@ Comparing this model with the ETS(A,A,N), we will see a slight difference becaus
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.02 seconds
+## Time elapsed: 0.04 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 243.4073
@@ -6235,7 +6145,7 @@ The ETS model closest to the logSARIMA(0,1,1)(0,1,1)\(_{12}\) would probably be 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.35 seconds
+## Time elapsed: 0.17 seconds
 ## Model estimated using adam() function: ETS(MMM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.5176
@@ -6265,7 +6175,7 @@ Comparing information criteria, ETS(M,M,M) should be preferred to logARIMA, but 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.5 seconds
+## Time elapsed: 0.69 seconds
 ## Model estimated using adam() function: SARIMA(0,1,1)[1](0,1,1)[12]
 ## Distribution assumed in the model: Log-Normal
 ## Loss function type: likelihood; Loss function value: 472.923
@@ -6737,7 +6647,7 @@ This simple model already does a fine job fitting the data and producing forecas
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.37 seconds
+## Time elapsed: 0.57 seconds
 ## Model estimated using adam() function: ETS(MNM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1125.509
@@ -6805,7 +6715,7 @@ Figure \ref{fig:SeatbeltsForecastX} shows the forecast from the second model, wh
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.13 seconds
+## Time elapsed: 0.58 seconds
 ## Model estimated using adam() function: ETSX(MNM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1114.042
@@ -6849,7 +6759,7 @@ In our specific case, the difference between the ETSX and ETSX\{D\} models is in
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.4 seconds
+## Time elapsed: 1.3 seconds
 ## Model estimated using adam() function: ETSX(MNM){D}
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1113.523
@@ -6986,38 +6896,69 @@ Maximum Likelihood Estimation (MLE) is one of the popular approaches for estimat
 
 MLE of the ADAM relies on the distributional assumptions of each specific model and might differ from one model to another (see assumptions in Sections \ref{ADAMETSAdditiveDistributions}, \ref{ADAMETSMultiplicativeDistributions} and \ref{ADAMARIMADistributions}). There are several options for the \texttt{distribution} supported by the \texttt{adam()} function in the \texttt{smooth} package, here we briefly discuss how the estimation is done for each one of them. We start with the additive error model, for which the assumptions, log-likelihoods and MLE of scales are provided in Table \ref{tab:additiveErrorLikelihoods}.
 
-\begin{landscape}\begin{table}
+\label{tab:additiveErrorLikelihoods}Likelihood approach for additive error models. \(\mathcal{N}\) is the Normal, \(\mathcal{L}\) is the Laplace, \(\mathcal{S}\) is the S, \(\mathcal{GN}\) is the Generalised Normal, \(\mathcal{IG}\) is the Inverse Gaussian, \(\Gamma\) is the Gamma, and \(\mathrm{log}\mathcal{N}\) is the Log-Normal distribution.
 
-\caption{\label{tab:additiveErrorLikelihoods}Likelihood approach for additive error models. $\mathcal{N}$ is the Normal, $\mathcal{L}$ is the Laplace, $\mathcal{S}$ is the S, $\mathcal{GN}$ is the Generalised Normal, $\mathcal{IG}$ is the Inverse Gaussian, $\Gamma$ is the Gamma, and $\mathrm{log}\mathcal{N}$ is the Log-Normal distribution.}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & Assumption & log-likelihood & MLE of scale\\
-\hline
-\textbf{Normal} & $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ & $-\frac{T}{2} \log(2 \pi \sigma^2) -\frac{1}{2} \sum_{t=1}^T \frac{\epsilon_t^2}{\sigma^2}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2$\\
-\hline
-\textbf{Laplace} & $\epsilon_t \sim \mathcal{L}(0, s)$ & $-T \log(2 s) -\sum_{t=1}^T \frac{|\epsilon_t|}{s}$ & $\hat{s} = \frac{1}{T} \sum_{t=1}^T |e_t|$\\
-\hline
-\textbf{S} & $\epsilon_t \sim \mathcal{S}(0, s)$ & $-T \log(4 s^2) -\sum_{t=1}^T \frac{\sqrt{|\epsilon_t|}}{s}$ & $\hat{s} = \frac{1}{2T} \sum_{t=1}^T \sqrt{|e_t|}$\\
-\hline
-\textbf{Generalised Normal} & $\epsilon_t \sim \mathcal{GN}(0, s, \beta)$ & $\begin{aligned} &T\log\beta -T \log(2 s \Gamma\left(\beta^{-1}\right)) -\\
-                                         &\sum_{t=1}^T \frac{\left|\epsilon_t\right|^\beta}{s}\end{aligned}$ & $\hat{s} = \sqrt[^{\beta}]{\frac{\beta}{T} \sum_{t=1}^T\left| e_t \right|^{\beta}}$\\
-\hline
-\textbf{Inverse Gaussian} & $1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathcal{IG}(1, \sigma^2)$ & $\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2 \right) -\frac{1}{2} \sum_{t=1}^T \left( \left(\frac{y_t}{\mu_{y,t}}\right)^3 \right) -\\
-                                         &\frac{3}{2}\sum_{t=1}^T \log y_t -\frac{1}{2\sigma^2} \sum_{t=1}^{T} \frac{\epsilon_t^2}{\mu_{y,t}y_t}\end{aligned}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^{T} \frac{e_t^2}{\hat{\mu}_{y,t} y_t}$\\
-\hline
-\textbf{Gamma} & $1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma^2)$ & $\begin{aligned} &-T \log \Gamma \left(\sigma^{-2}\right) -\frac{T}{\sigma^2} \log \sigma^2 + \\
-                                         &\frac{1}{\sigma^2} \sum_{t=1}^T \log \left(\frac{y_t/\mu_{y,t}}{ \exp(y_t/\mu_{y,t})}\right) -\sum_{t=1}^T \log y_t\end{aligned}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T \left(\frac{e_t}{\mu_{y,t}}\right)^2$ *\\
-\hline
-\textbf{Log-Normal} & $1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)$ & $\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2\right) -\sum_{t=1}^T \log y_t -\\
-                                         &\frac{1}{2\sigma^2} \sum_{t=1}^{T} \left(\log \left(\frac{y_t}{\mu_{y,t}}\right)+\frac{\sigma^2}{2}\right)^2 \end{aligned}$ & $\hat{\sigma}^2 = 2\left(1-\sqrt{ 1-\frac{1}{T} \sum_{t=1}^{T} \log^2\left(\frac{y_t}{\hat{\mu}_{y,t}}\right)}\right)$\\
-\hline
-\end{tabular}}
-\end{table}
+Assumption
 
-\end{landscape}
+log-likelihood
+
+MLE of scale
+
+\textbf{Normal}
+
+\(\epsilon_t \sim \mathcal{N}(0, \sigma^2)\)
+
+\(-\frac{T}{2} \log(2 \pi \sigma^2) -\frac{1}{2} \sum_{t=1}^T \frac{\epsilon_t^2}{\sigma^2}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2\)
+
+\textbf{Laplace}
+
+\(\epsilon_t \sim \mathcal{L}(0, s)\)
+
+\(-T \log(2 s) -\sum_{t=1}^T \frac{|\epsilon_t|}{s}\)
+
+\(\hat{s} = \frac{1}{T} \sum_{t=1}^T |e_t|\)
+
+\textbf{S}
+
+\(\epsilon_t \sim \mathcal{S}(0, s)\)
+
+\(-T \log(4 s^2) -\sum_{t=1}^T \frac{\sqrt{|\epsilon_t|}}{s}\)
+
+\(\hat{s} = \frac{1}{2T} \sum_{t=1}^T \sqrt{|e_t|}\)
+
+\textbf{Generalised Normal}
+
+\(\epsilon_t \sim \mathcal{GN}(0, s, \beta)\)
+
+\(\begin{aligned} &T\log\beta -T \log(2 s \Gamma\left(\beta^{-1}\right)) -\\  &\sum_{t=1}^T \frac{\left|\epsilon_t\right|^\beta}{s}\end{aligned}\)
+
+\(\hat{s} = \sqrt[^{\beta}]{\frac{\beta}{T} \sum_{t=1}^T\left| e_t \right|^{\beta}}\)
+
+\textbf{Inverse Gaussian}
+
+\(1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathcal{IG}(1, \sigma^2)\)
+
+\(\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2 \right) -\frac{1}{2} \sum_{t=1}^T \left( \left(\frac{y_t}{\mu_{y,t}}\right)^3 \right) -\\  &\frac{3}{2}\sum_{t=1}^T \log y_t -\frac{1}{2\sigma^2} \sum_{t=1}^{T} \frac{\epsilon_t^2}{\mu_{y,t}y_t}\end{aligned}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^{T} \frac{e_t^2}{\hat{\mu}_{y,t} y_t}\)
+
+\textbf{Gamma}
+
+\(1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma^2)\)
+
+\(\begin{aligned} &-T \log \Gamma \left(\sigma^{-2}\right) -\frac{T}{\sigma^2} \log \sigma^2 + \\  &\frac{1}{\sigma^2} \sum_{t=1}^T \log \left(\frac{y_t/\mu_{y,t}}{ \exp(y_t/\mu_{y,t})}\right) -\sum_{t=1}^T \log y_t\end{aligned}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T \left(\frac{e_t}{\mu_{y,t}}\right)^2\) *
+
+\textbf{Log-Normal}
+
+\(1+\frac{\epsilon_t}{\mu_{y,t}} \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)\)
+
+\(\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2\right) -\sum_{t=1}^T \log y_t -\\  &\frac{1}{2\sigma^2} \sum_{t=1}^{T} \left(\log \left(\frac{y_t}{\mu_{y,t}}\right)+\frac{\sigma^2}{2}\right)^2 \end{aligned}\)
+
+\(\hat{\sigma}^2 = 2\left(1-\sqrt{ 1-\frac{1}{T} \sum_{t=1}^{T} \log^2\left(\frac{y_t}{\hat{\mu}_{y,t}}\right)}\right)\)
 
 The likelihoods are derived based on the probability density functions, by taking the logarithms of their products for all in-sample observations. For example, this is what we get for the Normal distribution:
 \begin{equation}
@@ -7064,41 +7005,69 @@ Similar logic is applicable to Laplace (\(\mathcal{L}\)), Generalised Normal (\(
 
 All the likelihoods for the multiplicative error models are summarised in Table \ref{tab:multiplicativeErrorLikelihoods}.
 
-\begin{landscape}\begin{table}
+\label{tab:multiplicativeErrorLikelihoods}Likelihood approach for multiplicative error models. \(\mathcal{N}\) is the Normal, \(\mathcal{L}\) is the Laplace, \(\mathcal{S}\) is the S, \(\mathcal{GN}\) is the Generalised Normal, \(\mathcal{IG}\) is the Inverse Gaussian, \(\Gamma\) is the Gamma, and \(\mathrm{log}\mathcal{N}\) is the Log-Normal distribution.
 
-\caption{\label{tab:multiplicativeErrorLikelihoods}Likelihood approach for multiplicative error models. $\mathcal{N}$ is the Normal, $\mathcal{L}$ is the Laplace, $\mathcal{S}$ is the S, $\mathcal{GN}$ is the Generalised Normal, $\mathcal{IG}$ is the Inverse Gaussian, $\Gamma$ is the Gamma, and $\mathrm{log}\mathcal{N}$ is the Log-Normal distribution.}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l|l}
-\hline
-  & Assumption & log-likelihood & MLE of scale\\
-\hline
-\textbf{Normal} & $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ & $\begin{aligned} &-\frac{T}{2} \log(2 \pi \sigma^2) -\frac{1}{2} \sum_{t=1}^T \frac{\epsilon_t^2}{\sigma^2} -\\
-                                         &\sum_{t=1}^T \log |\mu_{y,t}|\end{aligned}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2$\\
-\hline
-\textbf{Laplace} & $\epsilon_t \sim \mathcal{L}(0, s)$ & $\begin{aligned} &-T \log(2 s) -\sum_{t=1}^T \frac{|\epsilon_t|}{s} -\\
-                                         &\sum_{t=1}^T \log \mu_{y,t}\end{aligned}$ & $\hat{s} = \frac{1}{T} \sum_{t=1}^T |e_t|$\\
-\hline
-\textbf{S} & $\epsilon_t \sim \mathcal{S}(0, s)$ & $\begin{aligned} &-T \log(4 s^2) -\sum_{t=1}^T \frac{\sqrt{|\epsilon_t|}}{s} -\\
-                                         &\sum_{t=1}^T \log \mu_{y,t}\end{aligned}$ & $\hat{s} = \frac{1}{2T} \sum_{t=1}^T \sqrt{|e_t|}$\\
-\hline
-\textbf{Generalised Normal} & $\epsilon_t \sim \mathcal{GN}(0, s, \beta)$ & $\begin{aligned} &T\log\beta -T \log(2 s \Gamma\left(\beta^{-1}\right)) -\\
-                                         &\sum_{t=1}^T \frac{\left|\epsilon_t\right|^\beta}{s} -\sum_{t=1}^T \log \mu_{y,t}\end{aligned}$ & $\hat{s} = \sqrt[^{\beta}]{\frac{\beta}{T} \sum_{t=1}^T\left| e_t \right|^{\beta}}$\\
-\hline
-\textbf{Inverse Gaussian} & $1+\epsilon_t \sim \mathcal{IG}(1, \sigma^2)$ & $\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2 \right) -\frac{1}{2}\sum_{t=1}^T \left(1+\epsilon_{t}\right)^3 -\\
-                                         &\frac{3}{2}\sum_{t=1}^T \log y_t -\frac{1}{2\sigma^2} \sum_{t=1}^{T} \frac{\epsilon_t^2}{1+\epsilon_t}\end{aligned}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^{T} \frac{e_t^2}{1+e_t}$\\
-\hline
-\textbf{Gamma} & $1+\epsilon_t \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma)$ & $\begin{aligned} &-T \log \Gamma \left(\sigma^{-2}\right) -\frac{T}{\sigma^2} \log \sigma^2 + \\
-                                         &\frac{1}{\sigma^2} \sum_{t=1}^T \log \left(\frac{1+\epsilon_t}{\exp(1+\epsilon_t)}\right) -\sum_{t=1}^T \log y_t\end{aligned}$ & $\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2$ *\\
-\hline
-\textbf{Log-Normal} & $1+\epsilon_t \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)$ & $\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2\right) - \sum_{t=1}^T \log y_t -\\
-                                         &\frac{1}{2\sigma^2} \sum_{t=1}^{T} \left(\log \left(1+\epsilon_t\right)+\frac{\sigma^2}{2}\right)^2 \end{aligned}$ & $\hat{\sigma}^2 = 2\left(1-\sqrt{ 1-\frac{1}{T} \sum_{t=1}^{T} \log^2\left(1+e_t\right)}\right)$\\
-\hline
-\end{tabular}}
-\end{table}
+Assumption
 
-\end{landscape}
+log-likelihood
+
+MLE of scale
+
+\textbf{Normal}
+
+\(\epsilon_t \sim \mathcal{N}(0, \sigma^2)\)
+
+\(\begin{aligned} &-\frac{T}{2} \log(2 \pi \sigma^2) -\frac{1}{2} \sum_{t=1}^T \frac{\epsilon_t^2}{\sigma^2} -\\  &\sum_{t=1}^T \log |\mu_{y,t}|\end{aligned}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2\)
+
+\textbf{Laplace}
+
+\(\epsilon_t \sim \mathcal{L}(0, s)\)
+
+\(\begin{aligned} &-T \log(2 s) -\sum_{t=1}^T \frac{|\epsilon_t|}{s} -\\  &\sum_{t=1}^T \log \mu_{y,t}\end{aligned}\)
+
+\(\hat{s} = \frac{1}{T} \sum_{t=1}^T |e_t|\)
+
+\textbf{S}
+
+\(\epsilon_t \sim \mathcal{S}(0, s)\)
+
+\(\begin{aligned} &-T \log(4 s^2) -\sum_{t=1}^T \frac{\sqrt{|\epsilon_t|}}{s} -\\  &\sum_{t=1}^T \log \mu_{y,t}\end{aligned}\)
+
+\(\hat{s} = \frac{1}{2T} \sum_{t=1}^T \sqrt{|e_t|}\)
+
+\textbf{Generalised Normal}
+
+\(\epsilon_t \sim \mathcal{GN}(0, s, \beta)\)
+
+\(\begin{aligned} &T\log\beta -T \log(2 s \Gamma\left(\beta^{-1}\right)) -\\  &\sum_{t=1}^T \frac{\left|\epsilon_t\right|^\beta}{s} -\sum_{t=1}^T \log \mu_{y,t}\end{aligned}\)
+
+\(\hat{s} = \sqrt[^{\beta}]{\frac{\beta}{T} \sum_{t=1}^T\left| e_t \right|^{\beta}}\)
+
+\textbf{Inverse Gaussian}
+
+\(1+\epsilon_t \sim \mathcal{IG}(1, \sigma^2)\)
+
+\(\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2 \right) -\frac{1}{2}\sum_{t=1}^T \left(1+\epsilon_{t}\right)^3 -\\  &\frac{3}{2}\sum_{t=1}^T \log y_t -\frac{1}{2\sigma^2} \sum_{t=1}^{T} \frac{\epsilon_t^2}{1+\epsilon_t}\end{aligned}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^{T} \frac{e_t^2}{1+e_t}\)
+
+\textbf{Gamma}
+
+\(1+\epsilon_t \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma)\)
+
+\(\begin{aligned} &-T \log \Gamma \left(\sigma^{-2}\right) -\frac{T}{\sigma^2} \log \sigma^2 + \\  &\frac{1}{\sigma^2} \sum_{t=1}^T \log \left(\frac{1+\epsilon_t}{\exp(1+\epsilon_t)}\right) -\sum_{t=1}^T \log y_t\end{aligned}\)
+
+\(\hat{\sigma}^2 = \frac{1}{T} \sum_{t=1}^T e_t^2\) *
+
+\textbf{Log-Normal}
+
+\(1+\epsilon_t \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)\)
+
+\(\begin{aligned} &-\frac{T}{2} \log \left(2 \pi \sigma^2\right) - \sum_{t=1}^T \log y_t -\\  &\frac{1}{2\sigma^2} \sum_{t=1}^{T} \left(\log \left(1+\epsilon_t\right)+\frac{\sigma^2}{2}\right)^2 \end{aligned}\)
+
+\(\hat{\sigma}^2 = 2\left(1-\sqrt{ 1-\frac{1}{T} \sum_{t=1}^{T} \log^2\left(1+e_t\right)}\right)\)
 
 When it comes to practicalities, the optimiser in \texttt{adam()} function calculates the scale from Tables \ref{tab:additiveErrorLikelihoods} and \ref{tab:multiplicativeErrorLikelihoods} on each iteration and then uses it in the log-likelihood based on the respective distribution function. For additive error models:
 
@@ -7863,7 +7832,7 @@ But hopefully after several iterations, we will get a better estimates of parame
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.07 seconds
+## Time elapsed: 0.09 seconds
 ## Model estimated using adam() function: ETS(AAN)+ARIMA(2,0,0)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 259.1489
@@ -8427,7 +8396,7 @@ Another model we can try on this data is multiple seasonal ARIMA. We have not ye
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.22 seconds
+## Time elapsed: 0.48 seconds
 ## Model estimated using adam() function: SARIMA(0,1,1)[1](0,1,1)[336]
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 26098.76
@@ -9201,32 +9170,53 @@ A classic example with EM is when several samples have different parameters, and
 \end{equation}
 The first term in \eqref{eq:LogLikelihoodForDGPExpectation} is known because the \(z_t\) are observed when \(o_t=1\). The expectation in second term of \eqref{eq:LogLikelihoodForDGPExpectation} is known in statistics as ``Differential Entropy'' (in the formula above, we have the negative differential entropy). It will differ from one distribution to another. Table \ref{tab:differentialEntropy} summarises differential entropies for the distributions used in ADAM.
 
-\begin{table}
+\label{tab:differentialEntropy}Differential entropies for different distributions. \(\Gamma(\cdot)\) is the Gamma function, while \(\psi(\cdot)\) is the digamma function.
 
-\caption{\label{tab:differentialEntropy}Differential entropies for different distributions. $\Gamma(\cdot)$ is the Gamma function, while $\psi(\cdot)$ is the digamma function.}
-\centering
-\resizebox{\linewidth}{!}{
-\fontsize{12}{14}\selectfont
-\begin{tabular}[t]{l|l|l}
-\hline
-  & Assumption & Differential Entropy\\
-\hline
-\textbf{Normal} & $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ & $\frac{1}{2}\left(\log(2\pi\sigma^2)+1\right)$\\
-\hline
-\textbf{Laplace} & $\epsilon_t \sim \mathcal{L}(0, s)$ & $1+\log(2s)$\\
-\hline
-\textbf{S} & $\epsilon_t \sim \mathcal{S}(0, s)$ & $2+2\log(2s)$\\
-\hline
-\textbf{Generalised Normal} & $\epsilon_t \sim \mathcal{GN}(0, s, \beta)$ & $\beta^{-1}-\log\left(\frac{\beta}{2s\Gamma\left(\beta^{-1}\right)}\right)$\\
-\hline
-\textbf{Inverse Gaussian} & $1+\epsilon_t \sim \mathcal{IG}(1, \sigma^2)$ & $\frac{1}{2}\left(\log \pi e \sigma^2 -\log(2) \right)$\\
-\hline
-\textbf{Gamma} & $1+\epsilon_t \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma^2)$ & $\sigma^{-2} + \log \Gamma\left(\sigma^{-2} \right) + \left(1-\sigma^{-2}\right)\psi\left(\sigma^{-2}\right)$\\
-\hline
-\textbf{Log-Normal} & $1+\epsilon_t \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)$ & $\frac{1}{2}\left(\log(2\pi\sigma^2)+1\right)-\frac{\sigma^2}{2}$\\
-\hline
-\end{tabular}}
-\end{table}
+Assumption
+
+Differential Entropy
+
+\textbf{Normal}
+
+\(\epsilon_t \sim \mathcal{N}(0, \sigma^2)\)
+
+\(\frac{1}{2}\left(\log(2\pi\sigma^2)+1\right)\)
+
+\textbf{Laplace}
+
+\(\epsilon_t \sim \mathcal{L}(0, s)\)
+
+\(1+\log(2s)\)
+
+\textbf{S}
+
+\(\epsilon_t \sim \mathcal{S}(0, s)\)
+
+\(2+2\log(2s)\)
+
+\textbf{Generalised Normal}
+
+\(\epsilon_t \sim \mathcal{GN}(0, s, \beta)\)
+
+\(\beta^{-1}-\log\left(\frac{\beta}{2s\Gamma\left(\beta^{-1}\right)}\right)\)
+
+\textbf{Inverse Gaussian}
+
+\(1+\epsilon_t \sim \mathcal{IG}(1, \sigma^2)\)
+
+\(\frac{1}{2}\left(\log \pi e \sigma^2 -\log(2) \right)\)
+
+\textbf{Gamma}
+
+\(1+\epsilon_t \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma^2)\)
+
+\(\sigma^{-2} + \log \Gamma\left(\sigma^{-2} \right) + \left(1-\sigma^{-2}\right)\psi\left(\sigma^{-2}\right)\)
+
+\textbf{Log-Normal}
+
+\(1+\epsilon_t \sim \mathrm{log}\mathcal{N}\left(-\frac{\sigma^2}{2}, \sigma^2\right)\)
+
+\(\frac{1}{2}\left(\log(2\pi\sigma^2)+1\right)-\frac{\sigma^2}{2}\)
 
 The majority of formulae for differential entropy in Table \ref{tab:differentialEntropy} are taken from \citet{Lazo1978a} with the exclusion of the one for \(\mathcal{IG}\), which was derived by \citet{Mudholkar2002}. These values can be inserted instead of the \(\text{E} \left( \log f_z \left(z_{t} | \mathbf{v}_{z,t-\boldsymbol{l}} \right) \right)\) in the formula \eqref{eq:LogLikelihoodForDGPExpectation}, leading to the expected likelihood for respective distributions, which can then be maximised. For example, for Inverse Gaussian distribution (using the pdf from the Table \ref{tab:multiplicativeErrorLikelihoods} and the entropy from Table \ref{tab:differentialEntropy}), we get:
 \begin{equation}
@@ -9397,7 +9387,7 @@ Depending on the generated data, there might be issues in the ETS(M,Md,N) model 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.33 seconds
+## Time elapsed: 0.3 seconds
 ## Model estimated using adam() function: iARIMA(1,1,2)[D]
 ## Occurrence model type: Direct
 ## Distribution assumed in the model: Mixture of Bernoulli and Log-Normal
@@ -10402,9 +10392,9 @@ In R, the multistep forecast errors can be extracted via \texttt{rmultistep()} f
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Extract multistep errors}
-\NormalTok{adamSeat05ResidMulti }\OtherTok{\textless{}{-}} \FunctionTok{rmultistep}\NormalTok{(adamSeat05, }\AttributeTok{h=}\DecValTok{12}\NormalTok{)}
+\NormalTok{adamSeat05ResidMulti }\OtherTok{\textless{}{-}} \FunctionTok{rmultistep}\NormalTok{(adamSeat05, }\AttributeTok{h=}\DecValTok{10}\NormalTok{)}
 \CommentTok{\# Give adequate names to the columns}
-\FunctionTok{colnames}\NormalTok{(adamSeat05ResidMulti) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(adamSeat05ResidMulti) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)}
 \CommentTok{\# Calculate correlation matrix for forecast errors}
 \FunctionTok{cor}\NormalTok{(adamSeat05ResidMulti) }\SpecialCharTok{|\textgreater{}}
     \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
@@ -10412,19 +10402,17 @@ In R, the multistep forecast errors can be extracted via \texttt{rmultistep()} f
 \end{Shaded}
 
 \begin{verbatim}
-##         1     2     3     4     5     6     7     8      9    10    11    12
-## 1   1.000 0.306 0.271 0.163 0.091 0.205 0.139 0.113 -0.003 0.084 0.026 0.152
-## 2   0.306 1.000 0.358 0.312 0.195 0.151 0.247 0.175  0.134 0.043 0.114 0.084
-## 3   0.271 0.358 1.000 0.388 0.333 0.238 0.183 0.272  0.183 0.163 0.061 0.152
-## 4   0.163 0.312 0.388 1.000 0.393 0.358 0.250 0.191  0.264 0.194 0.164 0.089
-## 5   0.091 0.195 0.333 0.393 1.000 0.405 0.360 0.249  0.171 0.255 0.175 0.170
-## 6   0.205 0.151 0.238 0.358 0.405 1.000 0.422 0.371  0.246 0.192 0.268 0.204
-## 7   0.139 0.247 0.183 0.250 0.360 0.422 1.000 0.427  0.361 0.245 0.185 0.282
-## 8   0.113 0.175 0.272 0.191 0.249 0.371 0.427 1.000  0.417 0.354 0.228 0.193
-## 9  -0.003 0.134 0.183 0.264 0.171 0.246 0.361 0.417  1.000 0.402 0.328 0.219
-## 10  0.084 0.043 0.163 0.194 0.255 0.192 0.245 0.354  0.402 1.000 0.395 0.349
-## 11  0.026 0.114 0.061 0.164 0.175 0.268 0.185 0.228  0.328 0.395 1.000 0.410
-## 12  0.152 0.084 0.152 0.089 0.170 0.204 0.282 0.193  0.219 0.349 0.410 1.000
+##        1     2     3     4     5     6     7     8     9    10
+## 1  1.000 0.307 0.275 0.163 0.096 0.206 0.138 0.115 0.006 0.093
+## 2  0.307 1.000 0.358 0.314 0.196 0.150 0.247 0.181 0.142 0.052
+## 3  0.275 0.358 1.000 0.387 0.336 0.238 0.182 0.272 0.188 0.169
+## 4  0.163 0.314 0.387 1.000 0.392 0.356 0.250 0.195 0.268 0.198
+## 5  0.096 0.196 0.336 0.392 1.000 0.404 0.359 0.249 0.176 0.259
+## 6  0.206 0.150 0.238 0.356 0.404 1.000 0.421 0.367 0.242 0.188
+## 7  0.138 0.247 0.182 0.250 0.359 0.421 1.000 0.427 0.357 0.243
+## 8  0.115 0.181 0.272 0.195 0.249 0.367 0.427 1.000 0.425 0.362
+## 9  0.006 0.142 0.188 0.268 0.176 0.242 0.357 0.425 1.000 0.419
+## 10 0.093 0.052 0.169 0.198 0.259 0.188 0.243 0.362 0.419 1.000
 \end{verbatim}
 
 As we can see from the output above, the correlations between the neighbouring forecast errors is higher than between the ones with larger distance. We cannot use this property for diagnostics purposes, it is just one of the features of dynamic models that we should keep in mind.
@@ -10790,7 +10778,7 @@ The function \texttt{auto.adam()} implements this automatic selection of distrib
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.27 seconds
+## Time elapsed: 0.26 seconds
 ## Model estimated using auto.adam() function: ETS(MMN)
 ## Distribution assumed in the model: Log-Normal
 ## Loss function type: likelihood; Loss function value: 245.3716
@@ -10890,7 +10878,7 @@ Here is an example with automatically selected ETS model using the branch-and-bo
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.13 seconds
+## Time elapsed: 1.76 seconds
 ## Model estimated using adam() function: ETS(MAM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 467.2981
@@ -11000,7 +10988,7 @@ Based on the relation between ARIMA and ETS (see Section \ref{ARIMAandETS}), we 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.84 seconds
+## Time elapsed: 1.29 seconds
 ## Model estimated using auto.adam() function: ETS(MMM)+SARIMA(3,0,0)[1](1,0,0)[12]
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.391
@@ -11531,7 +11519,7 @@ Here is an example of how the function works on the data above -- it is possible
 
 \begin{verbatim}
 ## Bootstrap for the adam model with nsim=100 and size=70
-## Time elapsed: 0.61 seconds
+## Time elapsed: 0.51 seconds
 \end{verbatim}
 
 The \texttt{size} in the output above refers to the sub-sample size, which by default is 75\% of the original data length. The covariance matrix can then be extracted from the result via \texttt{adamETSBJBoot\$vcov}. The same procedure is used in \texttt{vcov()} method if \texttt{bootstrap=TRUE}:
@@ -11546,11 +11534,11 @@ The \texttt{size} in the output above refers to the sub-sample size, which by de
 
 \begin{verbatim}
 ##        alpha   beta    phi  level  trend
-## alpha  0.026  0.003  0.002  0.021 -0.027
-## beta   0.003  0.010  0.000 -0.017  0.029
-## phi    0.002  0.000  0.014  0.063 -0.065
-## level  0.021 -0.017  0.063  0.552 -0.720
-## trend -0.027  0.029 -0.065 -0.720  1.015
+## alpha  0.006 -0.002 -0.001 -0.002 -0.003
+## beta  -0.002  0.008 -0.001 -0.018  0.030
+## phi   -0.001 -0.001  0.013  0.056 -0.060
+## level -0.002 -0.018  0.056  0.511 -0.681
+## trend -0.003  0.030 -0.060 -0.681  0.989
 \end{verbatim}
 
 \hypertarget{ADAMUncertaintyConfidenceInterval}{%
@@ -11874,7 +11862,8 @@ The idea of the approach is to get the covariance matrix of the parameters of th
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Estimate the model}
-\NormalTok{adamETSAir }\OtherTok{\textless{}{-}} \FunctionTok{adam}\NormalTok{(AirPassengers, }\StringTok{"MMM"}\NormalTok{, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{holdout=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{maxeval=}\DecValTok{16}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{adamETSAir }\OtherTok{\textless{}{-}} \FunctionTok{adam}\NormalTok{(AirPassengers, }\StringTok{"MMM"}\NormalTok{, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{holdout=}\ConstantTok{TRUE}\NormalTok{,}
+                   \AttributeTok{maxeval=}\DecValTok{16}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
 \CommentTok{\# Produce the multiple scenarios}
 \NormalTok{adamETSAirReapply }\OtherTok{\textless{}{-}} \FunctionTok{reapply}\NormalTok{(adamETSAir, }\AttributeTok{nsim=}\DecValTok{1000}\NormalTok{)}
 \end{Highlighting}
@@ -12242,7 +12231,7 @@ To see if the scale model is needed in this case, we will produce several diagno
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(adamLocationSeat, }\AttributeTok{which=}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{8}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -12257,7 +12246,7 @@ Figure \ref{fig:adamModelETSXMNMDiagnostics48} shows how the residuals change wi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(adamLocationSeat, }\AttributeTok{which=}\FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{16}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -12438,7 +12427,7 @@ We can also do diagnostics of the merged model using the same principles as disc
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(adamMerged, }\AttributeTok{which=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{7}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -12776,7 +12765,7 @@ The model selected above is ETS(A,Ad,N). In order to make sure that the parametr
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(adamETSBJ, }\AttributeTok{which=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{10}\SpecialCharTok{:}\DecValTok{11}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -12793,7 +12782,7 @@ The only thing that this type of interval do not take into account is the uncert
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{mar=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{))}
 \FunctionTok{forecast}\NormalTok{(adamETSBJ, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{interval=}\StringTok{"parametric"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
     \FunctionTok{plot}\NormalTok{(}\AttributeTok{main=}\StringTok{"Parametric prediction interval"}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{200}\NormalTok{,}\DecValTok{280}\NormalTok{))}
 \FunctionTok{forecast}\NormalTok{(adamETSBJ, }\AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{interval=}\StringTok{"complete"}\NormalTok{, }\AttributeTok{nsim=}\DecValTok{100}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
