@@ -11,7 +11,7 @@ colorlinks: yes
 lot: yes
 lof: yes
 site: bookdown::bookdown_site
-description: "This monograph explains how to do time series analysis and forecasting using Augmented Dynamic Adaptive Model, implemented in smooth package for R."
+description: "This monograph explains how to do time series analysis and forecasting using Augmented Dynamic Adaptive Model, implemented in the smooth package for R."
 github-repo: config-i1/adam-crc
 graphics: yes
 cover-image: images/Adam-Title-web.jpg
