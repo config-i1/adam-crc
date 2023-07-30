@@ -90,7 +90,7 @@ library("formatR")
 
 ### How to cite ADAM {-}
 
-You can use the following to cite the online version of this book:
+You can use the following to cite the monograph:
 
 ::: adamCitation
 Svetunkov, I. (2023). Forecasting and Analytics with the Augmented Dynamic Adaptive Model (ADAM) (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781003452652
