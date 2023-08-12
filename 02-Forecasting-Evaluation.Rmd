@@ -394,8 +394,8 @@ origins <- 5
 
 We will create a list containing several objects of interest:
 
-- `actuals` will contain all the actual values,
-- `holdout` will be a matrix containing the actual values for the holdout. It will have `h` rows and `origins` columns,
+- `actuals` will contain all the actual values;
+- `holdout` will be a matrix containing the actual values for the holdout. It will have `h` rows and `origins` columns;
 - `mean` will contain point forecasts from our model. This will also be a matrix with the same dimensions as the `holdout` one.
 
 ```{r}
@@ -414,7 +414,8 @@ Finally, we write a simple loop that repeats the model fit and forecasting for t
 for(i in 1:origins){
     # Fit the model
     testModel <- sma(y[1:(obs+i-origins-h)])
-    # Drop the in-sample observations and extract the first h observations from the rest
+    # Drop the in-sample observations
+    # and extract the first h observations from the rest
     returnedValues1$holdout[,i] <- head(y[-c(1:(obs-origins+i-h))], h)
     # Produce forecasts and write down the mean values
     returnedValues1$mean[,i] <- forecast(testModel, h=h)$mean
@@ -427,13 +428,13 @@ This basic loop can be amended to include anything else we want from the functio
 boxplot(returnedValues1$holdout-returnedValues1$mean)
 ```
 
-In the ideal situation, the boxplots in Figure \@ref(fig:roOrigins) should be similar, meaning that the model performs consistently over different origins. We do not see this in our cae, observing that the distribution of errors changes from one origin to another.
+In the ideal situation, the boxplots in Figure \@ref(fig:roOrigins) should be similar, meaning that the model performs consistently over different origins. We do not see this in our case, observing that the distribution of errors changes from one origin to another.
 
-While the example above already gives some information about performance of a model, the more useful information would be obtained if the performance of one model is compared to the others in the rolling origin experiment. This can be done manually for several models using the code above or it can be done using the function `ro()` from the `greybox` package.
+While the example above already gives some information about the performance of a model, more useful information could be obtained if the performance of one model is compared to the others in the rolling origin experiment. This can be done manually for several models using the code above or it can be done using the function `ro()` from the `greybox` package.
 
 
 ### Rolling origin function in R
-In R, there are several packages and functions that implement rolling origin. One of those is the function `ro()` from the `greybox` package (written by Yves Sagaert and Ivan Svetunkov in 2016 on their way to the International Symposium on Forecasting in Riverside, US). It implements the rolling origin evaluation for any function you like with a predefined `call` and returns the desired `value`. It heavily relies on the two variables: `call` and `value` -- so it is pretty important to understand how to formulate them to get the desired results. `ro()` is a very flexible function, but as a result, it is not very simple. In this subsection, we will see how it works on a couple of examples.
+In R, there are several packages and functions that implement rolling origin. One of those is the function `ro()` from the `greybox` package (written by Yves Sagaert and Ivan Svetunkov in 2016 on their way to the International Symposium on Forecasting in Riverside, US). It implements the rolling origin evaluation for any function you like with a predefined `call` and returns the desired `value`. It heavily relies on the two variables: `call` and `value` -- so it is pretty important to understand how to formulate them to get the desired results. `ro()` is a very flexible function, but as a result, it is not very simple. In this subsection, we will see how it works in a couple of examples.
 
 We start with a simple example, generating a series from Normal distribution:
 ```{r}
@@ -449,7 +450,7 @@ The call that we specify includes two important elements: `data` and `h`. `data`
 
 Having the call, we also need to specify what the function should return. This can be the conditional mean (point forecasts), prediction intervals, the parameters of a model, or, in fact, anything that the model returns (e.g. name of the fitted model and its likelihood). However, there are some differences in what `ro()` returns depending on what the function returns. If it is a vector, then `ro()` will produce a matrix (with values for each origin in columns). If it is a matrix, then an array is returned. Finally, if it is a list, then a list of lists is returned.
 
-In order not to overcomplicate things, we start from collecting the conditional mean from the `predict()` function:
+In order not to overcomplicate things, we start with collecting the conditional mean from the `predict()` function:
 ```{r}
 ourValue <- c("pred")
 ```
@@ -483,7 +484,7 @@ apply(abs(returnedValues2$holdout - returnedValues2$pred),
 Comparing these errors with the ones from the previous model, we can conclude which of the approaches is more suitable for the data.
 
 We can also plot the forecasts from the rolling origin, which shows how the models behave:
-```{r roExample01, fig.cap="Rolling origin performance of two forecasting methods", fig.width=8, fig.height=6}
+```{r roExample01, fig.cap="Rolling origin performance of two forecasting methods.", fig.width=8, fig.height=6}
 par(mfcol=c(2,1), mar=c(4,4,3,1))
 plot(returnedValues1, main="ARIMA(0,1,1)")
 plot(returnedValues2, main="ARIMA(0,2,2)")
@@ -493,7 +494,7 @@ In Figure \@ref(fig:roExample01), the forecasts from different origins are close
 
 The rolling origin function from the `greybox` package also allows working with explanatory variables and returning prediction intervals if needed. Some further examples are discussed in the vignette of the package. Just run the command `vignette("ro","greybox")` in R to see it.
 
-Practically speaking, if we have a set of forecasts from different models we can analyse the distribution of error measures and come to conclusions about performance of models. Here is an example with analysis of performance for $h=1$ based on absolute errors:
+Practically speaking, if we have a set of forecasts from different models we can analyse the distribution of error measures and come to conclusions about the performance of models. Here is an example with an analysis of performance for $h=1$ based on absolute errors:
 
 ```{r roExample02, fig.cap="Boxplots of error measures of two methods."}
 aeValuesh1 <- cbind(abs(returnedValues1$holdout -
@@ -508,7 +509,7 @@ points(apply(aeValuesh1,2,mean),pch=16,col="red")
 The boxplots in Figure \@ref(fig:roExample02) can be interpreted as any other boxplot applied to random variables [see, for example, discussion in Section 5.2 of @SvetunkovSBA].
 
 ::: remark
-When it comes to applying `ro()` to models with explanatory variables, one can use the internal parameters `counti`, `counto` and `countf`, which define the size of the in-sample, the holdout and the full sample, respectively. An example of the code in this situation is shown below with a function `alm()` from `greybox` package being used for fitting a simple linear regression model.
+When it comes to applying `ro()` to models with explanatory variables, one can use the internal parameters `counti`, `counto`, and `countf`, which define the size of the in-sample, the holdout and the full sample, respectively. An example of the code in this situation is shown below with a function `alm()` from the `greybox` package being used for fitting a simple linear regression model.
 
 ```{r eval=FALSE}
 # Generate the data
@@ -521,7 +522,7 @@ ourCall <- "predict(alm(y~x, data=xreg[counti,,drop=FALSE]),
 # Extract the mean only
 ourValue <- "mean"
 # Run rolling origin
-testRO <- ro(xreg[,1],h=5,origins=5,ourCall,ourValue)
+testRO <- ro(xreg[,"y"],h=5,origins=5,ourCall,ourValue)
 # plot the result
 plot(testRO)
 ```
@@ -554,24 +555,24 @@ overalResults <-
                              c("Mean","Median")))
 round(overalResults,5)
 ```
-In this artificial example, it looks like the most accurate method in terms of mean and median RMSSE is Method 4, and the least accurate one is Method 2. However, the difference in terms of accuracy between methods 1, 3 and 4 does not look substantial. So, should we conclude that Method 4 is the best? Let's first look at the distribution of errors using `vioplot()` function from `vioplot` package (Figure \@ref(fig:smallCompetitionBoxplot)).
+In this artificial example, it looks like the most accurate method in terms of mean and median RMSSE is Method 4, and the least accurate one is Method 2. However, the difference in terms of accuracy between Methods 1, 3, and 4 does not look substantial. So, should we conclude that Method 4 is the best? Let's first look at the distribution of errors using `vioplot()` function from `vioplot` package (Figure \@ref(fig:smallCompetitionBoxplot)).
 
-```{r smallCompetitionBoxplot, fig.cap="Boxplot of RMSE for the artificial example"}
+```{r smallCompetitionBoxplot, fig.cap="Boxplot of RMSE for the artificial example."}
 vioplot::vioplot(smallCompetition)
 points(colMeans(smallCompetition), col="red", pch=16)
 ```
 
-The violin plots in Figure \@ref(fig:smallCompetitionBoxplot) show that the distribution of errors for Method 2 is shifted higher than the distributions of other methods. It also looks like Method 2 is working more consistently, meaning that the variability of the errors is lower (the size of the box on the graph). It is difficult to tell whether Method 1 is better than Methods 3 and 4 or not -- their boxes intersect and roughly look similar, with Method 4 having a slightly shorter box and Method 3 having the box slightly lower positioned.
+The violin plots in Figure \@ref(fig:smallCompetitionBoxplot) show that the distribution of errors for Method 2 is shifted higher than the distributions of other methods. It also looks like Method 2 is working more consistently, meaning that the variability of the errors is lower (the size of the box on the graph). It is difficult to tell whether Method 1 is better than Methods 3 and 4 or not -- their boxes intersect and roughly look similar, with Method 4 having a slightly shorter box and Method 3 having the box positioned slightly lower.
 
 This is all the basics of descriptive statistics, which allows concluding that in general, Methods 1, 3 and 4 do a better job than Method 2. This is also reflected in the mean and median error measures discussed above. So, what should we conclude?
 
 Well, we should not make hasty decisions, and we should remember that we are dealing with a sample of data (100 time series), so inevitably, the performance of methods will change if we try them on different data sets. If we had a population of all the time series in the world, we could run our methods and make a more solid conclusion about their performances. But here, we deal with a sample. So it might make sense to see whether the difference in performance of the methods is significant. How can we do that?
 
-We can **compare means** of distributions of errors using a parametric statistical test. We can try F-test [see, for example Section 10.4 of @Newbold2020], which will tell us whether the mean performance of methods is similar or not. Unfortunately, this will not tell us how the methods compare. But t-test [see Chapter 10 of @Newbold2020] could be used to do that instead for pairwise comparison. One could also use a regression model with dummy variables for methods, giving us parameters and their confidence intervals (based on t-statistics), telling us how the means of methods compare. However, F-test, t-test and t-statistics from regression rely on strong assumptions related to the distribution of the means of error measures [that it is symmetric, so that Central Limit Theorem works, see discussion in Section 6.2 of @SvetunkovSBA]. If we had a large sample (e.g. a thousand of series) and well-behaved distribution, we could try it, hoping that the central limit theorem would work and might get something relatively meaningful. However, on 100 observations, this still could be an issue, especially given that the distribution of error measures is typically asymmetric (the estimate of the mean might be biased, which leads to many issues).
+We can **compare means** of distributions of errors using a parametric statistical test. We can try the F-test [see, for example Section 10.4 of @Newbold2020], which will tell us whether the mean performance of methods is similar or not. Unfortunately, this will not tell us how the methods compare. But the t-test [see Chapter 10 of @Newbold2020] could be used to do that instead for pairwise comparison. One could also use a regression model with dummy variables for methods, giving us parameters and their confidence intervals (based on t-statistics), telling us how the means of methods compare. However, F-test, t-test, and t-statistics from regression rely on strong assumptions related to the distribution of the means of error measures [that it is symmetric, so that the Central Limit Theorem (CLT) works, see discussion in Section 6.2 of @SvetunkovSBA]. If we had a large sample (e.g. a thousand series) and well-behaved distribution, we could try it, hoping that the CLT would work and might get something relatively meaningful. However, on 100 observations, this still could be an issue, especially given that the distribution of error measures is typically asymmetric (the estimate of the mean might be biased, which leads to many issues).
 
 Alternatively, we can **compare medians** of distributions of errors. They are robust to outliers, so their estimates should not be too biased in case of skewed distributions on smaller samples. To have a general understanding of performance (is everything the same or is there at least one method that performs differently), we could try the Friedman test [@Friedman1937], which could be considered a nonparametric alternative of the F-test. This should work in our case but will not tell us how specifically the methods compare. We could try the Wilcoxon signed-ranks test [@Wilcoxon1945], which could be considered a nonparametric counterpart of the t-test. However, it only applies to two variables, while we want to compare four.
 
-Luckily, there is the Nemenyi/MCB test [@Demsar2006; @KourentzesWeb2012; @Koning2005]. What the test does, is it ranks the performance of methods for each time series and then takes the mean of those ranks and produces confidence bounds for those means. The means of ranks correspond to medians, so by using this test, we compare medians of errors of different methods. If the confidence bounds for different methods intersect, we can conclude that the medians are not different from a statistical point of view. Otherwise, we can see which of the methods has a higher rank and which has the lower one. There are different ways to present the test results, and there are several R functions that implement it, including `nemenyi()` from the `tsutils` package. However, we will use the function `rmcb()` from the `greybox`, which has more flexible plotting capabilities, supporting all the default parameters for the `plot()` method.
+Luckily, there is the Nemenyi/MCB test [@Demsar2006; @KourentzesWeb2012; @Koning2005]. What the test does, is it ranks the performance of methods for each time series and then takes the mean of those ranks and produces confidence bounds for those means. The means of ranks correspond to the medians, so by using this test, we compare the medians of errors of different methods. If the confidence bounds for different methods intersect, we can conclude that the medians are not different from a statistical point of view. Otherwise, we can see which of the methods has a higher rank and which has the lower one. There are different ways to present the test results, and there are several R functions that implement it, including `nemenyi()` from the `tsutils` package. However, we will use the function `rmcb()` from the `greybox`, which has more flexible plotting capabilities, supporting all the default parameters for the `plot()` method.
 
 ```{r eval=FALSE}
 rmcb(smallCompetition, outplot="none") |>
@@ -582,7 +583,7 @@ rmcb(smallCompetition, outplot="none") |>
 plot(smallCompetitionTest, outplot="mcb", main="")
 ```
 
-Figure \@ref(fig:mcbForCompetition) shows that Methods 1, 3 and 4 are not statistically different on 5% level -- their intervals intersect, so we cannot tell the difference between them, even though the mean rank of Method 4 is lower than for the other methods. Method 2, on the other hand, is significantly worse than the other methods on 5% level: it has the highest mean rank of all, and its interval does not intersect with the intervals of other methods.
+Figure \@ref(fig:mcbForCompetition) shows that Methods 1, 3, and 4 are not statistically different on the 5% level -- their intervals intersect, so we cannot tell the difference between them, even though the mean rank of Method 4 is lower than for the other methods. Method 2, on the other hand, is significantly worse than the other methods on the 5% level: it has the highest mean rank of all, and its interval does not intersect with the intervals of other methods.
 
 Note that while this is a good way of presenting the results, all the MCB test does is a comparison of mean ranks. It does not tell much about the distribution of errors and neglects the distances between values (i.e. 0.1 is lower than 0.11, so the first method has a lower rank, which is precisely the same result as with comparing 0.1 and 100). This happens because by doing the test, we move from a numerical scale to the ordinal one [see Section 1.2 of @SvetunkovSBA]. Finally, like any other statistical test, it will become more powerful when the sample increases. We know that the null hypothesis "variables are equal to each other" in reality is always wrong [see Section 7.1 of @SvetunkovSBA], so the increase of sample size will lead at some point to the correct conclusion: methods are statistically different. Here is a demonstration of this assertion:
 
@@ -604,4 +605,4 @@ rmcb(largeCompetition, outplot="none") |>
 plot(largeCompetitionTest, outplot="mcb", main="")
 ```
 
-In the plot in Figure \@ref(fig:mcbForCompetitionLarge), Method 4 has become significantly worse than Methods 1 and 3 in terms of mean ranks on 5% level (note that it was winning in the small competition). The difference between Methods 1 and 3 is still not significant on 5%, but it would become if we continue increasing the sample size. This example tells us that we need to be careful when selecting the best method, as this might change under different circumstances. At least we knew from the start that Method 2 was not suitable.
+In the plot in Figure \@ref(fig:mcbForCompetitionLarge), Method 4 has become significantly worse than Methods 1 and 3 in terms of the mean ranks on the 5% level (note that it was winning in the small competition). The difference between Methods 1 and 3 is still not significant at 5%, but it would become so if we continued increasing the sample size. This example tells us that we need to be careful when selecting the best method, as this might change under different circumstances. At least we knew from the start that Method 2 was not suitable.
