@@ -343,7 +343,7 @@ The plot in Figure \@ref(fig:ROProcessAnimation) shows how the origin moves forw
 
 Figure \@ref(fig:ROProcessCO) [@Svetunkov2017] illustrates the basic idea behind rolling origin. White cells correspond to the in-sample data, while the light grey cells correspond to the three steps ahead forecasts. The time series in the figure has 25 observations, and forecasts are produced for eight origins starting from observation 15. In the first step, the model is estimated on the first in-sample set, and forecasts are created for the holdout. Next, another observation is added to the end of the in-sample set, the test set is advanced, and the procedure is repeated. The process stops when there is no more data left. This is a rolling origin with a **constant holdout** sample size. As a result of this procedure, eight one to three steps ahead forecasts are produced. Based on them, we can calculate the preferred error measures and choose the best performing model (see Section \@ref(errorMeasuresAggregate)).
 
-```{r ROProcessCO, out.width="75%", echo=FALSE, fig.cap="Rolling origin with constant holdout size from \@Svetunkov2017."}
+```{r ROProcessCO, out.width="75%", echo=FALSE, fig.cap="Rolling origin with constant holdout size from Svetunkov and Petropoulos, (2018)."}
 if (knitr:::is_latex_output()) {
     # knitr::asis_output('\\includegraphics{./images/03-ROProcessCO.jpg}')
     knitr::include_graphics("./images/03-ROProcessCO.jpg")
@@ -365,7 +365,7 @@ if (knitr:::is_latex_output()) {
 
 Finally, in both cases above, we had the **increasing in-sample** size. However, we might need a **constant in-sample** for some research purposes. Figure \@ref(fig:ROProcessCOCI) demonstrates such a setup. In this case, in each iteration, we add an observation to the end of the in-sample series and remove one from the beginning (dark grey cells).
 
-```{r ROProcessCOCI, out.width="75%", echo=FALSE, fig.cap="Rolling origin with constant in-sample size"}
+```{r ROProcessCOCI, out.width="75%", echo=FALSE, fig.cap="Rolling origin with constant in-sample size."}
 if (knitr:::is_latex_output()) {
     # knitr::asis_output('\\includegraphics{./images/03-ROProcessCOCI.jpg}')
     knitr::include_graphics("./images/03-ROProcessCOCI.jpg")
@@ -376,7 +376,7 @@ if (knitr:::is_latex_output()) {
 
 
 ### Implementing rolling origin in R
-Now that we discussed the main idea of rolling origin, we can see how it can be implemented in R. In this section, we will implement rolling origin with a fixed holdout sample size and a changing in-sample. This aligns with what is typically done in practice when new data arrives, the model is re-estimated, and forecasts are produced for the next $h$ steps ahead. For this example, we will use artificially created data and apply a Simple Moving Average (discussed Subsection \@ref(SMA)) implemented in the `smooth` package.
+Now that we discussed the main idea of rolling origin, we can see how it can be implemented in R. In this section, we will implement rolling origin with a fixed holdout sample size and a changing in-sample. This aligns with what is typically done in practice when new data arrives: the model is re-estimated, and forecasts are produced for the next $h$ steps ahead. For this example, we will use artificially created data and apply a Simple Moving Average (discussed in Subsection \@ref(SMA)) implemented in the `smooth` package.
 
 ```{r}
 # Set sample to 100 observations
@@ -445,7 +445,7 @@ We use an ARIMA(0,1,1) model implemented in the `stats` package (this model is d
 ourCall <- "predict(arima(x=data,order=c(0,1,1)),n.ahead=h)"
 ```
 
-The call that we specify includes two important elements: `data` and `h`. `data` specifies where the in-sample values are located in the function that we want to use, and **it needs to be called "data"** in the call; `h` will tell our function, where the forecasting horizon is specified in the provided line of code. Note that in this example we use `arima(x=data,order=c(0,1,1))`, which produces a desired ARIMA(0,1,1) model and then we use `predict(..., n.ahead=h)`, which produces an h steps ahead forecast from that model.
+The call that we specify includes two important elements: `data` and `h`. `data` specifies where the in-sample values are located in the function that we want to use, and **it needs to be called "data"** in the call; `h` will tell our function, where the forecasting horizon is specified in the provided line of code. Note that in this example we use `arima(x=data,order=c(0,1,1))`, which produces a desired ARIMA(0,1,1) model and then we use `predict(..., n.ahead=h)`, which produces an $h$ steps ahead forecast from that model.
 
 Having the call, we also need to specify what the function should return. This can be the conditional mean (point forecasts), prediction intervals, the parameters of a model, or, in fact, anything that the model returns (e.g. name of the fitted model and its likelihood). However, there are some differences in what `ro()` returns depending on what the function returns. If it is a vector, then `ro()` will produce a matrix (with values for each origin in columns). If it is a matrix, then an array is returned. Finally, if it is a list, then a list of lists is returned.
 

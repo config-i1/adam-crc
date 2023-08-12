@@ -180,7 +180,7 @@ The model \@ref(eq:ADAMARIMAExpandedMultiplicative) can be written in the follow
   \end{aligned},
   (\#eq:ADAMStateSpaceMultiplicative)
 \end{equation}
-where $\mathbf{w}$, $\mathbf{F}$, $\mathbf{v}_t$, $\mathbf{g}$ and $\boldsymbol{l}$ are defined as before for the pure additive ARIMA (Section \@ref(StateSpaceARIMA)). This model is equivalent to applying ARIMA to log-transformed data but at the same time shares some similarities with the pure multiplicative ETS from Section \@ref(ADAMETSPureMultiplicative). The main advantage of this formulation is that this model has analytical solutions for the conditional moments and has well-defined h steps ahead conditional distribution if the distribution of $\log(1+\epsilon_t)$ supports convolutions. This simplifies substantially the work with the model in contrast with the pure multiplicative ETS.
+where $\mathbf{w}$, $\mathbf{F}$, $\mathbf{v}_t$, $\mathbf{g}$ and $\boldsymbol{l}$ are defined as before for the pure additive ARIMA (Section \@ref(StateSpaceARIMA)). This model is equivalent to applying ARIMA to log-transformed data but at the same time shares some similarities with the pure multiplicative ETS from Section \@ref(ADAMETSPureMultiplicative). The main advantage of this formulation is that this model has analytical solutions for the conditional moments and has well-defined $h$ steps ahead conditional distribution if the distribution of $\log(1+\epsilon_t)$ supports convolutions. This simplifies substantially the work with the model in contrast with the pure multiplicative ETS.
 
 To distinguish the additive ARIMA from the multiplicative one, we will use the notation "logARIMA" in this book, pointing out what such model is equivalent to (applying ARIMA to the log-transformed data).
 
@@ -377,10 +377,10 @@ For multiplicative ARIMA:
 3. Gamma: $\left(1+\epsilon_t \right) \sim \mathcal{\Gamma}(\sigma^{-2}, \sigma^2)$.
 
 The restrictions imposed on the model parameters are inherited from the ADAM ETS.
-<!-- In the case of the pure additive models, they ensure that the conditional h steps ahead mean is not impacted by the location of distribution (thus $\mu_\epsilon=0$); in case of pure multiplicative models, they ensure that the conditional h steps ahead mean just equals the point forecast (thus imposing $\mathrm{E}(1+\epsilon_t)=1$). -->
+<!-- In the case of the pure additive models, they ensure that the conditional $h$ steps ahead mean is not impacted by the location of distribution (thus $\mu_\epsilon=0$); in case of pure multiplicative models, they ensure that the conditional $h$ steps ahead mean just equals the point forecast (thus imposing $\mathrm{E}(1+\epsilon_t)=1$). -->
 
 ### Conditional distributions
-When it comes to conditional distribution of variables, additive ADAM ARIMA with the assumptions above has closed forms for all of them. For example, if we work with additive ARIMA, then according to recursive relation \@ref(eq:ADAMARIMAStateSpacePureAdditiveRecursion) from Section \@ref(ADAMARIMARecursive), the h steps ahead value follows the same distribution but with different conditional mean and variance. For example, if $\epsilon_t \sim \mathcal{GN}(0, s, \beta)$, then $y_{t+h} \sim \mathcal{GN}(\mu_{y,t+h}, s_{h}, \beta)$, where $s_{h}$ is the conditional h steps ahead scale, found from the connection between variance and scale in Generalised Normal distribution via:
+When it comes to conditional distribution of variables, additive ADAM ARIMA with the assumptions above has closed forms for all of them. For example, if we work with additive ARIMA, then according to recursive relation \@ref(eq:ADAMARIMAStateSpacePureAdditiveRecursion) from Section \@ref(ADAMARIMARecursive), the $h$ steps ahead value follows the same distribution but with different conditional mean and variance. For example, if $\epsilon_t \sim \mathcal{GN}(0, s, \beta)$, then $y_{t+h} \sim \mathcal{GN}(\mu_{y,t+h}, s_{h}, \beta)$, where $s_{h}$ is the conditional $h$ steps ahead scale, found from the connection between variance and scale in Generalised Normal distribution via:
 \begin{equation*}
     s_h = \sqrt{\frac{\sigma^2_h \Gamma(1/\beta)}{\Gamma(3/\beta)}}.
 \end{equation*}

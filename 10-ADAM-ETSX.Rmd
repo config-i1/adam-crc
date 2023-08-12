@@ -155,7 +155,7 @@ Here is what we will have for the moments of the model in the case of ETSX(A,N,N
   \end{aligned},
   (\#eq:ETSXADAMStateSpaceANNRecursionMeanAndVarianceRandomness)
 \end{equation}
-where $\sigma^2_{x_{i,h}}$ is the conditional variance of $x_{i}$ h steps ahead, $\sigma_{x_{i,h},x_{j,h}}$ is the h steps ahead covariance between the explanatory variables $x_{i,t+h}$ and $x_{j,t+h}$, both conditional on the information available at the observation $t$. Similarly, if we are interested in one step ahead point forecast from the model, it should take the randomness of explanatory variables into account and become:
+where $\sigma^2_{x_{i,h}}$ is the conditional variance of $x_{i}$ $h$ steps ahead, $\sigma_{x_{i,h},x_{j,h}}$ is the $h$ steps ahead covariance between the explanatory variables $x_{i,t+h}$ and $x_{j,t+h}$, both conditional on the information available at the observation $t$. Similarly, if we are interested in one step ahead point forecast from the model, it should take the randomness of explanatory variables into account and become:
 \begin{equation}
   \begin{aligned}
     \mu_{y,t |t-1} = &  \left. \mathrm{E}\left(l_{t-1} + \sum_{i=1}^n a_i x_{i,t} + \epsilon_{t} \right| t-1 \right) = \\
@@ -284,7 +284,7 @@ In the case of stochastic explanatory variables, the conditional expectation is 
     \mu_{y,t+h} = \text{E}(y_{t+h}|t) = \boldsymbol{\mu}'_{w,t+h} \mathbf{F}^{h-1} \mathbf{v}_{t} ,
   (\#eq:ADAMETSXPureAdditiveDynamicNonSeasonalMomentsRandom)
 \end{equation}
-where $\boldsymbol{\mu}'_{w,t+h}$ is the vector of conditional h steps ahead expectations for each element in the $\mathbf{w}_{t+h}$. In the case of ETS components, the vector would contain ones. However, when it comes to conditional variance, it becomes more complicated because it introduces complex interactions between variances of different variables and the error term of the model. As a result, it would be easier to get the correct variance based on simulations, assuming that the explanatory variables and the error term change according to some assumed models instead of deriving analytical expressions.
+where $\boldsymbol{\mu}'_{w,t+h}$ is the vector of conditional $h$ steps ahead expectations for each element in the $\mathbf{w}_{t+h}$. In the case of ETS components, the vector would contain ones. However, when it comes to conditional variance, it becomes more complicated because it introduces complex interactions between variances of different variables and the error term of the model. As a result, it would be easier to get the correct variance based on simulations, assuming that the explanatory variables and the error term change according to some assumed models instead of deriving analytical expressions.
 
 
 ## Stability and forecastability conditions of ADAMX

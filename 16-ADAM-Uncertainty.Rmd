@@ -219,7 +219,7 @@ This variance can then be used to calculate the confidence interval for the fitt
   (\#eq:ETSADAMStateSpacePureAdditiveFittedVarianceANN)
 \end{equation}
 
-Finally, the variance of the initial states will also impact the conditional h steps ahead variance of the model. This can be seen from the recursion \@ref(eq:ETSADAMStateSpacePureAdditiveRecursion05), which in case of non-seasonal models simplifies to:
+Finally, the variance of the initial states will also impact the conditional $h$ steps ahead variance of the model. This can be seen from the recursion \@ref(eq:ETSADAMStateSpacePureAdditiveRecursion05), which in case of non-seasonal models simplifies to:
 \begin{equation}
     y_{t+h} = \mathbf{w}^\prime \mathbf{F}^{h-1} \hat{\mathbf{v}}_{t} + \mathbf{w}^\prime \sum_{j=1}^{h-1} \mathbf{F}^{j-1} \mathbf{g} e_{t+h-j} + e_{t+h} .
   (\#eq:ETSADAMStateSpacePureAdditiveForecastVariance01)
@@ -298,7 +298,7 @@ As discussed in Section \@ref(pureAdditiveExpectationAndVariance), the condition
     \mathrm{V}(y_{t+h}|t) = \mathbf{w}^\prime \mathrm{V}(\mathbf{v}_{t+h-1}|t) \mathbf{w} + \sigma^2
   (\#eq:ETSADAMStateSpacePureAdditiveVariance07)
 \end{equation}
-Inserting \@ref(eq:ETSADAMStateSpacePureAdditiveVariance06) in \@ref(eq:ETSADAMStateSpacePureAdditiveVariance07), we get the final conditional h steps ahead variance of the model:
+Inserting \@ref(eq:ETSADAMStateSpacePureAdditiveVariance06) in \@ref(eq:ETSADAMStateSpacePureAdditiveVariance07), we get the final conditional $h$ steps ahead variance of the model:
 \begin{equation}
     \sigma^2_h = \mathrm{V}(y_{t+h}|t) = \left(\mathbf{w}^\prime \sum_{j=1}^{h-1} \mathbf{F}^{j-1} \left( \mathrm{V} (\hat{\mathbf{g}}) + \mathrm{E} (\hat{\mathbf{g}}) \mathrm{E} (\hat{\mathbf{g}})^\prime \right) (\mathbf{F}^{j})^\prime \mathbf{w} + 1 \right)\sigma^2,
   (\#eq:ETSADAMStateSpacePureAdditiveVarianceFinal)

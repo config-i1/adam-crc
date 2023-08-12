@@ -137,7 +137,7 @@ where $\sigma^2$ is the variance of the error term. The formulae \@ref(eq:ETSADA
     y_{t+h} \in \left( \text{E}(y_{t+h}|t) + z_{\frac{\alpha}{2}} \sqrt{\text{V}(y_{t+h}|t)}, \text{E}(y_{t+h}|t) + z_{1-\frac{\alpha}{2}} \sqrt{\text{V}(y_{t+h}|t)} \right),
   (\#eq:ETSADAMStateSpacePureAdditivePredictionInterval)
 \end{equation}
-where $z_{\frac{\alpha}{2}}$ is the quantile of standardised Normal distribution for the level $\frac{\alpha}{2}$. When it comes to other distributions (see Section \@ref(ADAMETSAdditiveDistributions)), in order to get the conditional h steps ahead scale parameter, we can first calculate the variance using \@ref(eq:ETSADAMStateSpacePureAdditiveRecursionMeanAndVariance) and then using the relation between the scale and the variance for the specific distribution to get the necessary value (this is discussed in Section \@ref(ADAMETSAdditiveDistributions)).
+where $z_{\frac{\alpha}{2}}$ is the quantile of standardised Normal distribution for the level $\frac{\alpha}{2}$. When it comes to other distributions (see Section \@ref(ADAMETSAdditiveDistributions)), in order to get the conditional $h$ steps ahead scale parameter, we can first calculate the variance using \@ref(eq:ETSADAMStateSpacePureAdditiveRecursionMeanAndVariance) and then using the relation between the scale and the variance for the specific distribution to get the necessary value (this is discussed in Section \@ref(ADAMETSAdditiveDistributions)).
 
 
 ### Example with ETS(A,N,N)
