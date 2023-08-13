@@ -204,7 +204,7 @@
 
 \title{Forecasting and Analytics with the Augmented Dynamic Adaptive Model (ADAM)}
 \author{Ivan Svetunkov}
-\date{2023-08-12}
+\date{2023-08-13}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -494,7 +494,7 @@ As some forecasters say, all point forecasts are wrong. They will never correspo
 \caption{\label{fig:adamExampleNormal}An example of a well-behaved data, point forecast, and a 95\% prediction interval.}
 \end{figure}
 
-Figure \ref{fig:adamExampleNormal} shows an example with a well-behaved demand, for which the best point forecast is the straight line. To capture the uncertainty of demand, we can construct the prediction interval, which will tell roughly where the demand will lie in \(1-\alpha\) percent of cases. The interval in Figure \ref{fig:adamExampleNormal} has the width of 95\% (significance level \(\alpha=0.05\)) and shows that if the situation is repeated many times, the actual demand will be between 79.7 and 118.92. Capturing the uncertainty correctly is important because real-life decisions need to be made based on the full information, not only on the point forecasts.
+Figure \ref{fig:adamExampleNormal} shows an example with a well-behaved demand, for which the best point forecast is the straight line. To capture the uncertainty of demand, we can construct the prediction interval, which will tell roughly where the demand will lie in \(1-\alpha\) percent of cases. The interval in Figure \ref{fig:adamExampleNormal} has the width of 95\% (significance level \(\alpha=0.05\)) and shows that if the situation is repeated many times, the actual demand will be between 79.18 and 116.57. Capturing the uncertainty correctly is important because real-life decisions need to be made based on the full information, not only on the point forecasts.
 
 We will discuss how to produce prediction intervals in more detail in Section \ref{ADAMForecastingPI}. For a more detailed discussion on the concepts of prediction and confidence intervals, see Chapter 6 of \citet{SvetunkovSBA}.
 
@@ -1101,7 +1101,7 @@ Finally, in both cases above, we had the \textbf{increasing in-sample} size. How
 \hypertarget{implementing-rolling-origin-in-r}{%
 \subsection{Implementing rolling origin in R}\label{implementing-rolling-origin-in-r}}
 
-Now that we discussed the main idea of rolling origin, we can see how it can be implemented in R. In this section, we will implement rolling origin with a fixed holdout sample size and a changing in-sample. This aligns with what is typically done in practice when new data arrives: the model is re-estimated, and forecasts are produced for the next \(h\) steps ahead. For this example, we will use artificially created data and apply a Simple Moving Average (discussed in Subsection \ref{SMA}) implemented in the \texttt{smooth} package.
+Now that we discussed the main idea of rolling origin, we can see how it can be implemented in R. In this section, we will implement rolling origin with a fixed holdout sample size and a changing in-sample. This aligns with what is typically done in practice when new data arrives: the model is re-estimated, and forecasts are produced for the next \(h\) steps ahead. For this example, we will use artificially created data and apply a Simple Moving Average (discussed in subsection \ref{SMA}) implemented in the \texttt{smooth} package.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1238,7 +1238,7 @@ The function returns a list with all the values that we asked for plus the actua
 
 \begin{verbatim}
 ##         h1         h2         h3 
-## 0.04829449 0.03598648 0.03906182
+## 0.05922375 0.06357304 0.06308183
 \end{verbatim}
 
 In this example, we use the \texttt{apply()} function to distinguish between the different forecasting horizons and have an idea of how the model performs for each of them. These numbers do not tell us much on their own, but if we compare the performance of this model with an alternative one, we could infer if one model is more appropriate for the data than the other one. For example, applying ARIMA(0,2,2) to the same data, we will get:
@@ -1256,7 +1256,7 @@ In this example, we use the \texttt{apply()} function to distinguish between the
 
 \begin{verbatim}
 ##         h1         h2         h3 
-## 0.05615764 0.04273339 0.04668124
+## 0.06825504 0.07168090 0.06355132
 \end{verbatim}
 
 Comparing these errors with the ones from the previous model, we can conclude which of the approaches is more suitable for the data.
@@ -1438,9 +1438,9 @@ In the plot in Figure \ref{fig:mcbForCompetitionLarge}, Method 4 has become sign
 \hypertarget{tsDecomposition}{%
 \chapter{Time series components and simple forecasting methods}\label{tsDecomposition}}
 
-Before we turn to the state space framework, ETS, ARIMA and other models, we need to discuss time series decomposition and the ETS taxonomy. These topics lie at the heart of ETS models and are essential for understanding further material.
+Before we turn to the state space framework, ETS, ARIMA, and other models, we need to discuss time series decomposition and the ETS taxonomy. These topics lie at the heart of ETS models and are essential for understanding further material.
 
-In this chapter, we start with a discussion of time series components, then move to the idea of decomposing time series into distinct components and applying simple forecasting methods, including Naïve, Global Average, Simple Moving Average and Simple Exponential Smoothing.
+In this chapter, we start with a discussion of time series components, then move to the idea of decomposing time series into distinct components and applying simple forecasting methods, including Naïve, Global Average, Simple Moving Average, and Simple Exponential Smoothing.
 
 \hypertarget{tsComponents}{%
 \section{Time series components}\label{tsComponents}}
@@ -1451,11 +1451,11 @@ The main idea behind many forecasting techniques is that any time series can inc
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Level} of the series -- the average value for a specific time period,
+  \textbf{Level} of the series -- the average value for a specific time period;
 \item
-  \textbf{Growth} of the series -- the average increase or decrease of the value over a period of time,
+  \textbf{Growth} of the series -- the average increase or decrease of the value over a period of time;
 \item
-  \textbf{Seasonality} -- a pattern that repeats itself with a fixed periodicity.
+  \textbf{Seasonality} -- a pattern that repeats itself with a fixed periodicity;
 \item
   \textbf{Error} -- unexplainable white noise.
 \end{enumerate}
@@ -1496,7 +1496,7 @@ If the time series exhibits growth, the level will change depending on the obser
 \caption{\label{fig:trendExample}Time series with a positive trend and no variability.}
 \end{figure}
 
-The seasonal pattern will introduce some similarities from one period to another. This pattern does not have to literally be seasonal, like beer sales being higher in Summer than in Winter (season of the year). Any pattern with a fixed periodicity works: the number of hospital visitors is higher on Mondays than on Saturdays or Sundays because people tend to stay at home over the weekend. This can be considered as the day of week seasonality. Furthermore, if we deal with hourly data, sales are higher during the daytime than at night (hour of the day seasonality). Adding a deterministic seasonal component to the example above will result in fluctuations around the straight line, as shown in Figure \ref{fig:seasonalExample}.
+The seasonal pattern will introduce some similarities from one period to another. This pattern does not have to literally be seasonal, like beer sales being higher in summer than in winter (seasons of the year). Any pattern with a fixed periodicity works: the number of hospital visitors is higher on Mondays than on Saturdays or Sundays because people tend to stay at home over the weekend. This can be considered as the day of week seasonality. Furthermore, if we deal with hourly data, sales are higher during the daytime than at night (hour of the day seasonality). Adding a deterministic seasonal component to the example above will result in fluctuations around the straight line, as shown in Figure \ref{fig:seasonalExample}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1509,11 +1509,11 @@ The seasonal pattern will introduce some similarities from one period to another
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/seasonalExample-1.pdf}
-\caption{\label{fig:seasonalExample}Time series with a positive trend, seasonal pattern and no variability.}
+\caption{\label{fig:seasonalExample}Time series with a positive trend, seasonal pattern, and no variability.}
 \end{figure}
 
 \begin{remark}
-When it comes to giving names to different types of seasonality, you can meet terms like ``monthly'', ``weekly'' or ``intra-monthly'', ``intra-weekly''. In some cases these names are self explanatory (e.g.~when we have monthly data and use the term ``monthly'' seasonality), but in general this might be misleading. This is why I prefer ``frequency 1 of frequency 2'' naming, e.g.~``month of year'' or ``week of year'', which is more precise and less ambiguous than the names mentioned above.
+When it comes to giving names to different types of seasonality, you can meet terms like ``monthly'' and ``weekly'' or ``intra-monthly'' and ``intra-weekly''. In some cases these names are self explanatory (e.g.~when we have monthly data and use the term ``monthly'' seasonality), but in general this might be misleading. This is why I prefer ``frequency 1 of frequency 2'' naming, e.g.~``month of year'' or ``week of year'', which is more precise and less ambiguous than the names mentioned above.
 \end{remark}
 
 Finally, we can introduce the random error to the plots above to have a more realistic time series as shown in Figure \ref{fig:allExample}.
@@ -1527,10 +1527,10 @@ Finally, we can introduce the random error to the plots above to have a more rea
 Figure \ref{fig:allExample} shows artificial time series with the above components. The level, growth, and seasonal components in those plots are \textbf{deterministic}, they are fixed and do not evolve over time (growth is positive and equal to 1 from year to year). However, in real life, typically, these components will have more complex dynamics, changing over time and thus demonstrating their \textbf{stochastic} nature. For example, in the case of stochastic seasonality, the seasonal shape might change, and instead of having peaks in sales in December, the data would exhibit peaks in February due to the change in consumers' behaviour.
 
 \begin{remark}
-Each textbook and paper might use slightly different names to refer to the aforementioned components. For example, in classical decomposition \citep{Persons1919}, it is assumed that (1) and (2) jointly represent a ``trend'' component so that a model will contain error, trend and seasonality.
+Each textbook and paper might use slightly different names to refer to the aforementioned components. For example, in classical decomposition \citep{Persons1919}, it is assumed that (1) and (2) jointly represent a ``trend'' component so that a model will contain error, trend, and seasonality.
 \end{remark}
 
-When it comes to ETS, the growth component (2) is called ``trend'', so the model consists of the four components: level, trend, seasonal and the error term. We will use the ETS formulation in this monograph. According to it, the components can interact in one of two ways: additively or multiplicatively. The pure additive model, in this case, can be written as:
+When it comes to ETS, the growth component (2) is called ``trend'', so the model consists of the four components: level, trend, seasonal, and the error term. We will use the ETS formulation in this monograph. According to it, the components can interact in one of two ways: additively or multiplicatively. The pure additive model, in this case, can be written as:
 \begin{equation}
     y_t = l_{t-1} + b_{t-1} + s_{t-m} + \epsilon_t ,
     \label{eq:PureAdditive}
@@ -1540,7 +1540,7 @@ where \(l_{t-1}\) is the level, \(b_{t-1}\) is the trend, \(s_{t-m}\) is the sea
     y_t = l_{t-1} b_{t-1} s_{t-m} \varepsilon_t ,
     \label{eq:PureMultiplicative}
 \end{equation}
-where \(\varepsilon_t\) is the error term with a mean of one. The interpretation of the model \eqref{eq:PureAdditive} is that the different components add up to each other, so, for example, the sales increase over time by the value \(b_{t-1}\), and each January they typically change by the amount \(s_{t-m}\), and in addition there is some randomness in the model. The pure additive models can be applied to data with positive, negative and zero values. In the case of the multiplicative model \eqref{eq:PureMultiplicative}, the interpretation is different, showing by how many times the sales change over time and from one season to another. The sales, in this case, will change every January by \((s_{t-m}-1)\)\% from the baseline. The model \eqref{eq:PureMultiplicative} only works on strictly positive data (data with purely negative values are also possible but rare in practice).
+where \(\varepsilon_t\) is the error term with a mean of one. The interpretation of the model \eqref{eq:PureAdditive} is that the different components add up to each other, so, for example, the sales increase over time by the value \(b_{t-1}\), and each January they typically change by the amount \(s_{t-m}\), and in addition there is some randomness in the model. The pure additive models can be applied to data with positive, negative, and zero values. In the case of the multiplicative model \eqref{eq:PureMultiplicative}, the interpretation is different, showing by how many times the sales change over time and from one season to another. The sales, in this case, will change every January by \((s_{t-m}-1)\)\% from the baseline. The model \eqref{eq:PureMultiplicative} only works on strictly positive data (data with purely negative values are also possible but rare in practice).
 
 It is also possible to define mixed models in which, for example, the trend is additive but the other components are multiplicative:
 \begin{equation}
@@ -1550,11 +1550,11 @@ It is also possible to define mixed models in which, for example, the trend is a
 These models work well in practice when the data has large values, far from zero. In other cases, however, they might break and produce strange results (e.g.~negative values on positive data), so the conventional decomposition techniques only consider the pure models.
 
 \begin{remark}
-Sometimes the model with time series components is compared with the regression model. Just to remind a reader, the latter can be formulated as:
+Sometimes the model with time series components is compared with the regression model. Just to remind the reader, the latter can be formulated as:
 \begin{equation*}
   {y}_{t} = a_{0} + a_{1} x_{1,t} + a_{2} x_{2,t} + \dots + a_{n} x_{n,t} + \epsilon_t ,
 \end{equation*}
-where \(a_j\) is a \(j\)-th parameter for an explanatory variable \(x_{j,t}\). One of the mistakes that is made in the forecasting context in this case, is to assume that the components resemble explanatory variables in the regression context. This is incorrect. The components correspond to the parameters of a regression model if we allow them to vary over time. We will show in Section \ref{ETSXDynamicCategories} an example of how seasonal component \(s_t\) can be also modelled via parameters of a regression model.
+where \(a_j\) is a \(j\)-th parameter for an explanatory variable \(x_{j,t}\). One of the mistakes that is made in the forecasting context in this case, is to assume that the components resemble explanatory variables in the regression context. This is incorrect. The components correspond to the parameters of a regression model if we allow them to vary over time. We will show in Section \ref{ETSXDynamicCategories} an example of how the seasonal component \(s_t\) can also be modelled via the parameters of a regression model.
 \end{remark}
 
 \hypertarget{ClassicalDecomposition}{%
@@ -1563,13 +1563,13 @@ where \(a_j\) is a \(j\)-th parameter for an explanatory variable \(x_{j,t}\). O
 \hypertarget{ClassicalDecompositionHow}{%
 \subsection{How to do?}\label{ClassicalDecompositionHow}}
 
-One of the classical textbook methods for decomposing the time series into unobservable components is ``Classical Seasonal Decomposition'' \citep{Persons1919}. It assumes either a pure additive or pure multiplicative model, is done using centred moving averages and is focused on splitting the data into components, not on forecasting. The idea of the method can be summarised in the following steps:
+One of the classical textbook methods for decomposing the time series into unobservable components is ``Classical Seasonal Decomposition'' \citep{Persons1919}. It assumes either a pure additive or pure multiplicative model, is done using centred moving averages, and is focused on splitting the data into components, not on forecasting. The idea of the method can be summarised in the following steps:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Decide which of the models to use based on the type of seasonality in the data: additive \eqref{eq:PureAdditive} or multiplicative \eqref{eq:PureMultiplicative}
+  Decide which of the models to use based on the type of seasonality in the data: additive \eqref{eq:PureAdditive} or multiplicative \eqref{eq:PureMultiplicative};
 \item
   Smooth the data using a centred moving average (CMA) of order equal to the periodicity of the data \(m\). If \(m\) is an odd number then the formula is:
   \begin{equation}
@@ -1599,7 +1599,7 @@ In R, the \texttt{ma()} function from the \texttt{forecast} package implements C
 \begin{itemize}
 \tightlist
 \item
-  For the additive decomposition this is done using: \({y^\prime}_t = y_t -d_t\);
+  For the additive decomposition, this is done using: \({y^\prime}_t = y_t -d_t\);
 \item
   For the multiplicative decomposition, it is: \({y^\prime}_t = \frac{y_t}{d_t}\);
 \end{itemize}
@@ -1610,7 +1610,7 @@ After that the series will only contain the residuals together with the seasonal
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
 \item
-  If the data is seasonal, the average value for each period is calculated based on the de-trended series. e.g.~we produce average seasonal indices for each January, February, etc. This will give us the set of seasonal indices \(s_t\). If the data is non-seasonal, we skip this step;
+  If the data is seasonal, the average value for each period is calculated based on the de-trended series, e.g.~we produce average seasonal indices for each January, February, etc. This will give us the set of seasonal indices \(s_t\). If the data is non-seasonal, we skip this step;
 \item
   Calculate the residuals based on what you assume in the model:
 \end{enumerate}
@@ -1625,7 +1625,7 @@ After that the series will only contain the residuals together with the seasonal
   no seasonality: \(e_t = {y^\prime}_t\).
 \end{itemize}
 
-After doing steps (1) - (5), we will obtain several variables, containng the components of time series: \(s_t\), \(d_t\) and \(e_t\).
+After doing steps (1) - (5), we will obtain several variables containing the components of a time series: \(s_t\), \(d_t\), and \(e_t\).
 
 \begin{remark}
 The functions in R typically allow selecting between additive and multiplicative seasonality. There is no option for ``none'', and so even if the data is not seasonal, you will nonetheless get values for \(s_t\) in the output. Also, notice that the classical decomposition assumes that there is a deseasonalised series \(d_t\) but does not make any further split of this variable into level \(l_t\) and trend \(b_t\).
@@ -1634,7 +1634,7 @@ The functions in R typically allow selecting between additive and multiplicative
 \hypertarget{a-couple-of-examples}{%
 \subsection{A couple of examples}\label{a-couple-of-examples}}
 
-An example of the classical decomposition in R is the \texttt{decompose()} function from \texttt{stats} package. Here is an example with pure multiplicative model and \texttt{AirPassengers} data (Figure \ref{fig:decomposeAirPassengers}).
+An example of the classical decomposition in R is the \texttt{decompose()} function from the \texttt{stats} package. Here is an example with a pure multiplicative model and \texttt{AirPassengers} data (Figure \ref{fig:decomposeAirPassengers}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1650,9 +1650,9 @@ An example of the classical decomposition in R is the \texttt{decompose()} funct
 \caption{\label{fig:decomposeAirPassengers}Decomposition of AirPassengers time series according to multiplicative model.}
 \end{figure}
 
-We can see from Figure \ref{fig:decomposeAirPassengers} that the function has smoothed the original series and produced the seasonal indices. Note that the trend component has gaps at the beginning and the end. This is because the method relies on CMA (see above). Note also that the error term still contains some seasonal elements, which is a downside of such a simple decomposition procedure. However, the lack of precision in this method is compensated by the simplicity and speed of calculation. Note again that the trend component in \texttt{decompose()} function is in fact \(d_t = l_{t}+b_{t}\).
+We can see from Figure \ref{fig:decomposeAirPassengers} that the function has smoothed the original series and produced the seasonal indices. Note that the trend component has gaps at the beginning and the end. This is because the method relies on CMA (see above). Note also that the error term still contains some seasonal elements, which is a downside of such a simple decomposition procedure. However, the lack of precision in this method is compensated for by the simplicity and speed of calculation. Note again that the trend component in the \texttt{decompose()} function is in fact \(d_t = l_{t}+b_{t}\).
 
-Figure \ref{fig:decomposeRandomNoise} shows an example of decomposition of the \textbf{non-seasonal data} (we assume pure additive model in this example).
+Figure \ref{fig:decomposeRandomNoise} shows an example of decomposition of the \textbf{non-seasonal data} (we assume the pure additive model in this example).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1665,15 +1665,15 @@ Figure \ref{fig:decomposeRandomNoise} shows an example of decomposition of the \
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/decomposeRandomNoise-1.pdf}
-\caption{\label{fig:decomposeRandomNoise}Decomposition of AirPassengers time series according to additive model.}
+\caption{\label{fig:decomposeRandomNoise}Decomposition of AirPassengers time series according to the additive model.}
 \end{figure}
 
-As we can see from Figure \ref{fig:decomposeRandomNoise}, the original data is not seasonal, but the decomposition assumes that it is and proceeds with the default approach returning a seasonal component. You get what you ask for.
+As we can see from Figure \ref{fig:decomposeRandomNoise}, the original data is not seasonal, but the decomposition assumes that it is and proceeds with the default approach, returning a seasonal component. You get what you ask for.
 
 \hypertarget{ClassicalDecompositionMS}{%
 \subsection{Multiple seasonal decomposition}\label{ClassicalDecompositionMS}}
 
-A simple extension to the classical decomposition explained in the Subsection \ref{ClassicalDecompositionHow} is the decomposition of data with multiple seasonal frequencies. In that case we need to use several CMAs and apply them sequentially to get rid of seasonaliities starting from the lower value and moving to the higher ones. This is better explained on example of half-hourly data with two seasonal patterns: 48 half-hours per day and 336 (\(48 \times 7\)) half-hours per week. Assuming the pure multiplicative model, the decomposition procedure can be summarised as:
+A simple extension to the classical decomposition explained in subsection \ref{ClassicalDecompositionHow} is the decomposition of data with multiple seasonal frequencies. In that case we need to use several CMAs and apply them sequentially to get rid of seasonaliities starting from the lower values and moving to the higher ones. This is better explained with an example of half-hourly data with two seasonal patterns: 48 half-hours per day and 336 (\(48 \times 7\)) half-hours per week. Assuming the pure multiplicative model, the decomposition procedure can be summarised as:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1712,44 +1712,44 @@ A simple extension to the classical decomposition explained in the Subsection \r
     Do the same as (3.a) for each period of \(y^\prime_{2,t}\) to get half-hours of week \(s_{2,t}\);
   \end{enumerate}
 \item
-  Finally, extract the residuals via: \(e_t = \frac{y_t}{d_{2,t} s_{1,t} s_{2,t}}\) and obtain the components of decomposed series.
+  Finally, extract the residuals via: \(e_t = \frac{y_t}{d_{2,t} s_{1,t} s_{2,t}}\) and obtain the components of the decomposed series.
 \end{enumerate}
 
-This procedure can be automated for data with more than two frequencies, the logic would be the same, we would just need to introduce more sub-steps (c, d, e) for each of the steps above (1, 2, 3). The procedure described above is implemented in \texttt{msdecompose()} function from \texttt{smooth} package. Here how it works on the half-hourly data \texttt{taylor} \citep[from][]{Taylor2003} from \texttt{forecast} package (Figure \ref{fig:decomposeTaylor}):
+This procedure can be automated for data with more than two frequencies. The logic would be the same, we would just need to introduce more sub-steps (c, d, e) for each of the steps above (1, 2, 3). The procedure described above is implemented in the \texttt{msdecompose()} function from the \texttt{smooth} package. Here is how it works on the half-hourly data \citep[from][]{Taylor2003} provided in the \texttt{taylor} object from the \texttt{forecast} package (Figure \ref{fig:decomposeTaylor}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{msdecompose}\NormalTok{(forecast}\SpecialCharTok{::}\NormalTok{taylor, }\AttributeTok{lags=}\FunctionTok{c}\NormalTok{(}\DecValTok{48}\NormalTok{,}\DecValTok{336}\NormalTok{),}
             \AttributeTok{type=}\StringTok{"multiplicative"}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
-    \FunctionTok{plot}\NormalTok{(}\AttributeTok{which=}\DecValTok{12}\NormalTok{)}
+    \FunctionTok{plot}\NormalTok{(}\AttributeTok{which=}\DecValTok{12}\NormalTok{, }\AttributeTok{main=}\StringTok{""}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/decomposeTaylor-1.pdf}
-\caption{\label{fig:decomposeTaylor}Decomposition of half-hourly electricity demand series according to multiple seasonal classical decomposition.}
+\caption{\label{fig:decomposeTaylor}Decomposition of half-hourly electricity demand series according to the multiple seasonal classical decomposition.}
 \end{figure}
 
-The main limitation of this approach (similar to the conventional decomposition) is that it assumes that the seasonality does not evolve over time. This is a serious limitation if the seasonality needs to be used in forecasting. However, the procedure is simple and fast approach, and can be used as a starting point for estimation of more complicated models (see, for example, Section \ref{ADAMMultipleFrequenciesModel}).
+The main limitation of this approach (similar to the conventional decomposition) is that it assumes that the seasonality does not evolve over time. This is a serious limitation if the seasonality needs to be used in forecasting. However, the procedure is simple and fast, and can be used as a starting point for the estimation of more complicated models (see, for example, Section \ref{ADAMMultipleFrequenciesModel}).
 
 \hypertarget{other-decomposition-techniques}{%
 \subsection{Other decomposition techniques}\label{other-decomposition-techniques}}
 
-There are other techniques that decompose series into error, trend and seasonal components but make different assumptions about each component. The general procedure, however, always remains the same:
+There are other techniques that decompose series into error, trend, and seasonal components but make different assumptions about each component. The general procedure, however, always remains the same:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  smooth the original series,
+  Smooth the original series;
 \item
-  extract the seasonal components,
+  Extract the seasonal components;
 \item
-  smooth them out.
+  Smooth them out.
 \end{enumerate}
 
-The methods differ in the smoother they use (e.g., LOESS uses a bisquare function instead of CMA), and in some cases, multiple rounds of smoothing are performed to make sure that the components are split correctly.
+The methods differ in the smoother they use (e.g.~LOESS uses a bisquare function instead of CMA), and in some cases, multiple rounds of smoothing are performed to make sure that the components are split correctly.
 
 There are many functions in R that implement seasonal decomposition. Here is a small selection:
 
@@ -1758,7 +1758,7 @@ There are many functions in R that implement seasonal decomposition. Here is a s
 \item
   \texttt{decomp()} from the \texttt{tsutils} package does classical decomposition and fills in the tail and head of the smoothed trend with forecasts from exponential smoothing;
 \item
-  \texttt{stl()} from the \texttt{stats} package uses a different approach -- seasonal decomposition via LOESS. It is an iterative algorithm that smoothes the states and allows them to evolve over time. So, for example, the seasonal component in STL can change;
+  \texttt{stl()} from the \texttt{stats} package uses a different approach -- seasonal decomposition via LOESS. It is an iterative algorithm that smooths the states and allows them to evolve over time. So, for example, the seasonal component in STL can change;
 \item
   \texttt{mstl()} from the \texttt{forecast} package does the STL for data with several seasonalities.
 \end{itemize}
@@ -1766,7 +1766,7 @@ There are many functions in R that implement seasonal decomposition. Here is a s
 \hypertarget{why-bother}{%
 \subsection{``Why bother?''}\label{why-bother}}
 
-``Why to decompose?'' you may wonder at this point. Understanding the idea behind decomposition and how to perform it, helps understanding ETS, which relies on it. From a practical point of view, it can be helpful if you want to see if there is a trend in the data and whether the residuals contain outliers or not. It will \emph{not} show you whether the data is seasonal or not as the seasonality is \emph{assumed} in the decomposition (I stress this because many students think otherwise). Additionally, when seasonality cannot be added to a particular model under consideration, decomposing the series, predicting the trend and then reseasonalising can be a viable solution. Finally, the values from the decomposition can be used as starting points for the estimation of components in ETS or other dynamic models relying on the error-trend-seasonality.
+``Why decompose?'' you may wonder at this point. Understanding the idea behind decomposition and how to perform it helps with the understanding of ETS, which relies on it. From a practical point of view, it can be helpful if you want to see if there is a trend in the data and whether the residuals contain outliers or not. It will \emph{not} show you whether the data is seasonal or not as the seasonality is \emph{assumed} in the decomposition (I stress this because many students think otherwise). Additionally, when seasonality cannot be added to a particular model under consideration, decomposing the series, predicting the trend, and then reseasonalising can be a viable solution. Finally, the values from the decomposition can be used as starting points for the estimation of components in ETS or other dynamic models relying on the error-trend-seasonality.
 
 \hypertarget{simpleForecastingMethods}{%
 \section{Simple forecasting methods}\label{simpleForecastingMethods}}
@@ -1779,7 +1779,7 @@ Now that we understand that time series might contain different components and t
 \item
   Level time series: Naïve (Subsection \ref{Naive}), Global Average (Subsection \ref{GlobalMean}), Simple Moving Average (Subsection \ref{SMA}), Simple Exponential Smoothing (Section \ref{SES});
 \item
-  Trend time series: Random walk with drift (Subsection \ref{RWWithDrift}), Global trend (Subsection \ref{GlobalTrend});
+  Trend time series: Random Walk with drift (Subsection \ref{RWWithDrift}), Global Trend (Subsection \ref{GlobalTrend});
 \item
   Seasonal time series: Seasonal Naïve (Subsection \ref{NaiveSeasonal}).
 \end{enumerate}
@@ -1792,14 +1792,14 @@ Naïve is one of the simplest forecasting methods. According to it, the one-step
     \hat{y}_t = y_{t-1} .
     \label{eq:Naive}
 \end{equation}
-Using this approach might sound naïve indeed, but there are cases where it is very hard to outperform. Consider an example with temperature forecasting. If we want to know what the temperature outside will be in 5 minutes, then Naïve would be typically very accurate: the temperature in 5 minutes will be the same as it is right now.
+Using this approach might sound naïve indeed, but there are cases where it is very hard to outperform. Consider an example with temperature forecasting. If we want to know what the temperature outside will be in five minutes, then Naïve would be typically very accurate: the temperature in five minutes will be the same as it is right now.
 
 The statistical model underlying Naïve is called the ``Random Walk'' and is written as:
 \begin{equation}
     y_t = y_{t-1} + \epsilon_t.
     \label{eq:RandomWalk}
 \end{equation}
-The variability of \(\epsilon_t\) will impact the speed of change of the data: the higher it is, the more rapid the values will change. Random Walk and Naïve can be represented in Figure \ref{fig:naiveExample}. In the example of R code below, we use a simple moving average (discussed later in Section \ref{SMA}) of order 1 to generate the data from Random Walk and then produce forecasts using Naïve.
+The variability of \(\epsilon_t\) will impact the speed of change of the data: the higher it is, the more rapid the values will change. Random Walk and Naïve can be represented in Figure \ref{fig:naiveExample}. In the example of R code below, we use the Simple Moving Average (discussed later in subsection \ref{SMA}) of order 1 to generate the data from Random Walk and then produce forecasts using Naïve.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1823,7 +1823,7 @@ Note that if the time series exhibits level shifts or other types of unexpected 
 \hypertarget{GlobalMean}{%
 \subsection{Global Mean}\label{GlobalMean}}
 
-While Naïve considers only one observation (the most recent one), the global mean (aka ``global average'') relies on all the observations in the data:
+While Naïve considers only one observation (the most recent one), the Global Mean (aka ``global average'') relies on all the observations in the data:
 \begin{equation}
     \hat{y}_t = \bar{y} = \frac{1}{T} \sum_{t=1}^T y_{t} ,
     \label{eq:GlobalMean}
@@ -1850,12 +1850,12 @@ so that the \(\bar{y}\) is an estimate of the fixed expectation \(\mu\). Graphic
 \caption{\label{fig:globalMeanExample}A global level example.}
 \end{figure}
 
-The series shown in Figure \ref{fig:globalMeanExample} is generated from the global level model, and the point forecast corresponds to the forecast from the global mean method. Note that the method assumes that the weights of the in-sample observations are equal, i.e.~the first observation has precisely the exact weight of \(\frac{1}{T}\) as the last one (being as important as the last one). Suppose the series exhibits some changes in level over time. In that case, the global mean will not be suitable because it will produce the averaged out forecast, considering values for parts before and after the change. However, Global Mean works well in many demand forecasting tasks and is a decent benchmark on intermittent data (discussed in Chapter \ref{ADAMIntermittent}).
+The series shown in Figure \ref{fig:globalMeanExample} is generated from the global level model, and the point forecast corresponds to the forecast from the Global Mean method. Note that the method assumes that the weights of the in-sample observations are equal, i.e.~the first observation has precisely the exact weight of \(\frac{1}{T}\) as the last one (being as important as the last one). Suppose the series exhibits some changes in level over time. In that case, the Global Mean will not be suitable because it will produce the averaged out forecast, considering values for parts before and after the change. However, Global Mean works well in demand forecasting context and is a decent benchmark on intermittent data (discussed in Chapter \ref{ADAMIntermittent}).
 
 \hypertarget{SMA}{%
 \subsection{Simple Moving Average}\label{SMA}}
 
-Naïve and Global Mean can be considered as opposite points in the spectrum of possible level time series (although there are series beyond Naïve, see for example ARIMA(0,1,1) with \(\theta_1>0\), discussed in Chapter \ref{ARIMA}). The series between them exhibit slow changes in level and can be modelled using different forecasting approaches. One of those is the Simple Moving Average (SMA), which uses the mechanism of the mean for a small part of the time series. It relies on the formula:
+Naïve and Global Mean can be considered as opposite points in the spectrum of possible level time series (although there are series beyond Naïve, see for example ARIMA(0,1,1) with \(\theta_1>0\), discussed in Chapter \ref{ARIMA}). The series between them exhibits slow changes in level and can be modelled using different forecasting approaches. One of those is the Simple Moving Average (SMA), which uses the mechanism of the mean for a small part of the time series. It relies on the formula:
 \begin{equation}
     \hat{y}_t = \frac{1}{m}\sum_{j=1}^{m} y_{t-j},
     \label{eq:SMA}
@@ -1895,12 +1895,12 @@ which implies going through time series with something like a ``window'' of \(m\
 
 Figure \ref{fig:SMAExample} demonstrates the time series generated from SMA(10) and several SMA models applied to it. We can see that the higher orders of SMA lead to smoother fitted lines and calmer point forecasts. On the other hand, the SMA of a very high order, such as SMA(110), does not follow the changes in time series efficiently, ignoring the potential changes in level. Given the difficulty with selecting the order \(m\), \citet{Svetunkov2017} proposed using information criteria for the order selection of SMA in practice.
 
-Finally, an attentive reader has already spotted that the formula for SMA corresponds to the procedure of CMA of an odd order from equation \eqref{eq:CMAOdd}. They are similar, but they have a different purpose: CMA is needed to smooth out the series, the calculated values are inserted in the middle of the average, while SMA is used for forecasting, and the point forecasts are inserted at the last period of the average.
+Finally, an attentive reader has already spotted that the formula for SMA corresponds to the procedure of CMA of an odd order from equation \eqref{eq:CMAOdd}. They are similar, but they have a different purpose: CMA is needed to smooth out the series, and the calculated values are inserted in the middle of the average, while SMA is used for forecasting, and the point forecasts are inserted at the last period of the average.
 
 \hypertarget{RWWithDrift}{%
 \subsection{Random Walk with drift}\label{RWWithDrift}}
 
-So far, we have discussed the methods used for level time series. But as mentioned in Section \ref{tsComponents}, there are other components in the time series. In the case of the series with a trend, Naïve, Global Mean and SMA will be inappropriate because they would be missing the essential component. The simplest model that can be used in this case is called ``Random Walk with drift'', which is formulated as:
+So far, we have discussed the methods used for level time series. But as mentioned in Section \ref{tsComponents}, there are other components in the time series. In the case of the series with a trend, Naïve, Global Mean, and SMA will be inappropriate because they would be missing the essential component. The simplest model that can be used in this case is called ``Random Walk with drift'', which is formulated as:
 \begin{equation}
     y_t = y_{t-1} + a_1 + \epsilon_t,
     \label{eq:RandomWalkWithDrift}
@@ -1910,7 +1910,7 @@ where \(a_1\) is a constant term, the introduction of which leads to increasing 
     \hat{y}_{t+h} = y_{t} + a_1 h,
     \label{eq:RandomWalkWithDriftForecast}
 \end{equation}
-implying that the forecast from the model is a straight line with the slope parameter \(a_1\). Figure \ref{fig:RWDriftExample} shows how the data generated from Random Walk with drift and \(a_1=10\) looks like. This model is discussed in Subsection \ref{Differences}.
+implying that the forecast from the model is a straight line with the slope parameter \(a_1\). Figure \ref{fig:RWDriftExample} shows what the data generated from Random Walk with drift and \(a_1=10\) looks like. This model is discussed in Subsection \ref{Differences}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1933,7 +1933,7 @@ The data in Figure \ref{fig:RWDriftExample} demonstrates a positive trend (becau
 \hypertarget{GlobalTrend}{%
 \subsection{Global Trend}\label{GlobalTrend}}
 
-Continuing the discussion of the trend time series, there is another simple model that is sometimes used in forecasting. The global trend model is formulated as:
+Continuing the discussion of the trend time series, there is another simple model that is sometimes used in forecasting. The Global Trend model is formulated as:
 \begin{equation}
     y_t = a_0 + a_1 t + \epsilon_t,
     \label{eq:GlobalTrend}
@@ -1943,7 +1943,7 @@ where \(a_0\) is the intercept and \(a_1\) is the slope of the trend. The positi
     \hat{y}_{t+h} = a_0 + a_1 (t+h),
     \label{eq:GlobalTrendForecast}
 \end{equation}
-implying that the forecast from the model is a straight line with the slope parameter \(a_1\). Figure \ref{fig:GlobalTrendExample} shows how the data generated from Global Trend with \(a_0=10\) and \(a_1=5\) looks like.
+implying that the forecast from the model is a straight line with the slope parameter \(a_1\). Figure \ref{fig:GlobalTrendExample} shows how the data generated from a Global Trend with \(a_0=10\) and \(a_1=5\) looks like.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1957,10 +1957,10 @@ implying that the forecast from the model is a straight line with the slope para
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/GlobalTrendExample-1.pdf}
-\caption{\label{fig:GlobalTrendExample}Global trend data and the model applied to it.}
+\caption{\label{fig:GlobalTrendExample}Global Trend data and the model applied to it.}
 \end{figure}
 
-The data in Figure \ref{fig:GlobalTrendExample} demonstrates a linear trend with some randomness around it. In this situation, the slope of the trend is fixed and does not change over time in contrast to what we observed in Figure \ref{fig:RWDriftExample} for Random Walk with drift model. In some cases, the Global Trend model is the most suitable for the data. Some of the models discussed later in this monograph have the Global Trend as a special case when some restrictions on parameters are imposed (see, for example, Subsection \ref{ETSAAN}).
+The data in Figure \ref{fig:GlobalTrendExample} demonstrates a linear trend with some randomness around it. In this situation, the slope of the trend is fixed and does not change over time in contrast to what we observed in Figure \ref{fig:RWDriftExample} for a Random Walk with drift model. In some cases, the Global Trend model is the most suitable for the data. Some of the models discussed later in this monograph have the Global Trend as a special case when some restrictions on parameters are imposed (see, for example, Subsection \ref{ETSAAN}).
 
 \hypertarget{NaiveSeasonal}{%
 \subsection{Seasonal Naïve}\label{NaiveSeasonal}}
@@ -1975,12 +1975,12 @@ where \(m\) is the seasonal frequency. This method has an underlying model, Seas
     y_t = y_{t-m} + \epsilon_t.
     \label{eq:RWSeasonal}
 \end{equation}
-Similar to Naïve, the higher variability of the error term \(\epsilon_t\) in \eqref{eq:RWSeasonal} is, the faster the data exhibits changes. Seasonal Naïve does not require estimation of any parameters and thus is considered one of the popular benchmarks to use with seasonal data. Figure \ref{fig:NaiveSeasonalExample} demonstrates how the data generated from seasonal Random Walk looks and how the point forecast from the seasonal Naïve applied to this data performs.
+Similar to Naïve, the higher variability of the error term \(\epsilon_t\) in \eqref{eq:RWSeasonal} is, the faster the data exhibits changes. Seasonal Naïve does not require estimation of any parameters and thus is considered one of the popular benchmarks to use with seasonal data. Figure \ref{fig:NaiveSeasonalExample} demonstrates how the data generated from Seasonal Random Walk looks and how the point forecast from the Seasonal Naïve applied to this data performs.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{sim.ssarima}\NormalTok{(}\AttributeTok{orders=}\FunctionTok{list}\NormalTok{(}\AttributeTok{i=}\DecValTok{1}\NormalTok{), }\AttributeTok{lags=}\DecValTok{4}\NormalTok{,}
-                 \AttributeTok{obs=}\DecValTok{120}\NormalTok{, }\AttributeTok{sd=}\DecValTok{50}\NormalTok{)}
+                 \AttributeTok{obs=}\DecValTok{120}\NormalTok{, }\AttributeTok{mean=}\DecValTok{0}\NormalTok{, }\AttributeTok{sd=}\DecValTok{50}\NormalTok{)}
 \FunctionTok{msarima}\NormalTok{(y}\SpecialCharTok{$}\NormalTok{data, }\AttributeTok{orders=}\FunctionTok{list}\NormalTok{(}\AttributeTok{i=}\DecValTok{1}\NormalTok{), }\AttributeTok{lags=}\DecValTok{4}\NormalTok{,}
         \AttributeTok{h=}\DecValTok{10}\NormalTok{, }\AttributeTok{holdout=}\ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{|\textgreater{}}
     \FunctionTok{plot}\NormalTok{(}\AttributeTok{which=}\DecValTok{7}\NormalTok{, }\AttributeTok{main=}\StringTok{""}\NormalTok{)}
@@ -1993,7 +1993,7 @@ Similar to Naïve, the higher variability of the error term \(\epsilon_t\) in \e
 \caption{\label{fig:NaiveSeasonalExample}Seasonal Random Walk and Seasonal Naïve.}
 \end{figure}
 
-Similarly to the previous methods, if other approaches cannot outperform seasonal Naïve, it is not worth spending time on those approaches.
+Similarly to the previous methods, if other approaches cannot outperform Seasonal Naïve, it is not worth spending time on those approaches.
 
 \hypertarget{SES}{%
 \section{Simple Exponential Smoothing}\label{SES}}
@@ -2003,14 +2003,14 @@ One of the most powerful and efficient forecasting methods for level time series
   \hat{y}_{t+1} = \hat{\alpha} {y}_{t} + (1 -\hat{\alpha}) \hat{y}_{t},
   \label{eq:BrownMethod}
 \end{equation}
-where \(\hat{\alpha}\) is the smoothing parameter, which is typically restricted within (0, 1) region (this region is arbitrary, and we will see in Section \ref{ETSParametersBounds} what is the correct one). This is one of the simplest forecasting methods. The smoothing parameter is typically interpreted as a weight between the latest actual value and the one-step-ahead predicted one. If the smoothing parameter is close to zero, then more weight is given to the previous fitted value \(\hat{y}_{t}\) and the new information is neglected. If \(\hat{\alpha}=0\), then the method becomes equivalent to the Global Mean method, discussed in Subsection \ref{GlobalMean}. When it is close to one, then most of the weight is assigned to the actual value \({y}_{t}\). If \(\hat{\alpha}=1\), then the method transforms into Naïve, discussed in Subsection \ref{Naive}. By changing the smoothing parameter value, the forecaster can decide how to approximate the data and filter out the noise.
+where \(\hat{\alpha}\) is the smoothing parameter, which is typically restricted within the (0, 1) region (this region is arbitrary, and we will see in Section \ref{ETSParametersBounds} what is the correct one). This is one of the simplest forecasting methods. The smoothing parameter is typically interpreted as a weight between the latest actual value and the one-step-ahead predicted one. If the smoothing parameter is close to zero, then more weight is given to the previous fitted value \(\hat{y}_{t}\) and the new information is neglected. If \(\hat{\alpha}=0\), then the method becomes equivalent to the Global Mean method, discussed in Subsection \ref{GlobalMean}. When it is close to one, then most of the weight is assigned to the actual value \({y}_{t}\). If \(\hat{\alpha}=1\), then the method transforms into Naïve, discussed in Subsection \ref{Naive}. By changing the smoothing parameter value, the forecaster can decide how to approximate the data and filter out the noise.
 
 Also, notice that this is a recursive method, meaning that there needs to be some starting point \(\hat{y}_1\) to apply \eqref{eq:BrownMethod} to the existing data. Different initialisation and estimation methods for SES have been discussed in the literature. Still, the state of the art one is to estimate \(\hat{\alpha}\) and \(\hat{y}_{1}\) together by minimising some loss function \citep{Hyndman2002}. Typically MSE (see Section \ref{errorMeasures}) is used, minimising the squares of one step ahead in-sample forecast error.
 
 \hypertarget{examples-of-application}{%
 \subsection{Examples of application}\label{examples-of-application}}
 
-Here is an example of how this method works on different time series. We start with generating a stationary series and using \texttt{es()} function from \texttt{smooth} package. Although it implements the ETS model, we will see in Section \ref{SESandETS} the connection between SES and ETS(A,N,N). We start with the stationary time series and \(\hat{\alpha}=0\):
+Here is an example of how this method works on different time series. We start with generating a stationary series and using the \texttt{es()} function from the \texttt{smooth} package. Although it implements the ETS model, we will see in Section \ref{SESandETS} the connection between SES and ETS(A,N,N). We start with the stationary time series and \(\hat{\alpha}=0\):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2023,7 +2023,7 @@ Here is an example of how this method works on different time series. We start w
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/SESExample1-1.pdf}
-\caption{\label{fig:SESExample1}An example with a time series and SES forecast. \(\hat{\alpha}=0\)}
+\caption{\label{fig:SESExample1}An example with a time series and SES forecast. \(\hat{\alpha}=0.\)}
 \end{figure}
 
 As we see from Figure \ref{fig:SESExample1}, the SES works well in this case, capturing the deterministic level of the series and filtering out the noise. In this case, it works like a global average applied to the data. As mentioned before, the method is flexible, so if we have a level shift in the data and increase the smoothing parameter, it will adapt and get to the new level. Figure \ref{fig:SESExample2} shows an example with a level shift in the data.
@@ -2039,10 +2039,10 @@ As we see from Figure \ref{fig:SESExample1}, the SES works well in this case, ca
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/SESExample2-1.pdf}
-\caption{\label{fig:SESExample2}An example with a time series and SES forecast. \(\hat{\alpha}=0.1\)}
+\caption{\label{fig:SESExample2}An example with a time series and SES forecast. \(\hat{\alpha}=0.1.\)}
 \end{figure}
 
-With \(\hat{\alpha}=0.1\), SES manages to get to the new level, but now the method starts adapting to noise a little bit -- it follows the peaks and troughs and repeats them with a lag, but with a much smaller magnitude (see Figure \ref{fig:SESExample2}). Increasing the smoothing parameter, the model will react to the changes much faster, at the cost of responding more to noise. This is shown in Figure \ref{fig:SESExamples} with different smoothing parameters values.
+With \(\hat{\alpha}=0.1\), SES manages to get to the new level, but now the method starts adapting to noise a little bit -- it follows the peaks and troughs and repeats them with a lag, but with a much smaller magnitude (see Figure \ref{fig:SESExample2}). Increasing the smoothing parameter, the model will react to the changes much faster, at the cost of responding more to noise. This is shown in Figure \ref{fig:SESExamples} with different smoothing parameter values.
 
 \begin{figure}
 \centering
@@ -2050,7 +2050,7 @@ With \(\hat{\alpha}=0.1\), SES manages to get to the new level, but now the meth
 \caption{\label{fig:SESExamples}SES with different smoothing parameters applied to the same data.}
 \end{figure}
 
-If we set \(\hat{\alpha}=1\), we will end up with Naive forecasting method (see Section \ref{Naive}), which is not appropriate for our example (see Figure \ref{fig:SESExampleNaive}).
+If we set \(\hat{\alpha}=1\), we will end up with the Naïve forecasting method (see Section \ref{Naive}), which is not appropriate for our example (see Figure \ref{fig:SESExampleNaive}).
 
 \begin{figure}
 \centering
@@ -2079,7 +2079,7 @@ This approach won't guarantee that we will get the most appropriate \(\hat{\alph
 \hypertarget{whyExponential}{%
 \subsection{Why ``exponential''?}\label{whyExponential}}
 
-Now, \textbf{why is it called ``exponential''}? Because the same method can be represented in a different form, if we substitute \(\hat{y}_{t}\) in right hand side of \eqref{eq:BrownMethod} by the formula for the previous step:
+Now, \textbf{why is it called ``exponential''}? Because the same method can be represented in a different form, if we substitute \(\hat{y}_{t}\) in right-hand side of \eqref{eq:BrownMethod} by the formula for the previous step:
 \begin{equation}
   \begin{aligned}
   \hat{y}_{t} = &\hat{\alpha} {y}_{t-1} + (1 -\hat{\alpha}) \hat{y}_{t-1}, \\
@@ -2088,7 +2088,7 @@ Now, \textbf{why is it called ``exponential''}? Because the same method can be r
   \end{aligned}
   \label{eq:BrownMethodExponential1}
 \end{equation}
-By repeating this procedure for each \(\hat{y}_{t-1}\), \(\hat{y}_{t-2}\) etc, we will obtain a different form of the method:
+By repeating this procedure for each \(\hat{y}_{t-1}\), \(\hat{y}_{t-2}\), etc., we will obtain a different form of the method:
 \begin{equation}
   \hat{y}_{t+1} = \hat{\alpha} {y}_{t} + \hat{\alpha} (1 -\hat{\alpha}) {y}_{t-1} + \hat{\alpha} (1 -\hat{\alpha})^2 {y}_{t-2} + \dots  + \hat{\alpha} (1 -\hat{\alpha})^{t-1} {y}_{1} + (1 -\hat{\alpha})^t \hat{y}_1 
   \label{eq:BrownMethodExponential2}
@@ -2098,19 +2098,12 @@ or equivalently:
   \hat{y}_{t+1} = \hat{\alpha} \sum_{j=0}^{t-1} (1 -\hat{\alpha})^j {y}_{t-j} + (1 -\hat{\alpha})^t \hat{y}_1 .
   \label{eq:BrownMethodExponential3}
 \end{equation}
-In the form \eqref{eq:BrownMethodExponential3}, each actual observation has a weight infront of it. For the most recent observation it is equal to \(\hat{\alpha}\), for the previous one it is \(\hat{\alpha} (1 -\hat{\alpha})\), then \(\hat{\alpha} (1 -\hat{\alpha})^2\) etc. These form the geometric series or an exponential curve. Figure \ref{fig:BrownExponentialExample} shows an example with \(\hat{\alpha} =0.25\) for a sample of 30 observations:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\FloatTok{0.25}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\FloatTok{{-}0.25}\NormalTok{)}\SpecialCharTok{\^{}}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{30}\NormalTok{), }\AttributeTok{type=}\StringTok{"b"}\NormalTok{, }
-     \AttributeTok{xlab=}\StringTok{"Time lags"}\NormalTok{, }\AttributeTok{ylab=}\StringTok{"Weights"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+In the form \eqref{eq:BrownMethodExponential3}, each actual observation has a weight in front of it. For the most recent observation, it is equal to \(\hat{\alpha}\), for the previous one, it is \(\hat{\alpha} (1 -\hat{\alpha})\), then \(\hat{\alpha} (1 -\hat{\alpha})^2\), etc. These form the geometric series or an exponential curve. Figure \ref{fig:BrownExponentialExample} shows an example with \(\hat{\alpha} =0.25\) for a sample of 30 observations.
 
 \begin{figure}
 \centering
 \includegraphics{Svetunkov--2023----Forecasting-and-Analytics-with-ADAM_files/figure-latex/BrownExponentialExample-1.pdf}
-\caption{\label{fig:BrownExponentialExample}Example of weights distribution for \(\hat{\alpha}=0.25\)}
+\caption{\label{fig:BrownExponentialExample}Example of weights distribution for \(\hat{\alpha}=0.25.\)}
 \end{figure}
 
 This explains the name ``exponential''. The term ``smoothing'' comes from the idea that the parameter \(\hat{\alpha}\) should be selected so that the method smooths the original time series and does not react to noise.
@@ -3372,7 +3365,7 @@ The series in Figure \ref{fig:BJsalesDataPlot} seem to exhibit trend, so we will
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.06 seconds
+## Time elapsed: 0.05 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 258.8098
@@ -3397,7 +3390,7 @@ The model's output summarises which specific model was constructed, what distrib
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.03 seconds
+## Time elapsed: 0.02 seconds
 ## Model estimated using adam() function: ETS(ANN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 273.2898
@@ -3439,7 +3432,7 @@ Notice that the bounds in Figure \ref{fig:BJsalesAANForecast} are expanding fast
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.07 seconds
+## Time elapsed: 0.05 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 258.5358
@@ -3501,7 +3494,7 @@ If we want to test ADAM ETS with another distribution, it can be done using the 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.07 seconds
+## Time elapsed: 0.04 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Generalised Normal with shape=1.741
 ## Loss function type: likelihood; Loss function value: 258.456
@@ -3571,7 +3564,7 @@ In some cases, the optimiser might converge to the local minimum, so if you find
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.31 seconds
+## Time elapsed: 0.3 seconds
 ## Model estimated using adam() function: ETS(AAA)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 513.0026
@@ -3852,7 +3845,7 @@ We continue our examples with the same Box-Jenkins sales data by fitting the ETS
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.07 seconds
+## Time elapsed: 0.09 seconds
 ## Model estimated using adam() function: ETS(MMN)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 245.3759
@@ -3948,7 +3941,7 @@ We can also compare the performance of ETS(M,M,N) with Gamma distribution with t
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.04 seconds
+## Time elapsed: 0.08 seconds
 ## Model estimated using adam() function: ETS(MMN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 245.3872
@@ -3991,7 +3984,7 @@ After running the command above we might get warning, saying that the model has 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.23 seconds
+## Time elapsed: 0.34 seconds
 ## Model estimated using adam() function: ETS(MMM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.5176
@@ -4063,11 +4056,11 @@ If we want to calculate the error measures based on the conditional expectation,
 
 \begin{verbatim}
 ##            ME           MAE           MSE           MPE          MAPE 
-##  -5.450743999  15.513511764 480.511281045  -0.015991809   0.033764771 
+##  -5.938319335  15.534555411 485.789868694  -0.017009844   0.033939361 
 ##           sCE          sMAE          sMSE          MASE         RMSSE 
-##  -0.249184060   0.059100798   0.006973809   0.644142644   0.699619478 
+##  -0.271473861   0.059180967   0.007050419   0.645016405   0.703451766 
 ##          rMAE         rRMSE          rAME     asymmetry          sPIS 
-##   0.204125155   0.212869540   0.076591251  -0.214806249   2.090985389
+##   0.204402045   0.214035570   0.083442426  -0.244435442   2.216187137
 \end{verbatim}
 
 These can be compared with the measures from the ETS(A,A,A) model:
@@ -4649,7 +4642,7 @@ Based on the previous discussion, we can conclude that ARMA cannot be efficientl
   \Delta y_t = y_t -y_{t-1} = y_t (1 -B),
   \label{eq:ARIMADifferencesFirst}
 \end{equation}
-if the first differences have constant mean. The simplest model with differences is I(1), which is also known as the \textbf{Random walk} (see Section \ref{Naive}):
+if the first differences have constant mean. The simplest model with differences is I(1), which is also known as the \textbf{Random Walk} (see Section \ref{Naive}):
 \begin{equation}
   \Delta y_t = \epsilon_t.
   \label{eq:ARIMARandomWalk}
@@ -4672,7 +4665,7 @@ Visually, the Random Walk data and the forecast from it are shown in Figure \ref
 \caption{\label{fig:naiveExample2}A Random Walk data example.}
 \end{figure}
 
-Another simple model that relies on differences of the data is called \textbf{Random Walk with drift} (which was discussed in Section \ref{RWWithDrift}) and is formulated by adding constant \(a_0\) to the right hand side of equation \eqref{eq:ARIMARandomWalk}:
+Another simple model that relies on differences of the data is called \textbf{Random Walk with drift} (which was discussed in Section \ref{RWWithDrift}) and is formulated by adding constant \(a_0\) to the right-hand side of equation \eqref{eq:ARIMARandomWalk}:
 \begin{equation}
   \Delta y_t = a_0 + \epsilon_t.
   \label{eq:ARIMARandomWalkWithDrift}
@@ -5268,7 +5261,7 @@ Given the the two models in smooth have the same initialisation mechanism, they 
 
 \begin{verbatim}
 ##   ETS(A,N,N) ARIMA(0,1,1) 
-##      591.048      591.048
+##     540.1002     540.1035
 \end{verbatim}
 
 \begin{Shaded}
@@ -5281,7 +5274,7 @@ Given the the two models in smooth have the same initialisation mechanism, they 
 
 \begin{verbatim}
 ##   ETS(A,N,N) ARIMA(0,1,1) 
-##     1188.096     1188.096
+##     1086.200     1086.207
 \end{verbatim}
 
 In addition, their parameters should be related based on the formula discussed above. The following two lines should produce similar values:
@@ -5296,7 +5289,7 @@ In addition, their parameters should be related based on the formula discussed a
 
 \begin{verbatim}
 ##   ETS(A,N,N) ARIMA(0,1,1) 
-##    0.1949402    0.1957024
+##    0.1674692    0.1685454
 \end{verbatim}
 
 Finally, the fit and the forecasts from the two models should be exactly the same if the parameters are linearly related (Figure \ref{fig:ETSARIMAConnection}):
@@ -5331,11 +5324,11 @@ We also know from the section \ref{ETSExamples} that Holt's method has an underl
 
 Similarly to the ARIMA(0,1,1) vs ETS(A,N,N), one of the important differences between the models is that the boundary values for parameters are not possible for ARIMA(0,2,2): \(\alpha=0\) and \(\beta=0\) are possible in ETS, but the respective \(\theta_1=2\) and \(\theta_2=-1\) in ARIMA are not.
 
-Furthermore, the model that corresponds to the situation, when \(\alpha=1\) and \(\beta=0\) is formulated as ARIMA(0,1,0) with drift (discussed in Section \ref{Differences}), while the global trend ARIMA could hypothetically appear in the boundary case with \(\theta_1=-2\) and \(\theta_2=1\), implying the following model:
+Furthermore, the model that corresponds to the situation, when \(\alpha=1\) and \(\beta=0\) is formulated as ARIMA(0,1,0) with drift (discussed in Section \ref{Differences}), while the Global Trend ARIMA could hypothetically appear in the boundary case with \(\theta_1=-2\) and \(\theta_2=1\), implying the following model:
 \begin{equation*}
     y_t (1 -B)^2 = \epsilon_t -2\epsilon_{t-1} + \epsilon_{t-2} = \epsilon_t (1 -B)^2 ,
 \end{equation*}
-which tells us that in ARIMA framework, the global trend model is only available as a global mean on second differences of the data.
+which tells us that in ARIMA framework, the Global Trend model is only available as a Global Mean on second differences of the data.
 
 Finally, the ETA(A,A,N) and ARIMA(0,2,2) will fit the data similarly and produce the exact forecasts as long as they are constructed, initialised and estimated in the same way.
 
@@ -5439,7 +5432,7 @@ Comparing this model with the ETS(A,A,N), we will see a slight difference becaus
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.03 seconds
+## Time elapsed: 0.06 seconds
 ## Model estimated using adam() function: ETS(AAN)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 243.4073
@@ -5646,7 +5639,7 @@ In a more general case, in order to develop the state space ARIMA, we will use t
 \begin{equation*}
   y_t \prod_{j=0}^n \Delta^{D_j} (B^{m_j}) \varphi^{P_j}(B^{m_j}) = \epsilon_t \prod_{j=0}^n \vartheta^{Q_j}(B^{m_j}) ,
 \end{equation*}
-This model can be represented in an easier to digest form by expanding the polynomials and moving all the previous values to the right hand side. In a general case we will have:
+This model can be represented in an easier to digest form by expanding the polynomials and moving all the previous values to the right-hand side. In a general case we will have:
 \begin{equation}
   y_t = \sum_{j=1}^K \eta_j y_{t-j} + \sum_{j=1}^K \psi_j \epsilon_{t-j} + \epsilon_t ,
   \label{eq:MSARIMAExpanded}
@@ -6256,7 +6249,7 @@ The ETS model closest to the logSARIMA(0,1,1)(0,1,1)\(_{12}\) would probably be 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.34 seconds
+## Time elapsed: 0.27 seconds
 ## Model estimated using adam() function: ETS(MMM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.5176
@@ -6286,7 +6279,7 @@ Comparing information criteria, ETS(M,M,M) should be preferred to logARIMA, but 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.67 seconds
+## Time elapsed: 0.4 seconds
 ## Model estimated using adam() function: SARIMA(0,1,1)[1](0,1,1)[12]
 ## Distribution assumed in the model: Log-Normal
 ## Loss function type: likelihood; Loss function value: 472.923
@@ -6758,7 +6751,7 @@ This simple model already does a fine job fitting the data and producing forecas
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.15 seconds
+## Time elapsed: 0.2 seconds
 ## Model estimated using adam() function: ETS(MNM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1125.509
@@ -6826,7 +6819,7 @@ Figure \ref{fig:SeatbeltsForecastX} shows the forecast from the second model, wh
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.73 seconds
+## Time elapsed: 0.71 seconds
 ## Model estimated using adam() function: ETSX(MNM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1114.042
@@ -6870,7 +6863,7 @@ In our specific case, the difference between the ETSX and ETSX\{D\} models is in
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 2.43 seconds
+## Time elapsed: 2.09 seconds
 ## Model estimated using adam() function: ETSX(MNM){D}
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 1113.523
@@ -7784,7 +7777,7 @@ In the case of the \textbf{non-seasonal} model, the algorithm is more straightfo
 
 In cases of the small samples (less than two seasonal periods), the procedure is similar to the one above. However, the seasonal indices are obtained by taking the actual values and either subtracting arithmetic mean from them or dividing them by the geometric one of the first \(m_j\) observations, depending on the seasonality type, normalising them afterwards.
 
-Finally, to ensure that the safe initials were provided, for the ETS(M,Z,Z) models, if the initial level contains a negative value, it is substituted by the global mean of the series.
+Finally, to ensure that the safe initials were provided, for the ETS(M,Z,Z) models, if the initial level contains a negative value, it is substituted by the Global Mean of the series.
 
 The pre-initialisation described here is not simple, but it guarantees that any ETS model can be constructed and estimated almost to any data. Yes, there might still be some issues with mixed ETS models, but the mechanism used in ADAM is quite robust.
 
@@ -7913,7 +7906,7 @@ Given that we are trying the ETS+ARIMA model, we can use backcasting, which shou
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.09 seconds
+## Time elapsed: 0.07 seconds
 ## Model estimated using adam() function: ETS(AAN)+ARIMA(2,0,0)
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 258.6827
@@ -8146,7 +8139,7 @@ First, it is ADAM ETS(M,N,M) with \texttt{lags=c(48,7*48)}:
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.05 seconds
+## Time elapsed: 0.81 seconds
 ## Model estimated using adam() function: ETS(MNM)[48, 336]
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 25682.88
@@ -8167,7 +8160,7 @@ First, it is ADAM ETS(M,N,M) with \texttt{lags=c(48,7*48)}:
 ## MASE: 1.103; RMSSE: 0.867; rMAE: 0.107; rRMSE: 0.1
 \end{verbatim}
 
-As we see from the output above, the model was constructed in 1.05 seconds. Notice that the seasonal smoothing parameters are relatively high in this model. For example, the second \(\gamma\) is equal to 0.2335, which means that the model adapts the seasonal profile to the data substantially (takes 23.35\% of the error from the previous observation in it). Furthermore, the smoothing parameter \(\alpha\) is equal to 0.1357, which is also potentially too high, given that we have well-behaved data and that we deal with a multiplicative model. This might indicate that the model overfits the data. To see if this is the case, we can produce the plot of components over time (Figure \ref{fig:adamModelETSMNM12}).
+As we see from the output above, the model was constructed in 0.81 seconds. Notice that the seasonal smoothing parameters are relatively high in this model. For example, the second \(\gamma\) is equal to 0.2335, which means that the model adapts the seasonal profile to the data substantially (takes 23.35\% of the error from the previous observation in it). Furthermore, the smoothing parameter \(\alpha\) is equal to 0.1357, which is also potentially too high, given that we have well-behaved data and that we deal with a multiplicative model. This might indicate that the model overfits the data. To see if this is the case, we can produce the plot of components over time (Figure \ref{fig:adamModelETSMNM12}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8197,7 +8190,7 @@ Next, we can plot the fitted values and forecasts to see how the model performs 
 \caption{\label{fig:adamModelETSMNM}The fit and the forecast of the ETS(M,N,M){[}48,336{]} model on half-hourly electricity demand data.}
 \end{figure}
 
-As we see from Figure \ref{fig:adamModelETSMNM}, the model fits data well and produces reasonable forecasts. Given that it only took 1.05 seconds for the model estimation and construction, this model can be considered as a good starting point. If we want to improve upon it, we can try one of the multistep estimators, for example, GTMSE (Subsection \ref{multistepLossesGTMSE}):
+As we see from Figure \ref{fig:adamModelETSMNM}, the model fits data well and produces reasonable forecasts. Given that it only took 0.81 seconds for the model estimation and construction, this model can be considered as a good starting point. If we want to improve upon it, we can try one of the multistep estimators, for example, GTMSE (Subsection \ref{multistepLossesGTMSE}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8446,7 +8439,7 @@ Another model we can try on this data is multiple seasonal ARIMA. We have not ye
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.45 seconds
+## Time elapsed: 0.37 seconds
 ## Model estimated using adam() function: SARIMA(0,1,1)[1](0,1,1)[336]
 ## Distribution assumed in the model: Normal
 ## Loss function type: likelihood; Loss function value: 26098.76
@@ -9416,7 +9409,7 @@ Depending on the generated data, there might be issues in the ETS(M,Md,N) model 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.15 seconds
+## Time elapsed: 0.12 seconds
 ## Model estimated using adam() function: iARIMA(1,1,2)[D]
 ## Occurrence model type: Direct
 ## Distribution assumed in the model: Mixture of Bernoulli and Log-Normal
@@ -9451,7 +9444,7 @@ Comparing the iARIMA model with the previous iETS based on AIC would not be fair
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.09 seconds
+## Time elapsed: 0.07 seconds
 ## Model estimated using adam() function: iETS(MMdN)[D]
 ## Occurrence model type: Direct
 ## Distribution assumed in the model: Mixture of Bernoulli and Gamma
@@ -10817,7 +10810,7 @@ The function \texttt{auto.adam()} implements this automatic selection of distrib
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 0.38 seconds
+## Time elapsed: 0.42 seconds
 ## Model estimated using auto.adam() function: ETS(MMN)
 ## Distribution assumed in the model: Log-Normal
 ## Loss function type: likelihood; Loss function value: 245.3716
@@ -10917,7 +10910,7 @@ Here is an example with automatically selected ETS model using the branch-and-bo
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.75 seconds
+## Time elapsed: 1.74 seconds
 ## Model estimated using adam() function: ETS(MAM)
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 467.2981
@@ -11027,7 +11020,7 @@ Based on the relation between ARIMA and ETS (see Section \ref{ARIMAandETS}), we 
 \end{Shaded}
 
 \begin{verbatim}
-## Time elapsed: 1.91 seconds
+## Time elapsed: 1.87 seconds
 ## Model estimated using auto.adam() function: ETS(MMM)+SARIMA(3,0,0)[1](1,0,0)[12]
 ## Distribution assumed in the model: Gamma
 ## Loss function type: likelihood; Loss function value: 468.391
@@ -11381,16 +11374,16 @@ These weights can then be used for the combination of the fitted values, forecas
 ## End = 150 
 ## Frequency = 1 
 ##         Mean Lower bound (2.5%) Upper bound (97.5%)
-## 141 257.6643           254.9152            260.4268
-## 142 257.7180           253.3499            262.0900
-## 143 257.7764           251.9099            263.7003
-## 144 257.8237           250.4314            265.3281
-## 145 257.8870           248.8667            266.9847
-## 146 257.9398           247.3047            268.6373
-## 147 257.9863           245.7582            270.2892
-## 148 258.0396           244.1597            272.1421
-## 149 258.0882           242.4809            273.8650
-## 150 258.1363           240.7980            275.6939
+## 141 257.6577           254.8596            260.4393
+## 142 257.7084           253.3367            262.0923
+## 143 257.7686           251.8572            263.6689
+## 144 257.8159           250.3503            265.2406
+## 145 257.8573           248.8355            266.8877
+## 146 257.9088           247.2735            268.4988
+## 147 257.9544           245.7148            270.1073
+## 148 258.0064           244.1579            271.7904
+## 149 258.0540           242.5401            273.4838
+## 150 258.0946           240.8891            275.1989
 \end{verbatim}
 
 In order to see how the forecast looks like, we can plot it via \texttt{graphmaker()} function from \texttt{greybox}:
@@ -11560,7 +11553,7 @@ Here is an example of how the function works on the data above -- it is possible
 
 \begin{verbatim}
 ## Bootstrap for the adam model with nsim=100 and size=70
-## Time elapsed: 2.72 seconds
+## Time elapsed: 2.46 seconds
 \end{verbatim}
 
 The \texttt{size} in the output above refers to the sub-sample size, which by default is 75\% of the original data length. The covariance matrix can then be extracted from the result via \texttt{adamETSBJBoot\$vcov}. The same procedure is used in \texttt{vcov()} method if \texttt{bootstrap=TRUE}:
@@ -11575,11 +11568,11 @@ The \texttt{size} in the output above refers to the sub-sample size, which by de
 
 \begin{verbatim}
 ##        alpha   beta    phi  level  trend
-## alpha  0.009  0.002  0.002  0.013 -0.015
-## beta   0.002  0.008  0.002 -0.003  0.013
-## phi    0.002  0.002  0.014  0.061 -0.067
-## level  0.013 -0.003  0.061  0.502 -0.663
-## trend -0.015  0.013 -0.067 -0.663  0.949
+## alpha  0.003  0.002 -0.001 -0.005  0.007
+## beta   0.002  0.009 -0.005 -0.024  0.031
+## phi   -0.001 -0.005  0.012  0.048 -0.050
+## level -0.005 -0.024  0.048  0.474 -0.665
+## trend  0.007  0.031 -0.050 -0.665  1.037
 \end{verbatim}
 
 \hypertarget{ADAMUncertaintyConfidenceInterval}{%
