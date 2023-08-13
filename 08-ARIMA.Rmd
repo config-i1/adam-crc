@@ -251,7 +251,7 @@ Based on the previous discussion, we can conclude that ARMA cannot be efficientl
   \Delta y_t = y_t -y_{t-1} = y_t (1 -B),
   (\#eq:ARIMADifferencesFirst)
 \end{equation}
-if the first differences have constant mean. The simplest model with differences is I(1), which is also known as the **Random walk** (see Section \@ref(Naive)):
+if the first differences have constant mean. The simplest model with differences is I(1), which is also known as the **Random Walk** (see Section \@ref(Naive)):
 \begin{equation}
   \Delta y_t = \epsilon_t.
   (\#eq:ARIMARandomWalk)
@@ -276,7 +276,7 @@ sim.sma(1, 120) |>
     plot(main="")
 ```
 
-Another simple model that relies on differences of the data is called **Random Walk with drift** (which was discussed in Section \@ref(RWWithDrift)) and is formulated by adding constant $a_0$ to the right hand side of equation \@ref(eq:ARIMARandomWalk):
+Another simple model that relies on differences of the data is called **Random Walk with drift** (which was discussed in Section \@ref(RWWithDrift)) and is formulated by adding constant $a_0$ to the right-hand side of equation \@ref(eq:ARIMARandomWalk):
 \begin{equation}
   \Delta y_t = a_0 + \epsilon_t.
   (\#eq:ARIMARandomWalkWithDrift)
@@ -836,11 +836,11 @@ We also know from the section \@ref(ETSExamples) that Holt's method has an under
 
 Similarly to the ARIMA(0,1,1) vs ETS(A,N,N), one of the important differences between the models is that the boundary values for parameters are not possible for ARIMA(0,2,2): $\alpha=0$ and $\beta=0$ are possible in ETS, but the respective $\theta_1=2$ and $\theta_2=-1$ in ARIMA are not.
 
-Furthermore, the model that corresponds to the situation, when $\alpha=1$ and $\beta=0$ is formulated as ARIMA(0,1,0) with drift (discussed in Section \@ref(Differences)), while the global trend ARIMA could hypothetically appear in the boundary case with $\theta_1=-2$ and $\theta_2=1$, implying the following model:
+Furthermore, the model that corresponds to the situation, when $\alpha=1$ and $\beta=0$ is formulated as ARIMA(0,1,0) with drift (discussed in Section \@ref(Differences)), while the Global Trend ARIMA could hypothetically appear in the boundary case with $\theta_1=-2$ and $\theta_2=1$, implying the following model:
 \begin{equation*}
     y_t (1 -B)^2 = \epsilon_t -2\epsilon_{t-1} + \epsilon_{t-2} = \epsilon_t (1 -B)^2 ,
 \end{equation*}
-which tells us that in ARIMA framework, the global trend model is only available as a global mean on second differences of the data.
+which tells us that in ARIMA framework, the Global Trend model is only available as a Global Mean on second differences of the data.
 
 Finally, the ETA(A,A,N) and ARIMA(0,2,2) will fit the data similarly and produce the exact forecasts as long as they are constructed, initialised and estimated in the same way.
 

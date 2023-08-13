@@ -59,7 +59,7 @@ In a more general case, in order to develop the state space ARIMA, we will use t
 \begin{equation*}
   y_t \prod_{j=0}^n \Delta^{D_j} (B^{m_j}) \varphi^{P_j}(B^{m_j}) = \epsilon_t \prod_{j=0}^n \vartheta^{Q_j}(B^{m_j}) ,
 \end{equation*}
-This model can be represented in an easier to digest form by expanding the polynomials and moving all the previous values to the right hand side. In a general case we will have:
+This model can be represented in an easier to digest form by expanding the polynomials and moving all the previous values to the right-hand side. In a general case we will have:
 \begin{equation}
   y_t = \sum_{j=1}^K \eta_j y_{t-j} + \sum_{j=1}^K \psi_j \epsilon_{t-j} + \epsilon_t ,
   (\#eq:MSARIMAExpanded)

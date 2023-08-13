@@ -649,7 +649,7 @@ In the case of the **non-seasonal** model, the algorithm is more straightforward
 
 In cases of the small samples (less than two seasonal periods), the procedure is similar to the one above. However, the seasonal indices are obtained by taking the actual values and either subtracting arithmetic mean from them or dividing them by the geometric one of the first $m_j$ observations, depending on the seasonality type, normalising them afterwards.
 
-Finally, to ensure that the safe initials were provided, for the ETS(M,Z,Z) models, if the initial level contains a negative value, it is substituted by the global mean of the series.
+Finally, to ensure that the safe initials were provided, for the ETS(M,Z,Z) models, if the initial level contains a negative value, it is substituted by the Global Mean of the series.
 
 The pre-initialisation described here is not simple, but it guarantees that any ETS model can be constructed and estimated almost to any data. Yes, there might still be some issues with mixed ETS models, but the mechanism used in ADAM is quite robust.
 
