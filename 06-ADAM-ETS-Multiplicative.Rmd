@@ -219,13 +219,13 @@ The comparison is fair because both models were estimated via likelihood, and bo
 
 Figure \@ref(fig:BJSalesadamETSMMN) shows how the model fits the data and what forecast it produces. Note that the function produces the **point forecast** in this case, which is not equivalent to the conditional expectation! The point forecast undershoots the actual values in the holdout.
 
-```{r BJSalesadamETSMMN, fig.cap="Model fit for Box-Jenkins Sales data from ETS(M,M,N).", echo=FALSE}
+```{r BJSalesadamETSMMN, fig.cap="Model fit for Box-Jenkins sales data from ETS(M,M,N).", echo=FALSE}
 plot(adamETSBJ,7,main="")
 ```
 
 If we want to produce the forecasts (conditional expectation and prediction interval) from the model, we can do it, using the same command as in Section \@ref(ADAMETSPureAdditiveExamples):
 
-```{r BJSalesadamETSMMNForecast, fig.cap="Forecast for Box-Jenkins Sales data from ETS(M,M,N)."}
+```{r BJSalesadamETSMMNForecast, fig.cap="Forecast for Box-Jenkins sales data from ETS(M,M,N)."}
 forecast(adamETSBJ, h=10,
          interval="prediction", level=0.95) |>
     plot()

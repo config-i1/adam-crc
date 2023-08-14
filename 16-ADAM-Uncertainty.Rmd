@@ -133,7 +133,7 @@ summary(adamETSBJ, level=0.99)
 ```
 The output above shows the estimates of parameters and their 99% confidence intervals. Based on this output, for example, we can conclude that the uncertainty about the initial trend estimate is large, and in the "true model", it could be either positive or negative (or even close to zero). At the same time, the "true" parameter of the initial level will lie in 99% of the cases between 190.4172 and 215.0740. Just as a reminder, Figure \@ref(fig:adamModelBJAAdN) shows the model fit and point forecasts for the estimated ETS model on this data.
 
-```{r adamModelBJAAdN, fig.cap="Model fit and point forecasts of ETS(A,Ad,N) on Box-Jenkins Sales data.", echo=FALSE}
+```{r adamModelBJAAdN, fig.cap="Model fit and point forecasts of ETS(A,Ad,N) on Box-Jenkins sales data.", echo=FALSE}
 plot(adamETSBJ,7)
 ```
 

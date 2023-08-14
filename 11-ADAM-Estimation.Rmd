@@ -511,7 +511,7 @@ When calculating likelihoods based on these losses, `adam()` will assume Laplace
 
 
 ### An example in R
-In order to see how different estimators perform, we will apply ETS(A,A,N) model to Box-Jenkins Sales data, setting forecast horizon $h=10$:
+In order to see how different estimators perform, we will apply ETS(A,A,N) model to Box-Jenkins sales data, setting forecast horizon $h=10$:
 ```{r}
 adamETSAANBJ <- vector("list",6)
 names(adamETSAANBJ) <- c("MSE","MSEh","TMSE","GTMSE","MSCE","GPL")

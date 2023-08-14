@@ -106,7 +106,7 @@ adamARIMAModel <- adam(BJsales, model="NNN",
 ```
 In this example, `orders=list(ar=3,i=2,ma=3,select=TRUE)` tells function that the maximum orders to check are $p\leq 3$, $d\leq 2$ $q\leq 3$. The resulting model is `r adamARIMAModel$model`, which has the fit shown in Figure \@ref(fig:adamARIMAModelFitExample).
 
-```{r adamARIMAModelFitExample, fig.cap="Actuals, fitted and forecast for the Box-Jenkins Sales data."}
+```{r adamARIMAModelFitExample, fig.cap="Actuals, fitted and forecast for the Box-Jenkins sales data."}
 plot(adamARIMAModel, which=7)
 ```
 
@@ -220,7 +220,7 @@ adamETSCCN$models$AAdN |>
 
 As can be seen from the plots in Figures \@ref(fig:adamETSCCN) and \@ref(fig:adamETSCCNAAdN), due to the highest weight, ETS(A,Ad,N) and ETS(C,C,N) models have produced very similar point forecasts and prediction intervals.
 
-Alternatively, if we do not need to consider all ETS models, we can provide the pool of models, including a model with "C" in its name. Here is an example of how pure additive non seasonal models can be combined:
+Alternatively, if we do not need to consider all ETS models, we can provide the pool of models, including a model with "C" in its name. Here is an example of how pure additive non-seasonal models can be combined:
 
 ```{r adamETSCCNPureAdditive, eval=FALSE}
 adamETSCCNPureAdditive <- adam(BJsales, 
