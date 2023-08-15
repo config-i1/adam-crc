@@ -526,7 +526,7 @@ This assumption only applies for the additive error models (Section \@ref(ADAMET
     \end{aligned}
     (\#eq:ETSANNMeasurementRecursion)
 \end{equation}
-If the mean of the residuals in-sample is indeed equal to zero, then the equation \@ref(eq:ETSANNMeasurementRecursion) reduces to $\hat{l}_t=\hat{l}_0$. So, this assumption does not make sense in sample and cannot be properly checked, meaning that it is all about the true model and the asymptotic behaviour rather than the model applied to data.
+If the mean of the residuals in-sample is indeed equal to zero, then the equation \@ref(eq:ETSANNMeasurementRecursion) reduces to $\hat{l}_t=\hat{l}_0$. So, this assumption does not make sense in-sample and cannot be properly checked, meaning that it is all about the true model and the asymptotic behaviour rather than the model applied to data.
 
 On the other hand, if for some reason the mean of residuals is not equal to zero in the population, then the model will change. For example, if we have ETS(A,N,N) model with the non-zero mean of residuals $\mu_\epsilon$, then the residuals can be represented in the form $\epsilon_t = \mu_\epsilon + \xi_t$, where $\mathrm{E}(\xi_t)=0$ which leads to a different model than ETS(A,N,N):
 \begin{equation}

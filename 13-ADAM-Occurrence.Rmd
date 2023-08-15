@@ -67,7 +67,7 @@ When estimated via maximisation of likelihood function \@ref(eq:oETSLikelihood),
 	\hat{p} = \frac{T_1}{T},
 	(\#eq:oETSFixedProbabilityMLE)
 \end{equation}
-where $T_1$ is the number of non-zero observations and $T$ is the number of all the available observations in sample.
+where $T_1$ is the number of non-zero observations and $T$ is the number of all the available observations in-sample.
 
 The occurrence part of the model, oETS$_F$ can be constructed using `oes()` function from the `smooth` package:
 
