@@ -10,6 +10,7 @@
 
 \usepackage{framed,color}
 \definecolor{shadecolor}{RGB}{248,248,248}
+\definecolor{shadecolorRemark}{RGB}{230,230,248}
 
 \renewcommand{\textfraction}{0.05}
 \renewcommand{\topfraction}{0.8}
@@ -44,6 +45,25 @@
    \@setminipage}}%
  {\par\unskip\endMakeFramed%
  \at@end@of@kframe}
+
+
+\newenvironment{kframeRemark}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframeRemark{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframeRemark{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolorRemark}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframeRemark}
 \makeatother
 
 \renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}

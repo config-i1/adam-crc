@@ -99,7 +99,7 @@ adamETSBJ |>
 ## Confidence intervals for parameters {#ADAMUncertaintyConfidenceInterval}
 As it is well known in statistics [e.g. see Section 6.4 of @SvetunkovSBA], if several vital model assumptions (discussed in Section \@ref(diagnostics)) are satisfied and CLT holds, then the distribution of estimates of parameters will follow the Normal one, which will allow us to construct confidence intervals to capture the uncertainty around the parameters. In case of ETS and ARIMA models in the ADAM framework, the estimated parameters include smoothing, dampening and ARMA parameters together with the initial states. In the case of explanatory variables, the pool of parameters is increased by the coefficients for those variables and their smoothing parameters (if the dynamic model from Section \@ref(ADAMXDynamic) is used). Furthermore, in case of the intermittent state space model, the parameters will also include the elements of the occurrence part of the model. The CLT should hold for all of them if:
 
-1. Estimates of parameters are consistent (e.g. MSE or Likelihood is used in estimation, see Section \@ref(ADAMETSEstimation));
+1. Estimates of parameters are consistent (e.g. MSE or likelihood is used in estimation, see Section \@ref(ADAMETSEstimation));
 2. The parameters do not lie near the bounds;
 3. The model is correctly specified;
 4. Moments of the distribution of error term are finite.
