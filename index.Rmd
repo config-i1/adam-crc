@@ -4,7 +4,7 @@ author: "Ivan Svetunkov"
 date: "`r Sys.Date()`"
 documentclass: krantz
 bibliography: [library.bib, packages.bib, websites.bib]
-biblio-style: apalike
+biblio-style: apalike3
 always_allow_html: true
 link-citations: yes
 colorlinks: yes
@@ -27,7 +27,7 @@ In a more wide sense, this book is written for data scientists, computer scienti
 
 ### What is ADAM? {-}
 
-ADAM stands for "Augmented Dynamic Adaptive Model". The term "adaptive model" means that the parameters of the model change over time according to some assumed process. The word "dynamic" reflects the idea that the model has time series related components (ETS, ARIMA). Finally, the word "augmented" is included because ADAM is the model that supports additional features not included in the conventional ETS/ARIMA. ADAM is a unified framework for constructing ETS/ARIMA/regression, based on more advanced statistical instruments. For example, classical ARIMA is built on the assumption of normality of the error term, but ADAM lifts this assumption and allows for using other distributions as well (e.g. Generalised Normal, Inverse Gaussian, etc; see Section \@ref(#distributions)). Another example: typically the conventional models are estimated either via the maximisation of the likelihood function or using basic losses like MSE or MAE (see Section \@ref(errorMeasures)), but ADAM includes a broader spectrum of losses and allows using custom ones. There is much more, and we will discuss different aspects of ADAM in detail later in this monograph. Here is a brief list of ADAM features:
+ADAM stands for "Augmented Dynamic Adaptive Model". The term "adaptive model" means that the parameters of the model change over time according to some assumed process. The word "dynamic" reflects the idea that the model has time series related components (ETS, ARIMA). Finally, the word "augmented" is included because ADAM is the model that supports additional features not included in the conventional ETS/ARIMA. ADAM is a unified framework for constructing ETS/ARIMA/regression, based on more advanced statistical instruments. For example, classical ARIMA is built on the assumption of normality of the error term, but ADAM lifts this assumption and allows for using other distributions as well (e.g. Generalised Normal, Inverse Gaussian, etc). Another example: typically the conventional models are estimated either via the maximisation of the likelihood function or using basic losses like MSE or MAE (see Section \@ref(errorMeasures)), but ADAM includes a broader spectrum of losses and allows using custom ones. There is much more, and we will discuss different aspects of ADAM in detail later in this monograph. Here is a brief list of ADAM features:
 
 1. ETS;
 2. ARIMA;
@@ -103,7 +103,8 @@ If you use LaTeX, the following can be used instead:
     author = {Ivan Svetunkov},
     isbn = {978-1-003-45265-2},
     publisher = {Chapman and Hall/CRC},
-    title = {Forecasting and Analytics with the Augmented Dynamic Adaptive Model (ADAM)},
+    title = {Forecasting and Analytics with
+    	the Augmented Dynamic Adaptive Model (ADAM)},
     doi = {10.1201/9781003452652},
     url = {https://openforecast.org/adam/},
     year = {2023}
