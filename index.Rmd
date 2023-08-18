@@ -4,7 +4,7 @@ author: "Ivan Svetunkov"
 date: "`r Sys.Date()`"
 documentclass: krantz
 bibliography: [library.bib, packages.bib, websites.bib]
-biblio-style: apalike
+biblio-style: apalike2
 always_allow_html: true
 link-citations: yes
 colorlinks: yes
